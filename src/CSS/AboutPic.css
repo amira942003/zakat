@@ -1,0 +1,37 @@
+.big-pic {
+    position: relative;
+    background: url('../assets/images/About.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 30em;
+     align-items: center;
+  }
+  
+  .about {
+    width: 50em;
+    height: 25em;
+    background: rgba(0, 0, 0, 0.18);
+    border: 0.688737px solid rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(8.7px);
+    border-radius: 2.1875em;
+  }
+  
+  .about .About {
+    font-weight: 500;
+    font-size: 90px; /* Font size remains in px */
+    color: #F2CB05;
+    margin-bottom: 4rem;
+  }
+  
+  .about .about-text {
+    display: flex;
+    flex-direction: column;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 0.9375em;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+  }

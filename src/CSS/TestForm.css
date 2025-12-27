@@ -1,0 +1,119 @@
+
+
+.zakat-form-container{
+    margin-top: 2em;
+    min-height: 52em;
+    width: 50em;
+    background-color: #035116;
+    color: #F2CB05;
+    border-radius: 1em;
+    position: relative;
+}
+.zakat-calculator-title h1{
+    text-align: center;
+    font-size: 2em;
+    padding: 0.3em;
+}
+.zakat-calculator-title p{
+    text-align: center;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+}
+.line-hor{
+    width: 80%;
+    height: 2px;
+    background-color: #F2CB05;
+    margin: 2em auto  ;
+    border-radius: 15px;
+}
+
+
+.questions-container{
+   
+    width: 100%;
+    margin-top:1.6em ;
+    height: 80%;
+}
+.question{
+    margin: auto;
+    width: 90%;
+    margin-bottom: 2em;
+}
+.question ul{
+    margin-top: 0.8em;
+    list-style: none;
+
+}
+.choice{
+    color: #035116;
+    cursor: pointer;
+    background-color: #fff;
+    margin: 8px auto;
+    width: 98%;
+    padding: 10px 5px;
+    border-radius: 5px;
+  
+}
+.active{
+  
+    color: red;
+}
+.yes-no{
+    display: flex;
+    justify-content: space-around;
+}
+.yes-no button{
+    margin-top: 1em;
+    cursor: pointer;
+    padding: 8px 4em;
+    font-weight: 500;
+    font-family: 'Inter';
+    outline: none;
+    border: none;
+    background-color: #fff;
+    color: #035116;
+    border-radius: 5px;
+}
+
+
+.yes.active,.no.active {
+    background-color: #F2CB05;
+    font-weight: 800;
+    color: #035116;
+}
+
+
+.choice:hover{
+    background: #F2CB05;
+}
+.yes-no button:hover{
+    background-color: #F2CB05;
+}
+
+.user-inputs{
+    border-radius: 1em;
+    margin-top: 1em;
+}
+
+.date-zakat{
+    margin-top: 0.5em;
+}
+
+.zakat-form-btns-container button{
+   padding: 8px 1em;
+   border-radius: 5px;
+   outline: none;
+   border: none;
+   background-color: #035116;
+   font-size: 20px;
+   font-weight: 500;
+   color: #fff;
+   cursor: pointer;
+  
+   margin: 1em 5px;
+}
+.zakat-form-btns-container button:hover{
+    background: #F2CB05;
+    color: #035116;
+}

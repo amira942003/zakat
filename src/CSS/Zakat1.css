@@ -1,0 +1,39 @@
+
+
+.zakat{
+    position: relative;
+    background: url('../assets/images/ZkatPics/mosque2.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 50em;
+    margin: 5em auto;
+    
+}
+.pic1{
+    position: relative;
+    background: url('../assets/images/ZkatPics/mosque2.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    border-radius: 1em;
+}
+.pic1-text{
+    backdrop-filter: blur(3px);
+    padding: 2em 2em;
+}
+.category{
+    position: relative;
+    overflow: none;
+}
+.category-text{
+    display: inline-block;
+    position: relative;
+    overflow: none;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    height: 0;
+}

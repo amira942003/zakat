@@ -1,0 +1,31 @@
+
+.project-name {
+    height:4em;
+   
+}
+.project-name {
+    margin-top: 3em;
+    text-align: right;
+    height: 10em;
+}
+.project-name h1{
+    font-size: 4em;
+}
+.WakfP-container{
+    background-color: aquamarine;
+}
+.comp{
+    height: 4em;  
+    background-color: blueviolet;
+}
+.project-img{
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+height: 38em;
+margin-bottom: 1em;
+
+}
+.project-content{
+    text-align: right;
+}

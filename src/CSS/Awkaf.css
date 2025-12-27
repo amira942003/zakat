@@ -1,0 +1,20 @@
+
+
+.project-container-grid{
+    margin: 1em auto ;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns per row */
+    gap: 2em; /* Space between cards */
+}
+.line-yellow-cont{
+    display: flex;
+    justify-content: center;
+}
+.line-yellow{
+width: 989px;
+height: 3px;
+background: #F2CB05;
+border-radius: 45px;
+
+
+}

@@ -1,0 +1,89 @@
+{
+  "header": {
+    "logo": "Zakat",
+    "home": "Accueil",
+    "about": "À propos de la Zakat",
+    "calculator": "Calculatrice Zakat",
+    "awkaf": "Projets Awqaf",
+    "contact": "Contactez-nous",
+    "history": "Historique Zakat",
+    "userInfo": "Infos Utilisateur",
+    "login": "Connexion",
+    "logout": "Déconnexion",
+    "register": "Créer un compte",
+    "selectLanguage": "Choisir la langue"
+  },
+  "forms": {
+    "1": {
+      "label": "Liquidités et équivalents",
+      "fields": {
+        "x1": "Espèces en caisse",
+        "x2": "Liquidités bancaires",
+        "x3": "Chèques certifiés",
+        "x4": "Devises étrangères",
+        "x5": "Actifs numériques disponibles",
+        "x6": "Dépôts de garantie",
+        "x7": "Prêt sans intérêt accordé",
+        "x8": "Revenus dus",
+        "x9": "Liquidités de vente"
+      }
+    },
+    "2": {
+      "label": "Créances recouvrables",
+      "fields": {
+        "y1": "Créances clients courantes",
+        "y2": "Créances différées",
+        "y3": "Effets à recevoir",
+        "y4": "Créances recouvrables",
+        "y5": "Créances sur vente",
+        "y6": "Revenus de location",
+        "y7": "Créances douteuses"
+      }
+    },
+    "3": {
+      "label": "Investissements zakatable",
+      "fields": {
+        "z1": "Actions commerciales",
+        "z2": "Parts immobilières",
+        "z3": "Investissements obligations",
+        "z4": "Actions d'infrastructure"
+      }
+    },
+    "4": {
+      "label": "Marchandises et stocks",
+      "fields": {
+        "a1": "Marchandises finies",
+        "a2": "En cours de fabrication",
+        "a3": "Matières premières",
+        "a4": "En transit",
+        "a5": "En dépôt",
+        "a6": "Pièces de rechange",
+        "a7": "Marchandises commerciales",
+        "a8": "Biens immobiliers",
+        "a9": "Marchandises obsolètes"
+      }
+    },
+    "6": {
+      "label": "Passifs déductibles",
+      "fields": {
+        "c1": "Prêts à court terme",
+        "c2": "Effets à payer",
+        "c3": "Droits des employés",
+        "c4": "Taxes dues",
+        "c5": "Bénéfices de mudaraba",
+        "c6": "Garanties clients",
+        "c7": "Réserves générales"
+      }
+    },
+    "malikiAssets": {
+      "label": "Responsabilités financières",
+      "fields": {
+        "SPA": "Responsabilité société",
+        "SARL": "Responsabilité personne",
+        "limit": "Limite d'insolvabilité"
+      }
+    }
+    
+  }
+  
+}
