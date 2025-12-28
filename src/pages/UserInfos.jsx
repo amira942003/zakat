@@ -34,11 +34,13 @@ export const UserInfos = () => {
     const fetchUserInfo = async () => {
       try {
         const [data, status, error] = await api.get("/me/");
-        if (error) throw new Error(translate(
-          "فشل تحميل معلومات المستخدم.",
-          "Échec du chargement des informations utilisateur.",
-          "Failed to load user information."
-        ));
+        if (error) throw new Error(
+          translate(
+            "فشل تحميل معلومات المستخدم.",
+            "Échec du chargement des informations utilisateur.",
+            "Failed to load user information."
+          )
+        );
         setFormData({
           username: data.username || "",
           first_name: data.first_name || "",
@@ -49,7 +51,10 @@ export const UserInfos = () => {
         });
       } catch (err) {
         console.error(err);
-        setPopup({ message: translate("حدث خطأ", "Une erreur est survenue", "An error occurred"), type: "error" });
+        setPopup({
+          message: translate("حدث خطأ", "Une erreur est survenue", "An error occurred"),
+          type: "error",
+        });
       }
     };
     fetchUserInfo();
@@ -63,10 +68,18 @@ export const UserInfos = () => {
   const validate = (values) => {
     const errors = {};
     if (!values.password.trim()) {
-      errors.password = translate("كلمة المرور الجديدة مطلوبة!", "Le nouveau mot de passe est requis!", "New password is required!");
+      errors.password = translate(
+        "كلمة المرور الجديدة مطلوبة!",
+        "Le nouveau mot de passe est requis!",
+        "New password is required!"
+      );
     }
     if (!values.old_password.trim()) {
-      errors.old_password = translate("كلمة المرور القديمة مطلوبة!", "L'ancien mot de passe est requis!", "Old password is required!");
+      errors.old_password = translate(
+        "كلمة المرور القديمة مطلوبة!",
+        "L'ancien mot de passe est requis!",
+        "Old password is required!"
+      );
     }
     return errors;
   };
@@ -81,7 +94,14 @@ export const UserInfos = () => {
     }
 
     if (formData.old_password && !formData.password) {
-      setPopup({ message: translate("يرجى إدخال كلمة المرور الجديدة", "Veuillez entrer un nouveau mot de passe", "Please enter a new password"), type: "error" });
+      setPopup({
+        message: translate(
+          "يرجى إدخال كلمة المرور الجديدة",
+          "Veuillez entrer un nouveau mot de passe",
+          "Please enter a new password"
+        ),
+        type: "error",
+      });
       return;
     }
 
