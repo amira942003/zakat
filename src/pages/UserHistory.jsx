@@ -16,7 +16,7 @@ import { Link } from "react-router-dom";
 
 const UserHistory = () => {
   const api = useApi();
-  const { setPopup, popup, language } = useContext(ZakatContext); // récupère la langue
+  const { setPopup, popup, language } = useContext(ZakatContext);
   const [history, setHistory] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -27,12 +27,9 @@ const UserHistory = () => {
 
   const translate = (ar, fr, en) => {
     switch (language) {
-      case "fr":
-        return fr;
-      case "en":
-        return en;
-      default:
-        return ar;
+      case "fr": return fr;
+      case "en": return en;
+      default: return ar;
     }
   };
 
@@ -44,7 +41,6 @@ const UserHistory = () => {
         "Échec du chargement des informations utilisateur.",
         "Failed to load user information."
       ));
-
       const userData = await data;
       return userData.id;
     } catch (err) {
@@ -137,7 +133,6 @@ const UserHistory = () => {
     <>
       <div dir={language === "ar" ? "rtl" : "ltr"} className="min-h-screen bg-gray-100">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 py-6 md:py-8 mt-12 md:mt-15">
-          {/* Header */}
           <div className="mb-6 md:mb-8 flex flex-col-reverse sm:flex-row sm:justify-between sm:items-start gap-4">
             <Link to="/zakat-corps-history" className="text-xs sm:text-sm px-3 sm:px-4 py-2 bg-green4 text-white font-semibold rounded-lg hover:shadow-lg transition-all duration-200 hover:scale-105 whitespace-nowrap text-center">
               {translate("سجل المحاصيل", "Historique des cultures", "Crops history")}
@@ -155,7 +150,6 @@ const UserHistory = () => {
               <EmptyState />
             ) : (
               <>
-                {/* Desktop Table View */}
                 <div className="hidden md:block overflow-x-auto">
                   <Table className="w-full">
                     <TableHeader>
@@ -181,7 +175,6 @@ const UserHistory = () => {
                   </Table>
                 </div>
 
-                {/* Mobile Card View */}
                 <div className="md:hidden space-y-4 p-4">
                   {history.map((item) => (
                     <div key={item.id} className="border border-gray-200 rounded-lg p-4 bg-gradient-to-r from-gray-50 to-white hover:shadow-md transition-shadow">
@@ -204,7 +197,6 @@ const UserHistory = () => {
                   ))}
                 </div>
 
-                {/* Pagination */}
                 {totalPages > 1 && (
                   <div className="px-4 sm:px-6 py-4 border-t border-gray-200">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -222,18 +214,20 @@ const UserHistory = () => {
         </div>
       </div>
 
-      {/* Confirmation Dialog */}
       <ConfirmDialog
         isOpen={showDeleteDialog}
         onClose={() => setShowDeleteDialog(false)}
         onConfirm={handleDelete}
         title={translate("تأكيد الحذف","Confirmation de suppression","Confirm Deletion")}
-        message={translate("هل أنت متأكد أنك تريد حذف هذا السجل؟ لا يمكن التراجع عن هذا الإجراء.",
-                           "Êtes-vous sûr de vouloir supprimer cet enregistrement ? Cette action est irréversible.",
-                           "Are you sure you want to delete this record? This action cannot be undone.")}
+        message={translate(
+          "هل أنت متأكد أنك تريد حذف هذا السجل؟ لا يمكن التراجع عن هذا الإجراء.",
+          "Êtes-vous sûr de vouloir supprimer cet enregistrement ? Cette action est irréversible.",
+          "Are you sure you want to delete this record? This action cannot be undone."
+        )}
         confirmText={translate("حذف","Supprimer","Delete")}
         cancelText={translate("إلغاء","Annuler","Cancel")}
       />
+
       <MessagePopup
         message={popup.message}
         type={popup.type}
