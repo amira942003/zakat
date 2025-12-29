@@ -1,11 +1,11 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { MessagePopup } from "@/Components/MessagePopup";
 import { useApi } from "@/ApiProvider";
-import { ZakatContext } from "@/Components/ZakatProvider";
+import { useLanguage } from "@/Components/LanguageProvider";
 
 export const UserInfos = () => {
   const api = useApi();
-  const { language } = useContext(ZakatContext);
+  const { language, t } = useLanguage();
   const [formData, setFormData] = useState({
     username: "",
     first_name: "",
@@ -19,26 +19,11 @@ export const UserInfos = () => {
   const [activeTab, setActiveTab] = useState("account");
   const [popup, setPopup] = useState({ message: "", type: "" });
 
-  const translate = (ar, fr, en) => {
-    switch (language) {
-      case "fr":
-        return fr;
-      case "en":
-        return en;
-      default:
-        return ar;
-    }
-  };
-
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
         const [data, status, error] = await api.get("/me/");
-        if (error) throw new Error(translate(
-          "فشل تحميل معلومات المستخدم.",
-          "Échec du chargement des informations utilisateur.",
-          "Failed to load user information."
-        ));
+        if (error) throw new Error(t("ui.failedToLoadUserInfo"));
         setFormData({
           username: data.username || "",
           first_name: data.first_name || "",
@@ -49,11 +34,11 @@ export const UserInfos = () => {
         });
       } catch (err) {
         console.error(err);
-        setPopup({ message: translate("حدث خطأ", "Une erreur est survenue", "An error occurred"), type: "error" });
+        setPopup({ message: t("ui.errorOccurred"), type: "error" });
       }
     };
     fetchUserInfo();
-  }, []);
+  }, [api, t]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -63,10 +48,10 @@ export const UserInfos = () => {
   const validate = (values) => {
     const errors = {};
     if (!values.password.trim()) {
-      errors.password = translate("كلمة المرور الجديدة مطلوبة!", "Le nouveau mot de passe est requis!", "New password is required!");
+      errors.password = t("ui.newPasswordRequired");
     }
     if (!values.old_password.trim()) {
-      errors.old_password = translate("كلمة المرور القديمة مطلوبة!", "L'ancien mot de passe est requis!", "Old password is required!");
+      errors.old_password = t("ui.oldPasswordRequired");
     }
     return errors;
   };
@@ -81,7 +66,7 @@ export const UserInfos = () => {
     }
 
     if (formData.old_password && !formData.password) {
-      setPopup({ message: translate("يرجى إدخال كلمة المرور الجديدة", "Veuillez entrer un nouveau mot de passe", "Please enter a new password"), type: "error" });
+      setPopup({ message: t("ui.pleaseEnterNewPassword"), type: "error" });
       return;
     }
 
@@ -105,16 +90,16 @@ export const UserInfos = () => {
           const firstError = Object.values(data)[0];
           setPopup({ message: firstError, type: "error" });
         } else {
-          setPopup({ message: data || translate("حدث خطأ", "Une erreur est survenue", "An error occurred"), type: "error" });
+          setPopup({ message: data || t("ui.errorOccurred"), type: "error" });
         }
         setIsLoading(false);
         return;
       }
-      setPopup({ message: translate("تم تحديث البيانات بنجاح", "Les informations ont été mises à jour avec succès", "Data updated successfully"), type: "success" });
+      setPopup({ message: t("ui.dataUpdatedSuccessfully"), type: "success" });
       setFormData((prev) => ({ ...prev, password: "", old_password: "" }));
     } catch (err) {
       console.error("Error updating user:", err);
-      setPopup({ message: translate("حدث خطأ", "Une erreur est survenue", "An error occurred"), type: "error" });
+      setPopup({ message: t("ui.errorOccurred"), type: "error" });
     } finally {
       setIsLoading(false);
     }
@@ -126,8 +111,8 @@ export const UserInfos = () => {
         <div className="max-w-2xl mx-auto" dir={language === "ar" ? "rtl" : "ltr"}>
           {/* Page Header */}
           <div className="text-center mb-4">
-            <h1 className="text-2xl font-bold text-gray-800 mb-4">{translate("الملف الشخصي", "Profil", "Profile")}</h1>
-            <p className="text-gray-600 text-lg">{translate("إدارة معلوماتك الشخصية وإعدادات الحساب", "Gérez vos informations personnelles et paramètres du compte", "Manage your personal info and account settings")}</p>
+            <h1 className="text-2xl font-bold text-gray-800 mb-4">{t("ui.profile")}</h1>
+            <p className="text-gray-600 text-lg">{t("ui.managePersonalInfo")}</p>
           </div>
 
           {/* Tabs */}
@@ -137,11 +122,11 @@ export const UserInfos = () => {
               <div className="flex rounded-xl bg-white/10 p-1">
                 <button onClick={() => setActiveTab("account")}
                   className={`flex-1 py-2 px-4 mx-2 rounded-lg text-center text-[0.8em] font-semibold transition-all duration-200 ${activeTab === "account" ? "bg-white text-green3 shadow-lg" : "text-white hover:bg-white/20"}`}>
-                  {translate("معلومات الحساب","Infos du compte","Account Info")}
+                  {t("ui.accountInfo")}
                 </button>
                 <button onClick={() => setActiveTab("password")}
                   className={`flex-1 py-2 px-4 rounded-lg text-center text-[0.8em] font-semibold transition-all duration-200 ${activeTab === "password" ? "bg-white text-green3 shadow-lg" : "text-white hover:bg-white/20"}`}>
-                  {translate("كلمة المرور","Mot de passe","Password")}
+                  {t("ui.password")}
                 </button>
               </div>
             </div>
@@ -152,34 +137,36 @@ export const UserInfos = () => {
               {activeTab === "account" && (
                 <div className="space-y-6">
                   <div className="mb-4">
-                    <h2 className="text-xl font-bold text-gray-800 mb-2">{translate("معلومات الحساب","Infos du compte","Account Info")}</h2>
-                    <p className="text-gray-600">{translate("قم بتحديث معلومات حسابك.","Mettez à jour vos informations de compte.","Update your account info.")}</p>
+                    <h2 className="text-xl font-bold text-gray-800 mb-2">{t("ui.accountInfo")}</h2>
+                    <p className="text-gray-600">{t("ui.updateAccountInfo")}</p>
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <label className="custom-form-label mb-2">{translate("اسم المستخدم","Nom d'utilisateur","Username")}</label>
-                      <input type="text" name="username" value={formData.username} onChange={handleChange} className="w-full px-4 py-3 custom-input" placeholder={translate("أدخل اسم المستخدم","Entrez le nom d'utilisateur","Enter username")} />
+                      <label className="custom-form-label mb-2">{t("ui.username")}</label>
+                      <input type="text" name="username" value={formData.username} onChange={handleChange} className="w-full px-4 py-3 custom-input" placeholder={t("ui.enterUsername")} />
                     </div>
 
                     <div>
-                      <label className="custom-form-label mb-2">{translate("البريد الإلكتروني","Email","Email")}</label>
-                      <input type="email" name="email" value={formData.email} onChange={handleChange} className="w-full px-4 py-3 custom-input" placeholder={translate("أدخل البريد الإلكتروني","Entrez l'email","Enter email")} />
+                      <label className="custom-form-label mb-2">{t("ui.email")}</label>
+                      <input type="email" name="email" value={formData.email} onChange={handleChange} className="w-full px-4 py-3 custom-input" placeholder={t("ui.enterEmail")} />
                     </div>
 
                     <div>
-                      <label className="custom-form-label mb-2">{translate("الاسم الأول","Prénom","First Name")}</label>
-                      <input type="text" name="first_name" value={formData.first_name} onChange={handleChange} className="w-full px-4 py-3 custom-input" placeholder={translate("أدخل الاسم الأول","Entrez le prénom","Enter first name")} />
+                      <label className="custom-form-label mb-2">{t("ui.firstName")}</label>
+                      <input type="text" name="first_name" value={formData.first_name} onChange={handleChange} className="w-full px-4 py-3 custom-input" placeholder={t("ui.enterFirstName")} />
                     </div>
 
                     <div>
-                      <label className="custom-form-label mb-2">{translate("الاسم الأخير","Nom de famille","Last Name")}</label>
-                      <input type="text" name="last_name" value={formData.last_name} onChange={handleChange} className="w-full px-4 py-3 custom-input" placeholder={translate("أدخل الاسم الأخير","Entrez le nom de famille","Enter last name")} />
+                      <label className="custom-form-label mb-2">{t("ui.lastName")}</label>
+                      <input type="text" name="last_name" value={formData.last_name} onChange={handleChange} className="w-full px-4 py-3 custom-input" placeholder={t("ui.enterLastName")} />
                     </div>
                   </div>
 
                   <div className="pt-6 border-t text-center border-gray-200">
-                    <button onClick={handleSubmit} className="w-1/2 custom-button py-2 rounded-sm">{isLoading ? translate("جاري التحديث...","Mise à jour...","Updating...") : translate("تحديث المعلومات","Mettre à jour","Update Info")}</button>
+                    <button onClick={handleSubmit} className="w-1/2 custom-button py-2 rounded-sm">
+                      {isLoading ? t("ui.updating") : t("ui.updateInfo")}
+                    </button>
                   </div>
                 </div>
               )}
@@ -188,26 +175,28 @@ export const UserInfos = () => {
               {activeTab === "password" && (
                 <div className="space-y-6">
                   <div className="mb-4">
-                    <h2 className="text-xl font-bold text-gray-800 mb-2">{translate("تغيير كلمة المرور","Changer le mot de passe","Change Password")}</h2>
-                    <p className="text-gray-600">{translate("قم بإدخال كلمة المرور القديمة والجديدة","Entrez l'ancien et le nouveau mot de passe","Enter old and new password")}</p>
+                    <h2 className="text-xl font-bold text-gray-800 mb-2">{t("ui.changePassword")}</h2>
+                    <p className="text-gray-600">{t("ui.enterOldNewPassword")}</p>
                   </div>
 
                   <div className="space-y-6">
                     <div>
-                      <label className="custom-form-label mb-2">{translate("كلمة المرور الحالية","Mot de passe actuel","Current Password")}</label>
-                      <input required type="password" name="old_password" value={formData.old_password} onChange={handleChange} className="w-full px-4 py-3 custom-input" placeholder={translate("أدخل كلمة المرور الحالية","Entrez le mot de passe actuel","Enter current password")} />
+                      <label className="custom-form-label mb-2">{t("ui.currentPassword")}</label>
+                      <input required type="password" name="old_password" value={formData.old_password} onChange={handleChange} className="w-full px-4 py-3 custom-input" placeholder={t("ui.enterCurrentPassword")} />
                       {error.old_password && <p className="text-red-500 text-sm mt-2">{error.old_password}</p>}
                     </div>
 
                     <div>
-                      <label className="custom-form-label mb-2">{translate("كلمة المرور الجديدة","Nouveau mot de passe","New Password")}</label>
-                      <input required type="password" name="password" value={formData.password} onChange={handleChange} className="w-full px-4 py-3 custom-input" placeholder={translate("أدخل كلمة المرور الجديدة","Entrez le nouveau mot de passe","Enter new password")} />
+                      <label className="custom-form-label mb-2">{t("ui.newPassword")}</label>
+                      <input required type="password" name="password" value={formData.password} onChange={handleChange} className="w-full px-4 py-3 custom-input" placeholder={t("ui.enterNewPassword")} />
                       {error.password && <p className="text-red-500 text-sm mt-2">{error.password}</p>}
                     </div>
                   </div>
 
                   <div className="pt-6 border-t text-center border-gray-200">
-                    <button onClick={handleSubmit} className="w-1/2 custom-button py-2 rounded-sm">{isLoading ? translate("جاري التحديث...","Mise à jour...","Updating...") : translate("تحديث كلمة المرور","Mettre à jour le mot de passe","Update Password")}</button>
+                    <button onClick={handleSubmit} className="w-1/2 custom-button py-2 rounded-sm">
+                      {isLoading ? t("ui.updating") : t("ui.updatePassword")}
+                    </button>
                   </div>
                 </div>
               )}
