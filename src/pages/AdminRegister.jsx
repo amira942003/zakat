@@ -138,15 +138,63 @@ export const AdminRegister = () => {
                 setErrors({});
                 formRef.current?.reset();
             } else {
+                // Gestion détaillée des erreurs du backend
+                let errorMessage = "";
+                const newErrors = {};
+
+                // Vérifier chaque champ pour les erreurs spécifiques
+                if (data.username) {
+                    const usernameError = Array.isArray(data.username) ? data.username[0] : data.username;
+                    newErrors.username = usernameError;
+                    errorMessage = "❌ إسم المستخدم موجود بالفعل";
+                }
+
+                if (data.email) {
+                    const emailError = Array.isArray(data.email) ? data.email[0] : data.email;
+                    newErrors.email = emailError;
+                    errorMessage = "❌ البريد الإلكتروني موجود بالفعل أو غير صالح";
+                }
+
+                if (data.phone || data.phone_number) {
+                    const phoneError = Array.isArray(data.phone) 
+                        ? data.phone[0] 
+                        : (data.phone || data.phone_number);
+                    newErrors.phone = phoneError;
+                    errorMessage = "❌ رقم الهاتف غير صالح أو موجود بالفعل";
+                }
+
+                if (data.password) {
+                    const passwordError = Array.isArray(data.password) ? data.password[0] : data.password;
+                    newErrors.password = passwordError;
+                    errorMessage = "❌ كلمة المرور غير صالحة";
+                }
+
+                // Si aucune erreur spécifique, utiliser le message général
+                if (!errorMessage) {
+                    if (data.detail) {
+                        errorMessage = "❌ " + data.detail;
+                    } else if (data.message) {
+                        errorMessage = "❌ " + data.message;
+                    } else if (data.error) {
+                        errorMessage = "❌ " + data.error;
+                    } else {
+                        errorMessage = "❌ فشل التسجيل. يرجى التحقق من البيانات";
+                    }
+                }
+
+                // Mettre à jour les erreurs des champs
+                setErrors(newErrors);
+
+                // Afficher le popup avec le message d'erreur
                 setPopup({
-                    message: "❌ حدث خطأ في التسجيل: " + (data.message || "خطأ غير معروف"),
+                    message: errorMessage,
                     type: "error",
                 });
             }
         } catch (error) {
             console.error("خطأ أثناء الإرسال:", error);
             setPopup({
-                message: "❌ فشل الاتصال بالخادم.",
+                message: "❌ فشل الاتصال بالخادم. يرجى التحقق من الاتصال بالإنترنت.",
                 type: "error",
             });
         } finally {
