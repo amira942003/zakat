@@ -1,5 +1,5 @@
 import React from "react";
-import { useLanguage } from "../languageProvider";
+import { useLanguage } from "../Components/LanguageProvider";
 
 const UserHistory = ({ history }) => {
   const { t } = useLanguage();
