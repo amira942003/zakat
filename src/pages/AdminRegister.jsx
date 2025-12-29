@@ -12,6 +12,15 @@ export const AdminRegister = () => {
     const [adminForm, setAdminForm] = useState(initialAdminData);
     const [formErrors, setFormErrors] = useState({});
     const [isLoading, setIsLoading] = useState(false);
+    const [notification, setNotification] = useState(null);
+
+    // Fonction pour afficher les notifications
+    const showNotification = (message, type = "error") => {
+        setNotification({ message, type });
+        setTimeout(() => {
+            setNotification(null);
+        }, 4000);
+    };
 
     const handleAdmin = (e) => {
         const { name, value } = e.target;
@@ -25,18 +34,22 @@ export const AdminRegister = () => {
         // Validation du username
         if (!adminForm.username.trim()) {
             errors.username = "إسم المستخدم مطلوب.";
+            showNotification("إسم المستخدم مطلوب.", "error");
         }
         
         // Validation de l'email (format uniquement)
         if (!adminForm.email.trim()) {
             errors.email = "البريد الإلكتروني مطلوب.";
+            showNotification("البريد الإلكتروني مطلوب.", "error");
         } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(adminForm.email)) {
             errors.email = "البريد الإلكتروني غير صالح.";
+            showNotification("❌ البريد الإلكتروني غير صالح. يرجى التحقق من الصيغة.", "error");
         }
         
         // Validation du numéro de téléphone algérien
         if (!adminForm.phone.trim()) {
             errors.phone = "رقم الهاتف مطلوب.";
+            showNotification("رقم الهاتف مطلوب.", "error");
         } else {
             // Enlever les espaces et les tirets
             const cleanPhone = adminForm.phone.replace(/[\s-]/g, "");
@@ -45,22 +58,27 @@ export const AdminRegister = () => {
             const algerianPhoneRegex = /^(0[5-7]\d{8}|(\+213|00213)[5-7]\d{8})$/;
             
             if (!algerianPhoneRegex.test(cleanPhone)) {
-                errors.phone = "رقم الهاتف غير صالح. يجب أن يبدأ بـ 05، 06 أو 07 (مثال: 0555123456).";
+                errors.phone = "رقم الهاتف غير صالح.";
+                showNotification("❌ رقم الهاتف غير صالح. يجب أن يبدأ بـ 05، 06 أو 07", "error");
             }
         }
         
         // Validation du password
         if (!adminForm.password) {
             errors.password = "كلمة المرور مطلوبة.";
+            showNotification("كلمة المرور مطلوبة.", "error");
         } else if (adminForm.password.length < 6) {
             errors.password = "كلمة المرور يجب أن تكون 6 أحرف على الأقل.";
+            showNotification("❌ كلمة المرور يجب أن تكون 6 أحرف على الأقل.", "error");
         }
         
         // Validation de la confirmation
         if (!adminForm.confirmPassword) {
             errors.confirmPassword = "تأكيد كلمة المرور مطلوب.";
+            showNotification("تأكيد كلمة المرور مطلوب.", "error");
         } else if (adminForm.password !== adminForm.confirmPassword) {
             errors.confirmPassword = "كلمتا المرور غير متطابقتين.";
+            showNotification("❌ كلمتا المرور غير متطابقتين.", "error");
         }
         
         return errors;
@@ -92,15 +110,15 @@ export const AdminRegister = () => {
             const data = await response.json();
 
             if (response.ok) {
-                alert("✅ تم تسجيل المشرف بنجاح!");
+                showNotification("✅ تم تسجيل المشرف بنجاح!", "success");
                 setAdminForm(initialAdminData);
                 setFormErrors({});
             } else {
-                alert("❌ حدث خطأ في التسجيل: " + (data.message || JSON.stringify(data)));
+                showNotification("❌ حدث خطأ في التسجيل: " + (data.message || "خطأ غير معروف"), "error");
             }
         } catch (error) {
             console.error("خطأ أثناء الإرسال:", error);
-            alert("❌ فشل الاتصال بالخادم.");
+            showNotification("❌ فشل الاتصال بالخادم.", "error");
         } finally {
             setIsLoading(false);
         }
@@ -108,6 +126,53 @@ export const AdminRegister = () => {
 
     return (
         <div dir="rtl" className="flex items-center justify-center min-h-screen bg-gray-100">
+            {/* Toast Notification */}
+            {notification && (
+                <div
+                    className={`fixed top-4 right-4 z-50 px-6 py-4 rounded-lg shadow-lg transform transition-all duration-300 ease-in-out ${
+                        notification.type === "success"
+                            ? "bg-green-500 text-white"
+                            : "bg-red-500 text-white"
+                    }`}
+                    style={{
+                        animation: "slideIn 0.3s ease-out",
+                    }}
+                >
+                    <div className="flex items-center gap-3">
+                        {notification.type === "success" ? (
+                            <svg
+                                className="w-6 h-6"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M5 13l4 4L19 7"
+                                />
+                            </svg>
+                        ) : (
+                            <svg
+                                className="w-6 h-6"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M6 18L18 6M6 6l12 12"
+                                />
+                            </svg>
+                        )}
+                        <p className="font-medium">{notification.message}</p>
+                    </div>
+                </div>
+            )}
+
             <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
                 <h2 className="text-2xl font-bold text-center text-gray-700 mb-6">تسجيل المشرف</h2>
                 <form onSubmit={handleSubmit} noValidate className="space-y-4">
@@ -245,6 +310,20 @@ export const AdminRegister = () => {
                     </button>
                 </form>
             </div>
+
+            {/* CSS Animation pour le toast */}
+            <style jsx>{`
+                @keyframes slideIn {
+                    from {
+                        transform: translateX(100%);
+                        opacity: 0;
+                    }
+                    to {
+                        transform: translateX(0);
+                        opacity: 1;
+                    }
+                }
+            `}</style>
         </div>
     );
 };
