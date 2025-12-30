@@ -1,43 +1,47 @@
-// src/Components/MessagePopup.jsx
-import { Alert, AlertDescription, AlertTitle } from "@/Components/ui/alert"
-import { CheckCircle2Icon, AlertCircleIcon } from "lucide-react"
+import { Alert, AlertDescription } from "@/Components/ui/alert";
+import { CheckCircle2Icon, AlertCircleIcon } from "lucide-react";
+import { useLanguage } from "@/Components/LanguageProvider";
 
 export const MessagePopup = ({ message, type, onClose }) => {
-  if (!message) return null
+  const { language } = useLanguage();
 
-  let icon, title, variant ,bgClass
+  if (!message) return null;
+
+  const t = (ar, fr, en) =>
+    language === "fr" ? fr : language === "en" ? en : ar;
+
+  let icon, bgClass;
+
   switch (type) {
     case "success":
-      icon = <CheckCircle2Icon className="h-5 w-5 mr-2 text-green-600" />
-      title = "نجاح"
-      variant = "default"
-      bgClass = "bg-green-100"
-      break
+      icon = <CheckCircle2Icon className="h-5 w-5 mr-2 text-green-600" />;
+      bgClass = "bg-green-100";
+      break;
+
     case "error":
-      icon = <AlertCircleIcon className="h-5 w-5 mr-2 text-red-600" />
-      title = "خطأ"
-      variant = "destructive"
-      bgClass = "bg-red-100"
-      break
+      icon = <AlertCircleIcon className="h-5 w-5 mr-2 text-red-600" />;
+      bgClass = "bg-red-100";
+      break;
+
     default:
-      icon = <AlertCircleIcon className="h-5 w-5 mr-2 text-gray-500" />
-      title = "تنبيه"
-      variant = "default"
-      bgClass = "bg-gray-100"
+      icon = <AlertCircleIcon className="h-5 w-5 mr-2 text-gray-500" />;
+      bgClass = "bg-gray-100";
   }
 
   return (
-    <div dir="rtl" className="fixed top-4 z-50 right-2 w-[90%] max-w-sm ">
-      <Alert variant={variant} className={`relative ${bgClass} animate-scale-in` }>
-       
+    <div
+      dir={language === "ar" ? "rtl" : "ltr"}
+      className="fixed top-4 right-4 z-50 w-[90%] max-w-sm"
+    >
+      <Alert variant="default" className={`relative ${bgClass} animate-scale-in`}>
+        <div className="flex items-center">
           {icon}
-         
-           <div className="mr-2">
-             <AlertTitle className={"flex inlne"}>{title}</AlertTitle>
-            <AlertDescription>{message}</AlertDescription>
-           </div>
-         
-        
+          <AlertDescription className="ml-2">
+            {type === "error" ? t("خطأ", "Erreur", "Error") + ": " : ""}
+            {message}
+          </AlertDescription>
+        </div>
+
         <button
           onClick={onClose}
           className="absolute top-2 right-2 text-sm text-gray-500 hover:text-gray-800"
@@ -46,7 +50,7 @@ export const MessagePopup = ({ message, type, onClose }) => {
         </button>
       </Alert>
 
-      <style >{`
+      <style>{`
         @keyframes scale-in {
           from {
             transform: scale(0.9);
@@ -62,7 +66,5 @@ export const MessagePopup = ({ message, type, onClose }) => {
         }
       `}</style>
     </div>
-    
-  )
-  
-}
+  );
+};
