@@ -53,13 +53,13 @@ export const GoldPrice = () => {
               </div>
               <div>
                 <h3 className="font-bold text-yellow-800 mb-2 text-lg max-[515px]:text-sm">
-                  {t('تحديد سعر الذهب لحساب النصاب')}
+                  {t('goldPrice.title')}
                 </h3>
                 
                 {/* Gold Price Input */}
                 <div className="mb-4">
                   <label className="block text-xs font-medium text-yellow-800 mb-2">
-                    {t('سعر الغرام الواحد من الذهب (24 قيراط) بالدينار الجزائري:')}
+                    {t('goldPrice.inputLabel')}
                   </label>
                   <div className="relative max-w-xs">
                     <input
@@ -67,7 +67,7 @@ export const GoldPrice = () => {
                       value={formatNumber(goldPricePerGram)}
                       onChange={handleGoldPriceChange}
                       className={`w-full px-4 py-3 bg-white border border-yellow-300 rounded-lg ${language === 'ar' ? 'text-right' : 'text-left'} focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 transition-all duration-200  max-[515px]:p-2 max-[515px]:text-xs`}
-                      placeholder={t('ادخل سعر الغرام ')}
+                      placeholder={t('goldPrice.placeholder')}
                     />
                     <span className={`absolute ${language === 'ar' ? 'left-3' : 'right-3'} top-1/2 transform -translate-y-1/2 text-yellow-600 text-sm font-medium`}>
                       {language === 'ar' ? 'د.ج' : 'DZD'}
@@ -98,7 +98,7 @@ export const GoldPrice = () => {
               <span className={language === 'ar' ? 'ml-2' : 'mr-2'}>
                 <WarninIcon></WarninIcon>
               </span>
-              {t('يُرجى إدخال سعر الغرام الحالي للذهب عيار 24 قيراط في السوق الجزائرية لحساب النصاب بدقة')}
+              {t('goldPrice.infoText')}
             </p>
           </div>
         </div>
