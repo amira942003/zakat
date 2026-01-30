@@ -766,8 +766,8 @@ export const getZakatForm = (t) => [
     children: [
       { name: 's1', label: t('forms.5.fields.s1'), description: t('forms.5.descriptions.s1'), children: [] },
       { name: 's2', label: t('forms.5.fields.s2'), description: t('forms.5.descriptions.s2'), children: [] },
-      { name: 's3', label: t('forms.5.fields.s3'), description: t('forms.5.descriptions.s3'), children: [] },
-      { name: 's4', label: t('forms.5.fields.s4'), description: t('forms.5.descriptions.s4'), children: [] },
+    
+   
     ]
   },
   {

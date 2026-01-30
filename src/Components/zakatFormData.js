@@ -60,8 +60,7 @@ export const getZakatForm = (t) => [
     children: [
       { name: 's1', label: t('forms.5.fields.s1'), children: [] },
       { name: 's2', label: t('forms.5.fields.s2'), children: [] },
-      { name: 's3', label: t('forms.5.fields.s3'), children: [] },
-      { name: 's4', label: t('forms.5.fields.s4'), children: [] },
+    
     ]
   },
   // ⭐⭐⭐ FIN DE LA NOUVELLE FORME ⭐⭐⭐
