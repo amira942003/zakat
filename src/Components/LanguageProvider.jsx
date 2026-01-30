@@ -54,6 +54,17 @@ export const translations = {
           a9: "بضاعة كاسدة"
         }
       },
+      // ⭐⭐⭐ NOUVELLE FORME AJOUTÉE ICI ⭐⭐⭐
+      "5": {
+        label: "الأسهم",
+        fields: {
+          s1: "أسهم محلية",
+          s2: "أسهم دولية",
+          s3: "أسهم نمو",
+          s4: "أسهم توزيعات أرباح"
+        }
+      },
+      // ⭐⭐⭐ FIN DE LA NOUVELLE FORME ⭐⭐⭐
       "6": {
         label: "الالتزامات واجبة الخصم",
         fields: {
@@ -160,6 +171,17 @@ export const translations = {
           a9: "Marchandise périmée"
         }
       },
+      // ⭐⭐⭐ NOUVELLE FORME EN FRANÇAIS ⭐⭐⭐
+      "5": {
+        label: "Actions",
+        fields: {
+          s1: "Actions locales",
+          s2: "Actions internationales",
+          s3: "Actions de croissance",
+          s4: "Actions à dividendes"
+        }
+      },
+      // ⭐⭐⭐ FIN ⭐⭐⭐
       "6": {
         label: "Obligations déductibles",
         fields: {
@@ -266,6 +288,17 @@ export const translations = {
           a9: "Spoiled goods"
         }
       },
+      // ⭐⭐⭐ NOUVELLE FORME EN ANGLAIS ⭐⭐⭐
+      "5": {
+        label: "Stocks",
+        fields: {
+          s1: "Local stocks",
+          s2: "International stocks",
+          s3: "Growth stocks",
+          s4: "Dividend stocks"
+        }
+      },
+      // ⭐⭐⭐ FIN ⭐⭐⭐
       "6": {
         label: "Deductible liabilities",
         fields: {
