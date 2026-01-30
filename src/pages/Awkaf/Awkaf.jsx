@@ -9,7 +9,8 @@ const translations = {
     subtitle: "استثمر في الأجر الجاري وساهم في بناء مستقبل أفضل للأجيال القادمة",
     addProject: "إضافة مشروع الوقف",
     projectName: "اسم المشروع",
-    ccp: "الحساب البنكي / المقر الاجتماعي",
+    bankAccount: "الحساب البنكي",
+    headquarters: "المقر الاجتماعي",
     socialLink: "رابط الشبكات الاجتماعية",
     save: "حفظ",
     cancel: "إلغاء",
@@ -26,7 +27,8 @@ const translations = {
     subtitle: "Investissez dans les bonnes œuvres continues et contribuez à construire un meilleur avenir",
     addProject: "Ajouter un projet de waqf",
     projectName: "Nom du projet",
-    ccp: "Compte CCP / siège social",
+    bankAccount: "Compte bancaire",
+    headquarters: "Siège social",
     socialLink: "Lien vers les réseaux sociaux",
     save: "Enregistrer",
     cancel: "Annuler",
@@ -43,7 +45,8 @@ const translations = {
     subtitle: "Invest in ongoing charity and help build a better future",
     addProject: "Add Waqf Project",
     projectName: "Project Name",
-    ccp: "Bank account / headquarters",
+    bankAccount: "Bank Account",
+    headquarters: "Headquarters",
     socialLink: "Social media link",
     save: "Save",
     cancel: "Cancel",
@@ -66,7 +69,8 @@ function ProjectCard({ project, onEdit, onDelete, onView, language }) {
       <h3 className="font-bold mb-2" onClick={() => onView(project)}>
         {project.title}
       </h3>
-      <p className="text-sm mb-1"><strong>{t.ccp}:</strong> {project.ccp}</p>
+      <p className="text-sm mb-1"><strong>{t.bankAccount}:</strong> {project.bankAccount}</p>
+      <p className="text-sm mb-1"><strong>{t.headquarters}:</strong> {project.headquarters}</p>
       <p className="text-sm mb-2"><strong>{t.socialLink}:</strong> {project.socialLink}</p>
 
       {/* Actions */}
@@ -95,7 +99,8 @@ export default function Awkaf() {
   const [editProject, setEditProject] = useState(null); // pour modifier
   const [viewProject, setViewProject] = useState(null); // pour voir les infos
   const [projectName, setProjectName] = useState("");
-  const [ccp, setCcp] = useState("");
+  const [bankAccount, setBankAccount] = useState("");
+  const [headquarters, setHeadquarters] = useState("");
   const [socialLink, setSocialLink] = useState("");
   const [popup, setPopup] = useState({ message: "", type: "" });
 
@@ -115,7 +120,9 @@ export default function Awkaf() {
     if (editProject) {
       // Modifier
       const updatedProjects = projects.map((p) =>
-        p.id === editProject.id ? { ...p, title: projectName, ccp, socialLink } : p
+        p.id === editProject.id
+          ? { ...p, title: projectName, bankAccount, headquarters, socialLink }
+          : p
       );
       setProjects(updatedProjects);
       localStorage.setItem("waqfProjects", JSON.stringify(updatedProjects));
@@ -123,7 +130,7 @@ export default function Awkaf() {
       setEditProject(null);
     } else {
       // Nouveau projet
-      const newProject = { id: Date.now(), title: projectName, ccp, socialLink };
+      const newProject = { id: Date.now(), title: projectName, bankAccount, headquarters, socialLink };
       const updatedProjects = [newProject, ...projects];
       setProjects(updatedProjects);
       localStorage.setItem("waqfProjects", JSON.stringify(updatedProjects));
@@ -132,7 +139,8 @@ export default function Awkaf() {
 
     // Réinitialiser formulaire
     setProjectName("");
-    setCcp("");
+    setBankAccount("");
+    setHeadquarters("");
     setSocialLink("");
     setShowForm(false);
   };
@@ -140,7 +148,8 @@ export default function Awkaf() {
   const handleEdit = (project) => {
     setEditProject(project);
     setProjectName(project.title);
-    setCcp(project.ccp);
+    setBankAccount(project.bankAccount);
+    setHeadquarters(project.headquarters);
     setSocialLink(project.socialLink);
     setShowForm(true);
   };
@@ -192,11 +201,19 @@ export default function Awkaf() {
                 className="w-full border px-3 py-2 rounded mb-4"
               />
 
-              <label className="block mb-2 font-semibold">{t.ccp}</label>
+              <label className="block mb-2 font-semibold">{t.bankAccount}</label>
               <input
                 type="text"
-                value={ccp}
-                onChange={(e) => setCcp(e.target.value)}
+                value={bankAccount}
+                onChange={(e) => setBankAccount(e.target.value)}
+                className="w-full border px-3 py-2 rounded mb-4"
+              />
+
+              <label className="block mb-2 font-semibold">{t.headquarters}</label>
+              <input
+                type="text"
+                value={headquarters}
+                onChange={(e) => setHeadquarters(e.target.value)}
                 className="w-full border px-3 py-2 rounded mb-4"
               />
 
@@ -253,7 +270,8 @@ export default function Awkaf() {
         <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50">
           <div className="bg-white p-6 rounded shadow max-w-md w-full">
             <h3 className="font-bold mb-4">{viewProject.title}</h3>
-            <p><strong>{t.ccp}:</strong> {viewProject.ccp}</p>
+            <p><strong>{t.bankAccount}:</strong> {viewProject.bankAccount}</p>
+            <p><strong>{t.headquarters}:</strong> {viewProject.headquarters}</p>
             <p><strong>{t.socialLink}:</strong> {viewProject.socialLink}</p>
 
             <div className="flex justify-end mt-4">
