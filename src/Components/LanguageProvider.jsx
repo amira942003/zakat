@@ -4,11 +4,108 @@ import { createContext, useContext, useState } from "react";
 // -------------------- Translations --------------------
 export const translations = {
   ar: {
-    forms: { /* ton ancien contenu forms ici */ },
+    forms: {
+      "1": {
+        label: "النقود وما في حكمها",
+        fields: {
+          x1: "نقدية بالصندوق",
+          x2: "نقدية لدى المصارف",
+          x3: "شيكات مصادق عليها",
+          x4: "العملات الأجنبية",
+          x5: "أصول رقمية متاحة",
+          x6: "ودائع أمانة",
+          x7: "قرض حسن مُقرض",
+          x8: "إيرادات مستحقة",
+          x9: "نقود من بيع أصول"
+        }
+      },
+      "2": {
+        label: "الذمم المدينة",
+        fields: {
+          y1: "ديون حالّة مرجوّة",
+          y2: "ديون مؤجّلة",
+          y3: "أوراق قبض",
+          y4: "ديون مرجوّة",
+          y5: "ديون عن بيع أصول",
+          y6: "إيرادات إيجار",
+          y7: "ديون مشكوك فيها"
+        }
+      },
+      "3": {
+        label: "الاستثمارات الزكوية",
+        fields: {
+          z1: "أسهم للتجارة",
+          z2: "حصص عقارية",
+          z3: "استثمارات سندات",
+          z4: "أسهم بنية العائد"
+        }
+      },
+      "4": {
+        label: "عروض التجارة والمخزون",
+        fields: {
+          a1: "بضاعة تامة",
+          a2: "بضاعة تحت التشغيل",
+          a3: "مواد أولية",
+          a4: "بضاعة في الطريق",
+          a5: "بضاعة أمانة",
+          a6: "قطع غيار",
+          a7: "عروض تجارة",
+          a8: "عقارات للتجارة",
+          a9: "بضاعة كاسدة"
+        }
+      },
+      "5": {
+        label: "الأسهم",
+        fields: {
+          s1: "أسهم محلية",
+          s2: "أسهم دولية",
+          s3: "أسهم نمو",
+          s4: "أسهم توزيعات أرباح"
+        }
+      },
+      "6": {
+        label: "الالتزامات واجبة الخصم",
+        fields: {
+          c1: "قروض قصيرة الأجل",
+          c2: "أوراق دفع",
+          c3: "حقوق موظفين",
+          c4: "ضرائب مستحقة",
+          c5: "أرباح مضاربة",
+          c6: "تأمينات العملاء",
+          c7: "احتياطيات عامة"
+        }
+      },
+      malikiAssets: {
+        label: "الذمات المالية",
+        fields: {
+          SPA: "ذمة المالية للشركة",
+          SARL: "ذمة المالية للشخص",
+          limit: "حد المفلس"
+        }
+      }
+    },
+    methods: {
+      Maliki: "مالكي",
+      Hanafi: "حنفي",
+      Shafi: "شافعي",
+      AAOIFI: "هيئة المحاسبة",
+      Alioua: "علي وع",
+      Net: "صافي"
+    },
     ui: {
-      /* ancien contenu ui ici */
+      goldPrice: {
+        title: "سعر الغرام الواحد من الذهب (24 قيراط) بالدينار الجزائري",
+        inputLabel: "أدخل سعر الغرام",
+        placeholder: "أدخل سعر الغرام الحالي للذهب عيار 24 قيراط",
+        infoText: "يُرجى إدخال سعر الغرام الحالي للذهب عيار 24 قيراط في السوق الجزائرية لحساب النصاب بدقة",
+        pricePerGram: "سعر الغرام",
+        nissab: "النصاب",
+        grams: "غرام"
+      },
       title: "المنصة الموثوقة والمخصصة لمساعدة الشركات في حساب زكاتها المستحقة بسهولة ودقة",
       subtitle: "نهدف إلى تسهيل عملية احتساب الزكاة للشركات وفقًا لأحكام الشريعة الإسلامية، وذلك لدعم التكافل الاجتماعي والمساهمة في التنمية المستدامة للمجتمع",
+      assetsData: "بيانات الأصول والممتلكات",
+      assetsDescription: "يرجى إدخال جميع الأصول والممتلكات الخاضعة للزكاة",
       calculationMethod: "طريقة الحساب",
       companyType: "نوع الشركة",
       calculate: "احسب الزكاة",
@@ -18,15 +115,12 @@ export const translations = {
       total: "المجموع",
       enterAmount: "أدخل المبلغ",
       enterAdditionalAmount: "أدخل المبلغ الإضافي",
-      assetsData: "بيانات الأصول والممتلكات",
-      assetsDescription: "يرجى إدخال جميع الأصول والممتلكات الخاضعة للزكاة",
       importantInfo: "معلومة مهمة",
       warningText: "يُرجى التأكد من دقة البيانات المدخلة قبل الحساب...",
       note: "ملاحظة:",
       noteText: "يمكنكم إضافة حقول إضافية لأي عنصر بالنقر على زر الإضافة (+) بجانب كل حقل.",
       show: "إظهار",
       hide: "إخفاء",
-      // UserInfos translations
       profile: "الملف الشخصي",
       managePersonalInfo: "إدارة معلوماتك الشخصية وإعدادات الحساب",
       accountInfo: "معلومات الحساب",
@@ -55,7 +149,6 @@ export const translations = {
       errorOccurred: "حدث خطأ",
       dataUpdatedSuccessfully: "تم تحديث البيانات بنجاح",
       failedToLoadUserInfo: "فشل تحميل معلومات المستخدم.",
-      // UserHistory translations
       zakatHistory: "تاريخ الزكاة",
       viewZakatHistory: "عرض سجل حساباتك السابقة للزكاة",
       noHistoryFound: "لم يتم العثور على سجل",
@@ -70,35 +163,126 @@ export const translations = {
       calculationDetails: "تفاصيل الحساب",
       section1: {
         title: "الزكاة: التزام ديني ودعم للتكافل الاجتماعي",
-        text: `على هذا الموقع، يمكن للشركات حساب قيمة الزكاة الواجبة عليها وفقًا للشريعة الإسلامية. وكما جاء في القرآن الكريم، فإن أداء الزكاة يعتبر من أركان الإسلام الأساسية، إذ يقول الله تعالى: "خُذْ مِنْ أَمْوَالِهِمْ صَدَقَةً تُطَهِّرُهُمْ وَتُزَكِّيهِمْ بِهَا" (سورة التوبة، الآية 103). ويقول تعالى أيضًا: "وَأَقِيمُوا الصَّلَاةَ وَآتُوا الزَّكَاةَ" (سورة البقرة، الآية 43). كل الشركات ملزمة شرعاً بأداء الزكاة المستحقة على أموالها لدعم الفقراء والمحتاجين، وذلك تأكيدًا للتضامن والعدالة الاجتماعية التي يدعو إليها الإسلام. ووفقًا لأحكام الشريعة، يتم حساب نسبة الزكاة على أساس موجودات الشركات وأرباحها السنوية. ستُستخدم أموال الزكاة التي تجمع من هذه الشركات كمساهمة في إنشاء أوقاف (WAKF) للمنافع العامة، وهي عبارة عن مشاريع استثمارية تدرّ عوائد مالية تُستخدم لخدمة المجتمع.
-
-`,
+        text: `على هذا الموقع، يمكن للشركات حساب قيمة الزكاة الواجبة عليها وفقًا للشريعة الإسلامية. وكما جاء في القرآن الكريم، فإن أداء الزكاة يعتبر من أركان الإسلام الأساسية، إذ يقول الله تعالى: "خُذْ مِنْ أَمْوَالِهِمْ صَدَقَةً تُطَهِّرُهُمْ وَتُزَكِّيهِمْ بِهَا" (سورة التوبة، الآية 103). ويقول تعالى أيضًا: "وَأَقِيمُوا الصَّلَاةَ وَآتُوا الزَّكَاةَ" (سورة البقرة، الآية 43). كل الشركات ملزمة شرعاً بأداء الزكاة المستحقة على أموالها لدعم الفقراء والمحتاجين، وذلك تأكيدًا للتضامن والعدالة الاجتماعية التي يدعو إليها الإسلام. ووفقًا لأحكام الشريعة، يتم حساب نسبة الزكاة على أساس موجودات الشركات وأرباحها السنوية. ستُستخدم أموال الزكاة التي تجمع من هذه الشركات كمساهمة في إنشاء أوقاف (WAKF) للمنافع العامة، وهي عبارة عن مشاريع استثمارية تدرّ عوائد مالية تُستخدم لخدمة المجتمع.`,
         button: "اعرف المزيد"
       },
       section2: {
         title: "نحو مجتمع أكثر تماسكًا: دور الشركات في دعم الفئات الأقل حظًا وتحقيق الأثر الإيجابي",
-        text:`تتُعَدُّ هذه المبادرة خطوةً هامة تُحقّق العديد من الفوائد للمجتمع، من خلال تعزيز التضامن الاجتماعي وتلبية احتياجات الفئات الأقل حظًا. بالإضافة إلى ذلك، فإن لها تأثيرًا إيجابيًا مباشرًا على صورة الشركات المشاركة. ومن خلال وضع علامة اعتماد لهذه الشركات، نوفر رمزًا يعكس التزامها بالمسؤولية الاجتماعية. كما نخطط لإنشاء مقاطع فيديو تُظهر التغيرات الإيجابية والمشاريع التي تم تمويلها بفضل هذه التبرعات، مما يُبرز الأثر الواقعي لهذه المساهمات. وبذلك، يمكن للشركات تعزيز سياساتها في مجال المسؤولية الاجتماعية (CSR)، وإظهار اهتمامها الحقيقي بالمجتمع. علاوة على ذلك، يمكن لهذه الشركات الاستفادة من ميزة خصم هذه التبرعات من الضرائب، مما يشجعها أكثر على المشاركة الفعالة في هذا العمل النبيل.
-
-`,
+        text: `تتُعَدُّ هذه المبادرة خطوةً هامة تُحقّق العديد من الفوائد للمجتمع، من خلال تعزيز التضامن الاجتماعي وتلبية احتياجات الفئات الأقل حظًا. بالإضافة إلى ذلك، فإن لها تأثيرًا إيجابيًا مباشرًا على صورة الشركات المشاركة. ومن خلال وضع علامة اعتماد لهذه الشركات، نوفر رمزًا يعكس التزامها بالمسؤولية الاجتماعية. كما نخطط لإنشاء مقاطع فيديو تُظهر التغيرات الإيجابية والمشاريع التي تم تمويلها بفضل هذه التبرعات، مما يُبرز الأثر الواقعي لهذه المساهمات. وبذلك، يمكن للشركات تعزيز سياساتها في مجال المسؤولية الاجتماعية (CSR)، وإظهار اهتمامها الحقيقي بالمجتمع. علاوة على ذلك، يمكن لهذه الشركات الاستفادة من ميزة خصم هذه التبرعات من الضرائب، مما يشجعها أكثر على المشاركة الفعالة في هذا العمل النبيل.`,
         button: "اعرف المزيد",
         imageAlt: "صورة مسجد"
       },
       section3: {
         title: "سهولة ودقة في حساب زكاة الشركات وفق الشريعة الإسلامية",
-        text: `ييعمل هذا الموقع بطريقة بسيطة وفعالة لمساعدة الشركات في حساب الزكاة المستحقة عليها وفقاً للمعايير الشرعية. أولاً، يتعين على المستخدم تعريف نوع شركته واختيار القطاع الذي تنتمي إليه. ثم سيُطلب منه الإجابة على بعض الأسئلة المتعلقة بالشركة ووضعها المالي، مثل قيمة الأصول، حجم الإيرادات السنوية، وقيمة رأس المال العامل، وغيرها من المعلومات المالية المهمة. استنادًا إلى هذه المعلومات المدخلة، سيقوم الموقع بتحديد الصيغة المناسبة لحساب الزكاة وفقًا لنوع الشركة ومعايير الشريعة الإسلامية. يقوم الموقع تلقائيًا بحساب المبلغ المستحق من الزكاة بناءً على البيانات المقدمة من المستخدم، ليتمكن المستخدم من معرفة المبلغ الواجب دفعه. هذه العملية تسهل على الشركات الامتثال لأحكام الزكاة وتساعدها على أداء واجباتها الدينية بسهولة ودقة، مع ضمان توجيه الأموال إلى مستحقيها وفقاً لأحكام الشريعة الإسلامية.
-
-`,
+        text: `ييعمل هذا الموقع بطريقة بسيطة وفعالة لمساعدة الشركات في حساب الزكاة المستحقة عليها وفقاً للمعايير الشرعية. أولاً، يتعين على المستخدم تعريف نوع شركته واختيار القطاع الذي تنتمي إليه. ثم سيُطلب منه الإجابة على بعض الأسئلة المتعلقة بالشركة ووضعها المالي، مثل قيمة الأصول، حجم الإيرادات السنوية، وقيمة رأس المال العامل، وغيرها من المعلومات المالية المهمة. استنادًا إلى هذه المعلومات المدخلة، سيقوم الموقع بتحديد الصيغة المناسبة لحساب الزكاة وفقًا لنوع الشركة ومعايير الشريعة الإسلامية. يقوم الموقع تلقائيًا بحساب المبلغ المستحق من الزكاة بناءً على البيانات المقدمة من المستخدم، ليتمكن المستخدم من معرفة المبلغ الواجب دفعه. هذه العملية تسهل على الشركات الامتثال لأحكام الزكاة وتساعدها على أداء واجباتها الدينية بسهولة ودقة، مع ضمان توجيه الأموال إلى مستحقيها وفقاً لأحكام الشريعة الإسلامية.`,
         button: "ابدأ الآن",
         imageAlt: "صورة حساب الزكاة"
       }
-    },
-    methods: { /* ton ancien contenu methods ici */ }
+    }
   },
   fr: {
-    forms: { /* copier le contenu forms fr ici */ },
+    forms: {
+      "1": {
+        label: "Argent et équivalents",
+        fields: {
+          x1: "Liquidités en caisse",
+          x2: "Liquidités en banque",
+          x3: "Chèques certifiés",
+          x4: "Devises étrangères",
+          x5: "Actifs numériques disponibles",
+          x6: "Dépôts en fiducie",
+          x7: "Prêt à bon crédit",
+          x8: "Revenus à recevoir",
+          x9: "Argent provenant de la vente d'actifs"
+        }
+      },
+      "2": {
+        label: "Créances",
+        fields: {
+          y1: "Dettes à court terme attendues",
+          y2: "Dettes différées",
+          y3: "Effets à recevoir",
+          y4: "Dettes attendues",
+          y5: "Dettes provenant de la vente d'actifs",
+          y6: "Revenus locatifs",
+          y7: "Dettes douteuses"
+        }
+      },
+      "3": {
+        label: "Investissements soumis à la Zakat",
+        fields: {
+          z1: "Actions commerciales",
+          z2: "Parts immobilières",
+          z3: "Investissements en obligations",
+          z4: "Actions avec retour sur investissement"
+        }
+      },
+      "4": {
+        label: "Marchandises et stocks",
+        fields: {
+          a1: "Marchandise finie",
+          a2: "Marchandise en cours",
+          a3: "Matières premières",
+          a4: "Marchandise en transit",
+          a5: "Marchandise en fiducie",
+          a6: "Pièces détachées",
+          a7: "Offres commerciales",
+          a8: "Immobilier commercial",
+          a9: "Marchandise périmée"
+        }
+      },
+      "5": {
+        label: "Actions",
+        fields: {
+          s1: "Actions locales",
+          s2: "Actions internationales",
+          s3: "Actions de croissance",
+          s4: "Actions à dividendes"
+        }
+      },
+      "6": {
+        label: "Obligations déductibles",
+        fields: {
+          c1: "Prêts à court terme",
+          c2: "Effets à payer",
+          c3: "Droits des employés",
+          c4: "Taxes à payer",
+          c5: "Profits des tiers",
+          c6: "Assurances clients",
+          c7: "Réserves générales"
+        }
+      },
+      malikiAssets: {
+        label: "Actifs financiers",
+        fields: {
+          SPA: "Actifs de la société",
+          SARL: "Actifs de l'individu",
+          limit: "Limite de faillite"
+        }
+      }
+    },
+    methods: {
+      Maliki: "Maliki",
+      Hanafi: "Hanafi",
+      Shafi: "Shafi",
+      AAOIFI: "AAOIFI",
+      Alioua: "Alioua",
+      Net: "Net"
+    },
     ui: {
+      goldPrice: {
+        title: "Prix d'un gramme d'or (24 carats) en DZD",
+        inputLabel: "Entrez le prix du gramme",
+        placeholder: "Entrez le prix actuel de l'or 24 carats",
+        infoText: "Veuillez saisir le prix actuel de l'or 24 carats sur le marché algérien pour calculer le nissab avec précision",
+        pricePerGram: "Prix par gramme",
+        nissab: "Nissab",
+        grams: "grammes"
+      },
       title: "La plateforme de confiance dédiée à aider les entreprises à calculer facilement et précisément leur zakat due",
       subtitle: "Notre objectif est de faciliter le processus de calcul de la Zakat pour les entreprises conformément aux dispositions de la charia islamique, afin de soutenir la solidarité sociale et de contribuer au développement durable de la société",
+      assetsData: "Données des actifs et propriétés",
+      assetsDescription: "Veuillez saisir tous les actifs et propriétés soumis à la Zakat",
       calculationMethod: "Méthode de calcul",
       companyType: "Type de société",
       calculate: "Calculer la Zakat",
@@ -108,15 +292,12 @@ export const translations = {
       total: "Total",
       enterAmount: "Entrer le montant",
       enterAdditionalAmount: "Entrer le montant supplémentaire",
-      assetsData: "Données des actifs et propriétés",
-      assetsDescription: "Veuillez saisir tous les actifs et propriétés soumis à la Zakat",
       importantInfo: "Information importante",
       warningText: "Veuillez vérifier l'exactitude des données saisies avant le calcul",
       note: "Note:",
       noteText: "Vous pouvez ajouter des champs supplémentaires pour n'importe quel élément",
       show: "Afficher",
       hide: "Masquer",
-      // UserInfos translations
       profile: "Profil",
       managePersonalInfo: "Gérez vos informations personnelles et paramètres du compte",
       accountInfo: "Infos du compte",
@@ -145,7 +326,6 @@ export const translations = {
       errorOccurred: "Une erreur est survenue",
       dataUpdatedSuccessfully: "Les informations ont été mises à jour avec succès",
       failedToLoadUserInfo: "Échec du chargement des informations utilisateur.",
-      // UserHistory translations
       zakatHistory: "Historique Zakat",
       viewZakatHistory: "Consultez l'historique de vos calculs Zakat précédents",
       noHistoryFound: "Aucun historique trouvé",
@@ -175,14 +355,111 @@ export const translations = {
         button: "Commencer maintenant",
         imageAlt: "Image calcul Zakat"
       }
-    },
-    methods: { /* copier le contenu methods fr ici */ }
+    }
   },
   en: {
-    forms: { /* copier le contenu forms en ici */ },
+    forms: {
+      "1": {
+        label: "Cash and equivalents",
+        fields: {
+          x1: "Cash on hand",
+          x2: "Cash at banks",
+          x3: "Certified checks",
+          x4: "Foreign currencies",
+          x5: "Available digital assets",
+          x6: "Fiduciary deposits",
+          x7: "Good loan granted",
+          x8: "Receivable income",
+          x9: "Money from sale of assets"
+        }
+      },
+      "2": {
+        label: "Receivables",
+        fields: {
+          y1: "Expected short-term debts",
+          y2: "Deferred debts",
+          y3: "Receivable papers",
+          y4: "Expected debts",
+          y5: "Debts from sale of assets",
+          y6: "Rental income",
+          y7: "Doubtful debts"
+        }
+      },
+      "3": {
+        label: "Zakat investments",
+        fields: {
+          z1: "Trade stocks",
+          z2: "Real estate shares",
+          z3: "Bond investments",
+          z4: "Return on investment stocks"
+        }
+      },
+      "4": {
+        label: "Goods and inventory",
+        fields: {
+          a1: "Finished goods",
+          a2: "Goods in process",
+          a3: "Raw materials",
+          a4: "Goods in transit",
+          a5: "Goods held in trust",
+          a6: "Spare parts",
+          a7: "Commercial offers",
+          a8: "Commercial real estate",
+          a9: "Spoiled goods"
+        }
+      },
+      "5": {
+        label: "Stocks",
+        fields: {
+          s1: "Local stocks",
+          s2: "International stocks",
+          s3: "Growth stocks",
+          s4: "Dividend stocks"
+        }
+      },
+      "6": {
+        label: "Deductible liabilities",
+        fields: {
+          c1: "Short-term loans",
+          c2: "Payable papers",
+          c3: "Employee rights",
+          c4: "Taxes payable",
+          c5: "Profits for others",
+          c6: "Client insurance",
+          c7: "General reserves"
+        }
+      },
+      malikiAssets: {
+        label: "Financial assets",
+        fields: {
+          SPA: "Company assets",
+          SARL: "Individual assets",
+          limit: "Bankruptcy limit"
+        }
+      }
+    },
+    methods: {
+      Maliki: "Maliki",
+      Hanafi: "Hanafi",
+      Shafi: "Shafi",
+      AAOIFI: "AAOIFI",
+      Alioua: "Alioua",
+      Net: "Net"
+    },
     ui: {
+      goldPrice: {
+        title: "Gold Price per Gram (24 Carats) in DZD",
+        inputLabel: "Enter gold price per gram",
+        placeholder: "Enter current 24 carat gold price",
+        infoText: "Please enter the current 24 carat gold price in Algerian market to calculate Nissab accurately",
+        pricePerGram: "Price per gram",
+        nissab: "Nissab",
+        grams: "grams"
+      },
       title: "The trusted platform dedicated to helping companies calculate their due zakat easily and accurately",
       subtitle: "We aim to facilitate the calculation of Zakat for companies in accordance with the provisions of Islamic Sharia, in order to support social solidarity and contribute to the sustainable development of society",
+      assetsData: "Assets and Properties Data",
+      assetsDescription: "Please enter all assets and properties subject to Zakat",
       calculationMethod: "Calculation Method",
       companyType: "Company Type",
       calculate: "Calculate Zakat",
@@ -192,15 +469,12 @@ export const translations = {
       total: "Total",
       enterAmount: "Enter Amount",
       enterAdditionalAmount: "Enter Additional Amount",
-      assetsData: "Assets and Properties Data",
-      assetsDescription: "Please enter all assets and properties subject to Zakat",
       importantInfo: "Important Information",
       warningText: "Please verify the accuracy of the entered data before calculation...",
       note: "Note:",
       noteText: "You can add additional fields for any item by clicking the add (+) button next to each field.",
       show: "Show",
       hide: "Hide",
-      // UserInfos translations
       profile: "Profile",
       managePersonalInfo: "Manage your personal info and account settings",
       accountInfo: "Account Info",
@@ -229,7 +503,6 @@ export const translations = {
       errorOccurred: "An error occurred",
       dataUpdatedSuccessfully: "Data updated successfully",
       failedToLoadUserInfo: "Failed to load user information.",
-      // UserHistory translations
       zakatHistory: "Zakat History",
       viewZakatHistory: "View your previous Zakat calculation records",
       noHistoryFound: "No history found",
@@ -259,10 +532,98 @@ export const translations = {
         button: "Start Now",
         imageAlt: "Zakat Calculation Image"
       }
-    },
-    methods: { /* copier le contenu methods en ici */ }
+    }
   }
 };
+
+// -------------------- Form Generator --------------------
+export const getZakatForm = (t) => [
+  {
+    name: "1",
+    label: t('forms.1.label'),
+    children: [
+      { name: 'x1', label: t('forms.1.fields.x1'), children: [] },
+      { name: 'x2', label: t('forms.1.fields.x2'), children: [] },
+      { name: 'x3', label: t('forms.1.fields.x3'), children: [] },
+      { name: 'x4', label: t('forms.1.fields.x4'), children: [] },
+      { name: 'x5', label: t('forms.1.fields.x5'), children: [] },
+      { name: 'x6', label: t('forms.1.fields.x6'), children: [] },
+      { name: 'x7', label: t('forms.1.fields.x7'), children: [] },
+      { name: 'x8', label: t('forms.1.fields.x8'), children: [] },
+      { name: 'x9', label: t('forms.1.fields.x9'), children: [] },
+    ]
+  },
+  {
+    name: '2',
+    label: t('forms.2.label'),
+    children: [
+      { name: 'y1', label: t('forms.2.fields.y1'), children: [] },
+      { name: 'y2', label: t('forms.2.fields.y2'), children: [] },
+      { name: 'y3', label: t('forms.2.fields.y3'), children: [] },
+      { name: 'y4', label: t('forms.2.fields.y4'), children: [] },
+      { name: 'y5', label: t('forms.2.fields.y5'), children: [] },
+      { name: 'y6', label: t('forms.2.fields.y6'), children: [] },
+      { name: 'y7', label: t('forms.2.fields.y7'), children: [] },
+    ]
+  },
+  {
+    name: '3',
+    label: t('forms.3.label'),
+    children: [
+      { name: 'z1', label: t('forms.3.fields.z1'), children: [] },
+      { name: 'z2', label: t('forms.3.fields.z2'), children: [] },
+      { name: 'z3', label: t('forms.3.fields.z3'), children: [] },
+      { name: 'z4', label: t('forms.3.fields.z4'), children: [] },
+    ]
+  },
+  {
+    name: '4',
+    label: t('forms.4.label'),
+    children: [
+      { name: 'a1', label: t('forms.4.fields.a1'), children: [] },
+      { name: 'a2', label: t('forms.4.fields.a2'), children: [] },
+      { name: 'a3', label: t('forms.4.fields.a3'), children: [] },
+      { name: 'a4', label: t('forms.4.fields.a4'), children: [] },
+      { name: 'a5', label: t('forms.4.fields.a5'), children: [] },
+      { name: 'a6', label: t('forms.4.fields.a6'), children: [] },
+      { name: 'a7', label: t('forms.4.fields.a7'), children: [] },
+      { name: 'a8', label: t('forms.4.fields.a8'), children: [] },
+      { name: 'a9', label: t('forms.4.fields.a9'), children: [] },
+    ]
+  },
+  {
+    name: '5',
+    label: t('forms.5.label'),
+    children: [
+      { name: 's1', label: t('forms.5.fields.s1'), children: [] },
+      { name: 's2', label: t('forms.5.fields.s2'), children: [] },
+      { name: 's3', label: t('forms.5.fields.s3'), children: [] },
+      { name: 's4', label: t('forms.5.fields.s4'), children: [] },
+    ]
+  },
+  {
+    name: '6',
+    label: t('forms.6.label'),
+    children: [
+      { name: 'c1', label: t('forms.6.fields.c1'), children: [] },
+      { name: 'c2', label: t('forms.6.fields.c2'), children: [] },
+      { name: 'c3', label: t('forms.6.fields.c3'), children: [] },
+      { name: 'c4', label: t('forms.6.fields.c4'), children: [] },
+      { name: 'c5', label: t('forms.6.fields.c5'), children: [] },
+      { name: 'c6', label: t('forms.6.fields.c6'), children: [] },
+      { name: 'c7', label: t('forms.6.fields.c7'), children: [] },
+    ]
+  },
+  {
+    name: "malikiAssets",
+    label: t('forms.malikiAssets.label'),
+    children: [
+      { name: "SPA", label: t('forms.malikiAssets.fields.SPA'), children: [] },
+      { name: "SARL", label: t('forms.malikiAssets.fields.SARL'), children: [] },
+      { name: "limit", label: t('forms.malikiAssets.fields.limit'), children: [] }
+    ]
+  }
+];
 
 // -------------------- Language Context --------------------
 const LanguageContext = createContext();
@@ -285,8 +646,3 @@ export const LanguageProvider = ({ children }) => {
 };
 
 export const useLanguage = () => useContext(LanguageContext);
-
-// -------------------- Form Generator --------------------
-export const getZakatForm = (t) => [
-  /* ton ancien contenu getZakatForm ici */
-];
