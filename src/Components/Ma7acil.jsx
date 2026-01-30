@@ -3,7 +3,7 @@ import { ChevronDown, Trash } from "lucide-react";
 import { WarninIcon } from "@/assets/Svg/WarninIcon";
 import { MessagePopup } from "./MessagePopup";
 import { useApi } from "@/ApiProvider";
-import { useLanguage } from "@/LanguageProvider";
+import { useLanguage } from "C:\Users\Mira\ZAKAT\zakat\src\Components\LanguageProvider.jsx";
 
 export const Ma7acil = () => {
   const api = useApi();
