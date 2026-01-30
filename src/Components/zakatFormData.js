@@ -84,7 +84,7 @@ export const getZakatForm = (t) => [
     children: [
       { name: "SPA", label: t('forms.malikiAssets.fields.SPA'), children: [] },
       { name: "SARL", label: t('forms.malikiAssets.fields.SARL'), children: [] },
-      { name: "limit", label: t('forms.malikiAssets.fields.limit'), children: [] }
+   
     ]
   }
 ];
