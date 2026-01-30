@@ -31,6 +31,7 @@ const translations = {
     projectName: "اسم المشروع",
     save: "حفظ",
     cancel: "إلغاء",
+    addedSuccess: "تمت إضافة المشروع بنجاح",
   },
   fr: {
     title: "Projets Awqaf",
@@ -47,6 +48,7 @@ const translations = {
     projectName: "Nom du projet",
     save: "Enregistrer",
     cancel: "Annuler",
+    addedSuccess: "Projet ajouté avec succès",
   },
   en: {
     title: "Awqaf Projects",
@@ -63,6 +65,7 @@ const translations = {
     projectName: "Project name",
     save: "Save",
     cancel: "Cancel",
+    addedSuccess: "Project added successfully",
   },
 };
 
@@ -76,10 +79,9 @@ export default function Awkaf() {
   const [pageSize] = useState(8);
   const [totalPages, setTotalPages] = useState(1);
   const [popup, setPopup] = useState({ message: "", type: "" });
-  const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // 🔥 NEW STATES
+  // Form
   const [showForm, setShowForm] = useState(false);
   const [projectName, setProjectName] = useState("");
 
@@ -87,37 +89,34 @@ export default function Awkaf() {
     fetchProjects(page, pageSize);
   }, [page]);
 
-  useEffect(() => {
-    fetchTotalPages();
-  }, []);
-
-  const fetchTotalPages = async () => {
-    try {
-      const [data, , err] = await api.get("/list/waqf-projects/");
-      if (err || !Array.isArray(data)) return;
-      setTotalPages(Math.ceil(data.length / pageSize));
-    } catch {}
-  };
-
-  const fetchProjects = async (pageNumber, pageSize) => {
+  const fetchProjects = async () => {
     try {
       setIsLoading(true);
-      const [data, , err] = await api.get("/list/waqf-projects/", {
-        page: pageNumber,
-        page_size: pageSize,
-      });
-      if (!err && Array.isArray(data)) setProjects(data);
+      const [data] = await api.get("/list/waqf-projects/");
+      if (Array.isArray(data)) {
+        setProjects(data);
+        setTotalPages(Math.ceil(data.length / pageSize));
+      }
     } finally {
       setIsLoading(false);
     }
   };
 
+  // ✅ SAVE PROJECT (LOCAL)
   const handleSaveProject = () => {
     if (!projectName.trim()) return;
 
-    // Pour l’instant UI seulement
+    const newProject = {
+      id: Date.now(), // ID temporaire
+      title: projectName,
+      name: projectName,
+    };
+
+    setProjects((prev) => [newProject, ...prev]);
+    setTotalPages((prev) => Math.ceil((projects.length + 1) / pageSize));
+
     setPopup({
-      message: `${t.projectName} : ${projectName}`,
+      message: t.addedSuccess,
       type: "success",
     });
 
@@ -138,64 +137,52 @@ export default function Awkaf() {
       <div className="bg-gray-300 py-8">
         <div className="container mx-auto px-4">
 
-          {/* Empty */}
-          {!isLoading && projects.length === 0 && (
-            <div className="text-center py-12">
-              <AlertCircle className="w-16 h-16 mx-auto opacity-40 mb-4" />
-              <h3 className="text-xl font-semibold mb-2">{t.emptyTitle}</h3>
-              <p className="mb-6">{t.emptyDesc}</p>
+          {/* Add Project */}
+          <div className="text-center mb-6">
+            <button
+              onClick={() => setShowForm(true)}
+              className="px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+            >
+              {t.addProject}
+            </button>
+          </div>
 
-              <div className="flex flex-col items-center gap-4">
+          {/* FORM */}
+          {showForm && (
+            <div className="bg-white p-6 rounded shadow max-w-md mx-auto mb-6">
+              <label className="block text-right mb-2 font-semibold">
+                {t.projectName}
+              </label>
+              <input
+                type="text"
+                value={projectName}
+                onChange={(e) => setProjectName(e.target.value)}
+                className="w-full border px-3 py-2 rounded mb-4"
+              />
 
-                {/* Add Project Button */}
+              <div className="flex justify-end gap-3">
                 <button
-                  onClick={() => setShowForm(true)}
-  className="px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
+                  onClick={() => setShowForm(false)}
+                  className="px-4 py-2 bg-gray-400 text-white rounded"
                 >
-                  {t.addProject}
+                  {t.cancel}
                 </button>
-
-                {/* FORM */}
-                {showForm && (
-                  <div className="bg-white p-6 rounded shadow w-full max-w-md">
-                    <label className="block text-right mb-2 font-semibold">
-                      {t.projectName}
-                    </label>
-                    <input
-                      type="text"
-                      value={projectName}
-                      onChange={(e) => setProjectName(e.target.value)}
-                      className="w-full border px-3 py-2 rounded mb-4"
-                      placeholder={t.projectName}
-                    />
-
-                    <div className="flex justify-end gap-3">
-                      <button
-                        onClick={() => setShowForm(false)}
-                        className="px-4 py-2 bg-gray-400 text-white rounded"
-                      >
-                        {t.cancel}
-                      </button>
-                      <button
-                        onClick={handleSaveProject}
-                        className="px-4 py-2 bg-green-600 text-white rounded"
-                      >
-                        {t.save}
-                      </button>
-                    </div>
-                  </div>
-                )}
-
-                {/* Refresh */}
                 <button
-                  onClick={() => fetchTotalPages()}
-                  className="px-6 py-2 bg-green-600 text-white rounded"
+                  onClick={handleSaveProject}
+                  className="px-4 py-2 bg-green-600 text-white rounded"
                 >
-                  {t.refreshButton}
+                  {t.save}
                 </button>
               </div>
             </div>
           )}
+
+          {/* Projects */}
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {projects.map((project) => (
+              <Project key={project.id} project={project} />
+            ))}
+          </div>
         </div>
       </div>
 
