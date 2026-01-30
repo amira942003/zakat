@@ -1,17 +1,7 @@
 import { useState, useEffect } from "react";
-import { Loader } from "../../Components/Loader";
 import Project from "../../Components/Project";
 import { useApi } from "@/ApiProvider";
 import { useLanguage } from "../../Components/LanguageProvider";
-
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/Components/ui/pagination";
 
 import { MessagePopup } from "@/Components/MessagePopup";
 import { AlertCircle } from "lucide-react";
@@ -21,105 +11,68 @@ const translations = {
   ar: {
     title: "مشاريع الوقف",
     subtitle: "استثمر في الأجر الجاري وساهم في بناء مستقبل أفضل للأجيال القادمة",
-    loading: "جارٍ تحميل المشاريع...",
-    errorTitle: "حدث خطأ",
-    errorRetry: "حاول مجددا",
-    emptyTitle: "لا توجد مشاريع متاحة",
-    emptyDesc: "عذراً، لم نتمكن من العثور على أي مشاريع وقف في الوقت الحالي",
-    refreshButton: "تحديث الصفحة",
     addProject: "إضافة مشروع الوقف",
     projectName: "اسم المشروع",
     save: "حفظ",
     cancel: "إلغاء",
     addedSuccess: "تمت إضافة المشروع بنجاح",
+    noProjects: "لا توجد مشاريع متاحة",
   },
   fr: {
     title: "Projets Awqaf",
     subtitle:
       "Investissez dans les bonnes œuvres continues et contribuez à construire un meilleur avenir pour les générations futures",
-    loading: "Chargement des projets...",
-    errorTitle: "Une erreur est survenue",
-    errorRetry: "Réessayer",
-    emptyTitle: "Aucun projet disponible",
-    emptyDesc:
-      "Désolé, nous n'avons trouvé aucun projet de waqf pour le moment",
-    refreshButton: "Actualiser la page",
     addProject: "Ajouter un projet de waqf",
     projectName: "Nom du projet",
     save: "Enregistrer",
     cancel: "Annuler",
     addedSuccess: "Projet ajouté avec succès",
+    noProjects: "Aucun projet disponible",
   },
   en: {
     title: "Awqaf Projects",
     subtitle:
       "Invest in ongoing charity and help build a better future for the next generations",
-    loading: "Loading projects...",
-    errorTitle: "An error occurred",
-    errorRetry: "Retry",
-    emptyTitle: "No projects available",
-    emptyDesc:
-      "Sorry, we couldn't find any waqf projects at the moment",
-    refreshButton: "Refresh Page",
     addProject: "Add Waqf Project",
     projectName: "Project name",
     save: "Save",
     cancel: "Cancel",
     addedSuccess: "Project added successfully",
+    noProjects: "No projects available",
   },
 };
 
 export default function Awkaf() {
-  const api = useApi();
   const { language } = useLanguage();
   const t = translations[language];
 
+  // ---------------- STATES ----------------
   const [projects, setProjects] = useState([]);
-  const [page, setPage] = useState(1);
-  const [pageSize] = useState(8);
-  const [totalPages, setTotalPages] = useState(1);
-  const [popup, setPopup] = useState({ message: "", type: "" });
-  const [isLoading, setIsLoading] = useState(false);
-
-  // Form
   const [showForm, setShowForm] = useState(false);
   const [projectName, setProjectName] = useState("");
+  const [popup, setPopup] = useState({ message: "", type: "" });
 
+  // ---------------- Load from localStorage ----------------
   useEffect(() => {
-    fetchProjects(page, pageSize);
-  }, [page]);
+    const savedProjects = JSON.parse(localStorage.getItem("waqfProjects") || "[]");
+    setProjects(savedProjects);
+  }, []);
 
-  const fetchProjects = async () => {
-    try {
-      setIsLoading(true);
-      const [data] = await api.get("/list/waqf-projects/");
-      if (Array.isArray(data)) {
-        setProjects(data);
-        setTotalPages(Math.ceil(data.length / pageSize));
-      }
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  // ✅ SAVE PROJECT (LOCAL)
+  // ---------------- SAVE PROJECT ----------------
   const handleSaveProject = () => {
     if (!projectName.trim()) return;
 
     const newProject = {
-      id: Date.now(), // ID temporaire
+      id: Date.now(),
       title: projectName,
       name: projectName,
     };
 
-    setProjects((prev) => [newProject, ...prev]);
-    setTotalPages((prev) => Math.ceil((projects.length + 1) / pageSize));
+    const updatedProjects = [newProject, ...projects];
+    setProjects(updatedProjects);
+    localStorage.setItem("waqfProjects", JSON.stringify(updatedProjects));
 
-    setPopup({
-      message: t.addedSuccess,
-      type: "success",
-    });
-
+    setPopup({ message: t.addedSuccess, type: "success" });
     setProjectName("");
     setShowForm(false);
   };
@@ -137,11 +90,11 @@ export default function Awkaf() {
       <div className="bg-gray-300 py-8">
         <div className="container mx-auto px-4">
 
-          {/* Add Project */}
+          {/* Add Project Button */}
           <div className="text-center mb-6">
             <button
               onClick={() => setShowForm(true)}
-              className="px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+              className="px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
             >
               {t.addProject}
             </button>
@@ -158,6 +111,7 @@ export default function Awkaf() {
                 value={projectName}
                 onChange={(e) => setProjectName(e.target.value)}
                 className="w-full border px-3 py-2 rounded mb-4"
+                placeholder={t.projectName}
               />
 
               <div className="flex justify-end gap-3">
@@ -178,11 +132,18 @@ export default function Awkaf() {
           )}
 
           {/* Projects */}
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {projects.map((project) => (
-              <Project key={project.id} project={project} />
-            ))}
-          </div>
+          {projects.length === 0 ? (
+            <div className="text-center py-12">
+              <AlertCircle className="w-16 h-16 mx-auto opacity-40 mb-4" />
+              <p>{t.noProjects}</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {projects.map((project) => (
+                <Project key={project.id} project={project} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
 
