@@ -17,6 +17,17 @@ export const translations = {
           x7: "قرض حسن مُقرض",
           x8: "إيرادات مستحقة",
           x9: "نقود من بيع أصول"
+        },
+        descriptions: {
+          x1: "النقود المتوفرة مباشرة في صندوق الشركة أو المكتب",
+          x2: "النقود الموجودة في الحسابات المصرفية الجارية أو تحت الطلب",
+          x3: "الشيكات الصادرة والمصدّقة من البنوك والتي يمكن صرفها",
+          x4: "أي أموال نقدية بعملات أجنبية متاحة في الشركة",
+          x5: "الأموال الرقمية أو العملات المشفرة المتاحة للتصرف فيها",
+          x6: "الودائع التي يمكن سحبها أو التصرف فيها عند الحاجة",
+          x7: "القروض الحسنة التي تم إعطاؤها والتي لم يتم تحصيلها بعد",
+          x8: "الإيرادات المستحقة على الشركة ولم يتم قبضها بعد",
+          x9: "الأموال الناتجة من بيع أصول لا تدخل ضمن الزكاة"
         }
       },
       "2": {
@@ -29,6 +40,15 @@ export const translations = {
           y5: "ديون عن بيع أصول",
           y6: "إيرادات إيجار",
           y7: "ديون مشكوك فيها"
+        },
+        descriptions: {
+          y1: "الديون المستحقة حالياً من العملاء والمتوقع تحصيلها قريباً",
+          y2: "الديون التي تم تأجيل تحصيلها والمتوقعة الحصول عليها لاحقاً",
+          y3: "الشيكات أو المستندات التي تثبت الحق في استلام الأموال",
+          y4: "القروض الحسنة أو الديون الخاصة بمبيعات حصرية",
+          y5: "الديون الناتجة عن بيع أصول لا تدخل ضمن الزكاة",
+          y6: "الإيرادات المؤجلة من العقارات أو المعدات المؤجرة",
+          y7: "الديون التي لا يُتوقع تحصيلها بسهولة أو مستحيلة"
         }
       },
       "3": {
@@ -38,6 +58,12 @@ export const translations = {
           z2: "حصص عقارية",
           z3: "استثمارات سندات",
           z4: "أسهم بنية العائد"
+        },
+        descriptions: {
+          z1: "الأسهم والسندات والحصص المستخدمة في التجارة",
+          z2: "الحصص في العقارات التي تستخدم للأغراض التجارية",
+          z3: "الاستثمارات في السندات وأذون الخزينة القابلة للزكاة",
+          z4: "الأسهم المحتفظ بها بغرض العائد على المدى الطويل"
         }
       },
       "4": {
@@ -52,6 +78,17 @@ export const translations = {
           a7: "عروض تجارة",
           a8: "عقارات للتجارة",
           a9: "بضاعة كاسدة"
+        },
+        descriptions: {
+          a1: "البضائع الجاهزة للبيع دون أي تعديل",
+          a2: "البضائع في مرحلة التصنيع أو التجهيز",
+          a3: "المواد الخام المستخدمة في الإنتاج",
+          a4: "البضائع التي تم شراؤها ولكن لم تصل بعد",
+          a5: "البضائع المخزنة أو المعطاة للآخرين تحت الأمانة",
+          a6: "قطع الغيار المخصصة للبيع أو التجارة",
+          a7: "البضائع التي تم الحصول عليها كهدية أو إرث",
+          a8: "العقارات المستخدمة للتجارة والاحتكار",
+          a9: "البضائع الفاسدة أو غير المعدة للبيع"
         }
       },
       "5": {
@@ -61,6 +98,12 @@ export const translations = {
           s2: "أسهم دولية",
           s3: "أسهم نمو",
           s4: "أسهم توزيعات أرباح"
+        },
+        descriptions: {
+          s1: "الأسهم المتداولة في الأسواق المحلية",
+          s2: "الأسهم المتداولة في الأسواق الدولية",
+          s3: "الأسهم التي تركز على النمو الرأسمالي",
+          s4: "الأسهم التي تدفع أرباحاً دورية للمساهمين"
         }
       },
       "6": {
@@ -73,6 +116,15 @@ export const translations = {
           c5: "أرباح مضاربة",
           c6: "تأمينات العملاء",
           c7: "احتياطيات عامة"
+        },
+        descriptions: {
+          c1: "القروض القصيرة الأجل التي يجب دفعها خلال السنة",
+          c2: "المبالغ المستحقة للدفع للموردين أو الدائنين",
+          c3: "الالتزامات تجاه الموظفين مثل الرواتب والإجازات",
+          c4: "الضرائب المستحقة على الشركة خلال السنة",
+          c5: "الأرباح التي تخص شركاء أو مستثمرين آخرين",
+          c6: "أي تأمينات أو مبالغ مقدمة من العملاء للرد عليها",
+          c7: "المخصصات المالية العامة والاحتياطيات المتوقعة"
         }
       },
       malikiAssets: {
@@ -81,6 +133,11 @@ export const translations = {
           SPA: "ذمة المالية للشركة",
           SARL: "ذمة المالية للشخص",
           limit: "حد المفلس"
+        },
+        descriptions: {
+          SPA: "الموارد المالية للشركة المملوكة للشركاء",
+          SARL: "الموارد المالية الخاصة بالشخص المعني بالزكاة",
+          limit: "الحد الأدنى للمبلغ الذي يعتبر الشخص مفلساً"
         }
       }
     },
@@ -194,6 +251,17 @@ export const translations = {
           x7: "Prêt à bon crédit",
           x8: "Revenus à recevoir",
           x9: "Argent provenant de la vente d'actifs"
+        },
+        descriptions: {
+          x1: "Liquidités disponibles directement dans la caisse de l'entreprise ou du bureau",
+          x2: "Fonds dans les comptes bancaires courants ou à vue",
+          x3: "Chèques émis et certifiés par les banques pouvant être encaissés",
+          x4: "Toute somme en devises étrangères disponible dans l'entreprise",
+          x5: "Actifs numériques ou cryptomonnaies disponibles pour disposition",
+          x6: "Dépôts pouvant être retirés ou utilisés en cas de besoin",
+          x7: "Prêts à bon crédit accordés non encore encaissés",
+          x8: "Revenus dus à l'entreprise non encore perçus",
+          x9: "Fonds provenant de la vente d'actifs non soumis à la Zakat"
         }
       },
       "2": {
@@ -206,6 +274,15 @@ export const translations = {
           y5: "Dettes provenant de la vente d'actifs",
           y6: "Revenus locatifs",
           y7: "Dettes douteuses"
+        },
+        descriptions: {
+          y1: "Dettes actuellement dues par les clients et dont le recouvrement est attendu prochainement",
+          y2: "Dettes dont le recouvrement a été reporté et attendu ultérieurement",
+          y3: "Chèques ou documents prouvant le droit de recevoir des fonds",
+          y4: "Prêts à bon crédit ou dettes relatives à des ventes exclusives",
+          y5: "Dettes résultant de la vente d'actifs non soumis à la Zakat",
+          y6: "Revenus différés provenant de biens immobiliers ou équipements loués",
+          y7: "Dettes dont le recouvrement est incertain ou impossible"
         }
       },
       "3": {
@@ -215,6 +292,12 @@ export const translations = {
           z2: "Parts immobilières",
           z3: "Investissements en obligations",
           z4: "Actions avec retour sur investissement"
+        },
+        descriptions: {
+          z1: "Actions, obligations et parts utilisées dans le commerce",
+          z2: "Parts dans des biens immobiliers utilisés à des fins commerciales",
+          z3: "Investissements dans des obligations et bons du Trésor soumis à la Zakat",
+          z4: "Actions détenues dans le but d'un rendement à long terme"
         }
       },
       "4": {
@@ -229,6 +312,17 @@ export const translations = {
           a7: "Offres commerciales",
           a8: "Immobilier commercial",
           a9: "Marchandise périmée"
+        },
+        descriptions: {
+          a1: "Marchandises prêtes à la vente sans aucune modification",
+          a2: "Marchandises en phase de fabrication ou de préparation",
+          a3: "Matières premières utilisées dans la production",
+          a4: "Marchandises achetées mais non encore reçues",
+          a5: "Marchandises entreposées ou confiées à des tiers",
+          a6: "Pièces de rechange destinées à la vente ou au commerce",
+          a7: "Marchandises obtenues par donation ou héritage",
+          a8: "Biens immobiliers utilisés pour le commerce et la spéculation",
+          a9: "Marchandises avariées ou non destinées à la vente"
         }
       },
       "5": {
@@ -238,6 +332,12 @@ export const translations = {
           s2: "Actions internationales",
           s3: "Actions de croissance",
           s4: "Actions à dividendes"
+        },
+        descriptions: {
+          s1: "Actions négociées sur les marchés locaux",
+          s2: "Actions négociées sur les marchés internationaux",
+          s3: "Actions axées sur la croissance du capital",
+          s4: "Actions versant des dividendes réguliers aux actionnaires"
         }
       },
       "6": {
@@ -250,6 +350,15 @@ export const translations = {
           c5: "Profits des tiers",
           c6: "Assurances clients",
           c7: "Réserves générales"
+        },
+        descriptions: {
+          c1: "Prêts à court terme devant être remboursés dans l'année",
+          c2: "Montants dus aux fournisseurs ou créanciers",
+          c3: "Obligations envers les employés telles que salaires et congés",
+          c4: "Taxes dues par l'entreprise dans l'année",
+          c5: "Bénéfices appartenant à des partenaires ou autres investisseurs",
+          c6: "Cautions ou avances de clients à rembourser",
+          c7: "Provisions financières générales et réserves prévues"
         }
       },
       malikiAssets: {
@@ -258,6 +367,11 @@ export const translations = {
           SPA: "Actifs de la société",
           SARL: "Actifs de l'individu",
           limit: "Limite de faillite"
+        },
+        descriptions: {
+          SPA: "Ressources financières de l'entreprise détenues par les associés",
+          SARL: "Ressources financières personnelles de la personne concernée par la Zakat",
+          limit: "Montant minimum en dessous duquel une personne est considérée insolvable"
         }
       }
     },
@@ -371,6 +485,17 @@ export const translations = {
           x7: "Good loan granted",
           x8: "Receivable income",
           x9: "Money from sale of assets"
+        },
+        descriptions: {
+          x1: "Cash directly available in the company's cash register or office",
+          x2: "Funds in current or demand bank accounts",
+          x3: "Checks issued and certified by banks that can be cashed",
+          x4: "Any cash in foreign currencies available in the company",
+          x5: "Digital assets or cryptocurrencies available for disposal",
+          x6: "Deposits that can be withdrawn or used when needed",
+          x7: "Good credit loans granted not yet collected",
+          x8: "Income due to the company not yet received",
+          x9: "Funds from the sale of assets not subject to Zakat"
         }
       },
       "2": {
@@ -383,6 +508,15 @@ export const translations = {
           y5: "Debts from sale of assets",
           y6: "Rental income",
           y7: "Doubtful debts"
+        },
+        descriptions: {
+          y1: "Debts currently due from customers expected to be collected soon",
+          y2: "Debts whose collection has been deferred and expected later",
+          y3: "Checks or documents proving the right to receive funds",
+          y4: "Good credit loans or debts from exclusive sales",
+          y5: "Debts resulting from the sale of assets not subject to Zakat",
+          y6: "Deferred income from rented properties or equipment",
+          y7: "Debts that are unlikely to be collected easily or impossible"
         }
       },
       "3": {
@@ -392,6 +526,12 @@ export const translations = {
           z2: "Real estate shares",
           z3: "Bond investments",
           z4: "Return on investment stocks"
+        },
+        descriptions: {
+          z1: "Stocks, bonds, and shares used in trade",
+          z2: "Shares in real estate used for commercial purposes",
+          z3: "Investments in bonds and treasury bills subject to Zakat",
+          z4: "Stocks held for long-term return purposes"
         }
       },
       "4": {
@@ -406,6 +546,17 @@ export const translations = {
           a7: "Commercial offers",
           a8: "Commercial real estate",
           a9: "Spoiled goods"
+        },
+        descriptions: {
+          a1: "Goods ready for sale without any modification",
+          a2: "Goods in the manufacturing or preparation phase",
+          a3: "Raw materials used in production",
+          a4: "Goods purchased but not yet received",
+          a5: "Goods stored or entrusted to others",
+          a6: "Spare parts intended for sale or trade",
+          a7: "Goods obtained through donation or inheritance",
+          a8: "Real estate used for trade and speculation",
+          a9: "Spoiled goods or those not intended for sale"
         }
       },
       "5": {
@@ -415,6 +566,12 @@ export const translations = {
           s2: "International stocks",
           s3: "Growth stocks",
           s4: "Dividend stocks"
+        },
+        descriptions: {
+          s1: "Stocks traded on local markets",
+          s2: "Stocks traded on international markets",
+          s3: "Stocks focused on capital growth",
+          s4: "Stocks paying regular dividends to shareholders"
         }
       },
       "6": {
@@ -427,6 +584,15 @@ export const translations = {
           c5: "Profits for others",
           c6: "Client insurance",
           c7: "General reserves"
+        },
+        descriptions: {
+          c1: "Short-term loans that must be repaid within the year",
+          c2: "Amounts due to suppliers or creditors",
+          c3: "Obligations to employees such as salaries and leave",
+          c4: "Taxes due by the company within the year",
+          c5: "Profits belonging to partners or other investors",
+          c6: "Deposits or advances from clients to be returned",
+          c7: "General financial provisions and expected reserves"
         }
       },
       malikiAssets: {
@@ -435,6 +601,11 @@ export const translations = {
           SPA: "Company assets",
           SARL: "Individual assets",
           limit: "Bankruptcy limit"
+        },
+        descriptions: {
+          SPA: "Financial resources of the company owned by partners",
+          SARL: "Personal financial resources of the person concerned with Zakat",
+          limit: "Minimum amount below which a person is considered insolvent"
         }
       }
     },
@@ -542,85 +713,85 @@ export const getZakatForm = (t) => [
     name: "1",
     label: t('forms.1.label'),
     children: [
-      { name: 'x1', label: t('forms.1.fields.x1'), children: [] },
-      { name: 'x2', label: t('forms.1.fields.x2'), children: [] },
-      { name: 'x3', label: t('forms.1.fields.x3'), children: [] },
-      { name: 'x4', label: t('forms.1.fields.x4'), children: [] },
-      { name: 'x5', label: t('forms.1.fields.x5'), children: [] },
-      { name: 'x6', label: t('forms.1.fields.x6'), children: [] },
-      { name: 'x7', label: t('forms.1.fields.x7'), children: [] },
-      { name: 'x8', label: t('forms.1.fields.x8'), children: [] },
-      { name: 'x9', label: t('forms.1.fields.x9'), children: [] },
+      { name: 'x1', label: t('forms.1.fields.x1'), description: t('forms.1.descriptions.x1'), children: [] },
+      { name: 'x2', label: t('forms.1.fields.x2'), description: t('forms.1.descriptions.x2'), children: [] },
+      { name: 'x3', label: t('forms.1.fields.x3'), description: t('forms.1.descriptions.x3'), children: [] },
+      { name: 'x4', label: t('forms.1.fields.x4'), description: t('forms.1.descriptions.x4'), children: [] },
+      { name: 'x5', label: t('forms.1.fields.x5'), description: t('forms.1.descriptions.x5'), children: [] },
+      { name: 'x6', label: t('forms.1.fields.x6'), description: t('forms.1.descriptions.x6'), children: [] },
+      { name: 'x7', label: t('forms.1.fields.x7'), description: t('forms.1.descriptions.x7'), children: [] },
+      { name: 'x8', label: t('forms.1.fields.x8'), description: t('forms.1.descriptions.x8'), children: [] },
+      { name: 'x9', label: t('forms.1.fields.x9'), description: t('forms.1.descriptions.x9'), children: [] },
     ]
   },
   {
     name: '2',
     label: t('forms.2.label'),
     children: [
-      { name: 'y1', label: t('forms.2.fields.y1'), children: [] },
-      { name: 'y2', label: t('forms.2.fields.y2'), children: [] },
-      { name: 'y3', label: t('forms.2.fields.y3'), children: [] },
-      { name: 'y4', label: t('forms.2.fields.y4'), children: [] },
-      { name: 'y5', label: t('forms.2.fields.y5'), children: [] },
-      { name: 'y6', label: t('forms.2.fields.y6'), children: [] },
-      { name: 'y7', label: t('forms.2.fields.y7'), children: [] },
+      { name: 'y1', label: t('forms.2.fields.y1'), description: t('forms.2.descriptions.y1'), children: [] },
+      { name: 'y2', label: t('forms.2.fields.y2'), description: t('forms.2.descriptions.y2'), children: [] },
+      { name: 'y3', label: t('forms.2.fields.y3'), description: t('forms.2.descriptions.y3'), children: [] },
+      { name: 'y4', label: t('forms.2.fields.y4'), description: t('forms.2.descriptions.y4'), children: [] },
+      { name: 'y5', label: t('forms.2.fields.y5'), description: t('forms.2.descriptions.y5'), children: [] },
+      { name: 'y6', label: t('forms.2.fields.y6'), description: t('forms.2.descriptions.y6'), children: [] },
+      { name: 'y7', label: t('forms.2.fields.y7'), description: t('forms.2.descriptions.y7'), children: [] },
     ]
   },
   {
     name: '3',
     label: t('forms.3.label'),
     children: [
-      { name: 'z1', label: t('forms.3.fields.z1'), children: [] },
-      { name: 'z2', label: t('forms.3.fields.z2'), children: [] },
-      { name: 'z3', label: t('forms.3.fields.z3'), children: [] },
-      { name: 'z4', label: t('forms.3.fields.z4'), children: [] },
+      { name: 'z1', label: t('forms.3.fields.z1'), description: t('forms.3.descriptions.z1'), children: [] },
+      { name: 'z2', label: t('forms.3.fields.z2'), description: t('forms.3.descriptions.z2'), children: [] },
+      { name: 'z3', label: t('forms.3.fields.z3'), description: t('forms.3.descriptions.z3'), children: [] },
+      { name: 'z4', label: t('forms.3.fields.z4'), description: t('forms.3.descriptions.z4'), children: [] },
     ]
   },
   {
     name: '4',
     label: t('forms.4.label'),
     children: [
-      { name: 'a1', label: t('forms.4.fields.a1'), children: [] },
-      { name: 'a2', label: t('forms.4.fields.a2'), children: [] },
-      { name: 'a3', label: t('forms.4.fields.a3'), children: [] },
-      { name: 'a4', label: t('forms.4.fields.a4'), children: [] },
-      { name: 'a5', label: t('forms.4.fields.a5'), children: [] },
-      { name: 'a6', label: t('forms.4.fields.a6'), children: [] },
-      { name: 'a7', label: t('forms.4.fields.a7'), children: [] },
-      { name: 'a8', label: t('forms.4.fields.a8'), children: [] },
-      { name: 'a9', label: t('forms.4.fields.a9'), children: [] },
+      { name: 'a1', label: t('forms.4.fields.a1'), description: t('forms.4.descriptions.a1'), children: [] },
+      { name: 'a2', label: t('forms.4.fields.a2'), description: t('forms.4.descriptions.a2'), children: [] },
+      { name: 'a3', label: t('forms.4.fields.a3'), description: t('forms.4.descriptions.a3'), children: [] },
+      { name: 'a4', label: t('forms.4.fields.a4'), description: t('forms.4.descriptions.a4'), children: [] },
+      { name: 'a5', label: t('forms.4.fields.a5'), description: t('forms.4.descriptions.a5'), children: [] },
+      { name: 'a6', label: t('forms.4.fields.a6'), description: t('forms.4.descriptions.a6'), children: [] },
+      { name: 'a7', label: t('forms.4.fields.a7'), description: t('forms.4.descriptions.a7'), children: [] },
+      { name: 'a8', label: t('forms.4.fields.a8'), description: t('forms.4.descriptions.a8'), children: [] },
+      { name: 'a9', label: t('forms.4.fields.a9'), description: t('forms.4.descriptions.a9'), children: [] },
     ]
   },
   {
     name: '5',
     label: t('forms.5.label'),
     children: [
-      { name: 's1', label: t('forms.5.fields.s1'), children: [] },
-      { name: 's2', label: t('forms.5.fields.s2'), children: [] },
-      { name: 's3', label: t('forms.5.fields.s3'), children: [] },
-      { name: 's4', label: t('forms.5.fields.s4'), children: [] },
+      { name: 's1', label: t('forms.5.fields.s1'), description: t('forms.5.descriptions.s1'), children: [] },
+      { name: 's2', label: t('forms.5.fields.s2'), description: t('forms.5.descriptions.s2'), children: [] },
+      { name: 's3', label: t('forms.5.fields.s3'), description: t('forms.5.descriptions.s3'), children: [] },
+      { name: 's4', label: t('forms.5.fields.s4'), description: t('forms.5.descriptions.s4'), children: [] },
     ]
   },
   {
     name: '6',
     label: t('forms.6.label'),
     children: [
-      { name: 'c1', label: t('forms.6.fields.c1'), children: [] },
-      { name: 'c2', label: t('forms.6.fields.c2'), children: [] },
-      { name: 'c3', label: t('forms.6.fields.c3'), children: [] },
-      { name: 'c4', label: t('forms.6.fields.c4'), children: [] },
-      { name: 'c5', label: t('forms.6.fields.c5'), children: [] },
-      { name: 'c6', label: t('forms.6.fields.c6'), children: [] },
-      { name: 'c7', label: t('forms.6.fields.c7'), children: [] },
+      { name: 'c1', label: t('forms.6.fields.c1'), description: t('forms.6.descriptions.c1'), children: [] },
+      { name: 'c2', label: t('forms.6.fields.c2'), description: t('forms.6.descriptions.c2'), children: [] },
+      { name: 'c3', label: t('forms.6.fields.c3'), description: t('forms.6.descriptions.c3'), children: [] },
+      { name: 'c4', label: t('forms.6.fields.c4'), description: t('forms.6.descriptions.c4'), children: [] },
+      { name: 'c5', label: t('forms.6.fields.c5'), description: t('forms.6.descriptions.c5'), children: [] },
+      { name: 'c6', label: t('forms.6.fields.c6'), description: t('forms.6.descriptions.c6'), children: [] },
+      { name: 'c7', label: t('forms.6.fields.c7'), description: t('forms.6.descriptions.c7'), children: [] },
     ]
   },
   {
     name: "malikiAssets",
     label: t('forms.malikiAssets.label'),
     children: [
-      { name: "SPA", label: t('forms.malikiAssets.fields.SPA'), children: [] },
-      { name: "SARL", label: t('forms.malikiAssets.fields.SARL'), children: [] },
-      { name: "limit", label: t('forms.malikiAssets.fields.limit'), children: [] }
+      { name: "SPA", label: t('forms.malikiAssets.fields.SPA'), description: t('forms.malikiAssets.descriptions.SPA'), children: [] },
+      { name: "SARL", label: t('forms.malikiAssets.fields.SARL'), description: t('forms.malikiAssets.descriptions.SARL'), children: [] },
+      { name: "limit", label: t('forms.malikiAssets.fields.limit'), description: t('forms.malikiAssets.descriptions.limit'), children: [] }
     ]
   }
 ];

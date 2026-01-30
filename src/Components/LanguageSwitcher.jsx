@@ -30,6 +30,13 @@ export const LanguageSwitcher = () => {
         >
           حاسبة زكاة المحاصيل
           <span>→</span>
+        </Link> 
+        <Link 
+          to="/mawachi" 
+          className="w-full sm:w-auto my-3 inline-flex items-center justify-center sm:justify-start gap-2 px-4 py-2 bg-green4 text-white font-semibold rounded-lg hover:shadow-lg transition-all duration-200 hover:scale-105 text-sm sm:text-base"
+        >
+              حاسبة زكاة المواشي
+          <span>→</span>
         </Link>
 
         {/* Language Switcher */}
