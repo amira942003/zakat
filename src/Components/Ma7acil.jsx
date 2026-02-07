@@ -3,9 +3,11 @@ import { ChevronDown, ChevronUp, Trash } from "lucide-react";
 import { WarninIcon } from '@/assets/Svg/WarninIcon';
 import { MessagePopup } from './MessagePopup';
 import { useApi } from "@/ApiProvider";
+import { useLanguage } from "@/LanguageProvider";
 
 export const Ma7acil = () => {
   const api = useApi();
+  const { t } = useLanguage();
   const [crops, setCrops] = useState([]);
   const [collapsedCrops, setCollapsedCrops] = useState({});
   const [popup, setPopup] = useState({ message: '', type: '' });
@@ -22,14 +24,14 @@ export const Ma7acil = () => {
   const saveZakatHistory = async () => {
     const token = localStorage.getItem("accessToken");
     if (!token) {
-      setPopup({ message: "يجب تسجيل الدخول أولاً للحفظ", type: "error" });
+      setPopup({ message: t('ma7acil.messages.loginRequired'), type: "error" });
       return;
     }
 
     const cropsWithZakat = crops.filter((crop) => crop.zakatDue > 0);
 
     if (cropsWithZakat.length === 0) {
-      setPopup({ message: "لا توجد محاصيل مستحقة للزكاة للحفظ", type: "error" });
+      setPopup({ message: t('ma7acil.messages.noZakatToBeSaved'), type: "error" });
       return;
     }
 
@@ -48,13 +50,13 @@ export const Ma7acil = () => {
 
       if (!error && status >= 200 && status < 300) {
         successCount++;
-        setPopup({ message: "تم حفظ المحاصيل بنجاح!", type: "success" });
+        setPopup({ message: t('ma7acil.messages.saveSuccess'), type: "success" });
         setCrops([]);
         setCollapsedCrops({});
       } else {
         failCount++;
         console.error("Save failed:", error || data);
-        setPopup({ message: "فشل حفظ المحاصيل، حاول مرة أخرى", type: "error" });
+        setPopup({ message: t('ma7acil.messages.saveFailed'), type: "error" });
       }
     }
 
@@ -131,12 +133,7 @@ export const Ma7acil = () => {
   };
 
   const getWateringMethodLabel = (method) => {
-    const labels = {
-      rain: 'سقي بالمطر (10%)',
-      mixed: 'سقي مختلط (7.5%)',
-      artificial: 'سقي اصطناعي (5%)'
-    };
-    return labels[method] || method;
+    return t(`ma7acil.wateringMethods.${method}`);
   };
 
   return (
@@ -145,8 +142,12 @@ export const Ma7acil = () => {
         {/* Header Section */}
         <div className="bg-gradient-to-r from-emerald-900 via-emerald-800 to-teal-700 text-white py-12 md:py-16 mt-12 md:mt-15 mb-2">
           <div className="container text-center mx-auto px-4 md:px-6">
-            <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 md:mb-4">زكاة المحاصيل الزراعية</h1>
-            <p className="text-sm sm:text-base md:text-lg opacity-90 max-w-2xl mx-auto">احسب زكاة محاصيلك الزراعية وفقاً للمعايير الشرعية المعتمدة</p>
+            <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 md:mb-4">
+              {t('ma7acil.title')}
+            </h1>
+            <p className="text-sm sm:text-base md:text-lg opacity-90 max-w-2xl mx-auto">
+              {t('ma7acil.subtitle')}
+            </p>
           </div>
         </div>
 
@@ -160,8 +161,12 @@ export const Ma7acil = () => {
                 <div className="flex items-start gap-3 md:gap-4">
                   <div className="w-3 h-6 md:h-8 bg-emerald-600 rounded-full flex-shrink-0"></div>
                   <div className="min-w-0">
-                    <h2 className="text-lg md:text-xl font-bold text-gray-800 mb-1">بيانات المحاصيل الزراعية</h2>
-                    <p className="text-gray-600 text-xs md:text-sm break-words">النصاب: {NISAB.toLocaleString()} كغ • أضف محاصيلك واحسب زكاتها</p>
+                    <h2 className="text-lg md:text-xl font-bold text-gray-800 mb-1">
+                      {t('ma7acil.formHeader')}
+                    </h2>
+                    <p className="text-gray-600 text-xs md:text-sm break-words">
+                      {t('ma7acil.formDescription').replace('{nissab}', NISAB.toLocaleString())}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -179,11 +184,11 @@ export const Ma7acil = () => {
                         <div className="flex items-center min-w-0 gap-2 md:gap-3">
                           <div className="w-1 h-5 md:h-6 bg-emerald-600 rounded-full flex-shrink-0"></div>
                           <h3 className="text-sm md:text-lg font-bold text-emerald-800 select-none truncate">
-                            {crop.cropType || `المحصول ${index + 1}`}
+                            {crop.cropType || t('ma7acil.cropLabel').replace('{number}', index + 1)}
                           </h3>
                           {crop.zakatDue > 0 && (
                             <span className="px-2 md:px-3 py-1 bg-emerald-600 text-white text-xs md:text-sm rounded-full whitespace-nowrap">
-                              {crop.zakatDue.toFixed(2)} كغ
+                              {crop.zakatDue.toFixed(2)} {t('ma7acil.kg')}
                             </span>
                           )}
                         </div>
@@ -198,7 +203,7 @@ export const Ma7acil = () => {
                             <Trash className="w-4 h-4 md:w-5 md:h-5" stroke='#036116'></Trash>
                           </button>
                           <span className="text-xs md:text-sm text-emerald-600 font-medium hidden sm:inline">
-                            {collapsedCrops[index] ? "إظهار" : "إخفاء"}
+                            {collapsedCrops[index] ? t('ma7acil.show') : t('ma7acil.hide')}
                           </span>
                           <div className={`transform transition-transform duration-300 ${collapsedCrops[index] ? "rotate-180" : ""}`}>
                             <ChevronDown className="w-4 h-4 md:w-5 md:h-5 text-emerald-600" />
@@ -218,7 +223,7 @@ export const Ma7acil = () => {
                           {/* Crop Type */}
                           <div className="cal-input-bg">
                             <label className="font-semibold text-gray-700 text-xs md:text-sm block mb-2">
-                              نوع المحصول
+                              {t('ma7acil.fields.cropType')}
                             </label>
                             <div className="relative">
                               <input
@@ -226,7 +231,7 @@ export const Ma7acil = () => {
                                 className="cal-input pr-4 md:pr-5 text-sm md:text-base"
                                 value={crop.cropType}
                                 onChange={e => updateCrop(index, 'cropType', e.target.value)}
-                                placeholder="أدخل نوع المحصول (قمح، شعير، تمر...)"
+                                placeholder={t('ma7acil.fields.cropTypePlaceholder')}
                               />
                               <div className="absolute left-2 md:left-3 top-1/2 transform -translate-y-1/2">
                                 <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
@@ -237,7 +242,7 @@ export const Ma7acil = () => {
                           {/* Watering Method */}
                           <div className="cal-input-bg">
                             <label className="font-semibold text-gray-700 text-xs md:text-sm block mb-2">
-                              طريقة السقي
+                              {t('ma7acil.fields.wateringMethod')}
                             </label>
                             <div className="relative">
                               <select
@@ -245,9 +250,9 @@ export const Ma7acil = () => {
                                 value={crop.wateringMethod}
                                 onChange={e => updateCrop(index, 'wateringMethod', e.target.value)}
                               >
-                                <option value="rain">سقي بالمطر (10%)</option>
-                                <option value="mixed">سقي مختلط (7.5%)</option>
-                                <option value="artificial">سقي اصطناعي (5%)</option>
+                                <option value="rain">{t('ma7acil.wateringMethods.rain')}</option>
+                                <option value="mixed">{t('ma7acil.wateringMethods.mixed')}</option>
+                                <option value="artificial">{t('ma7acil.wateringMethods.artificial')}</option>
                               </select>
                               <div className="absolute left-3 md:left-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
                                 <ChevronDown className="w-4 h-4 md:w-5 md:h-5 text-emerald-600" />
@@ -258,7 +263,7 @@ export const Ma7acil = () => {
                           {/* Quantity */}
                           <div className="cal-input-bg">
                             <label className="font-semibold text-gray-700 text-xs md:text-sm block mb-2">
-                              الكمية (كيلوغرام)
+                              {t('ma7acil.fields.quantity')}
                             </label>
                             <div className="relative">
                               <input
@@ -271,9 +276,11 @@ export const Ma7acil = () => {
                                     updateCrop(index, 'quantity', rawValue);
                                   }
                                 }}
-                                placeholder="أدخل الكمية"
+                                placeholder={t('ma7acil.fields.quantityPlaceholder')}
                               />
-                              <span className="DA absolute right-2 md:right-3 top-1/2 text-xs md:text-sm">كغ</span>
+                              <span className="DA absolute right-2 md:right-3 top-1/2 text-xs md:text-sm">
+                                {t('ma7acil.kg')}
+                              </span>
                               <div className="absolute left-2 md:left-3 top-1/2 transform -translate-y-1/2">
                                 <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
                               </div>
@@ -283,7 +290,7 @@ export const Ma7acil = () => {
                           {/* Ownership Type */}
                           <div className="cal-input-bg">
                             <label className="font-semibold text-gray-700 text-xs md:text-sm block mb-2">
-                              نوع الملكية
+                              {t('ma7acil.fields.ownershipType')}
                             </label>
                             <div className="relative">
                               <select
@@ -291,8 +298,8 @@ export const Ma7acil = () => {
                                 value={crop.ownershipType}
                                 onChange={e => updateCrop(index, 'ownershipType', e.target.value)}
                               >
-                                <option value="individual">ملكية فردية</option>
-                                <option value="shared">ملكية مشتركة</option>
+                                <option value="individual">{t('ma7acil.ownershipTypes.individual')}</option>
+                                <option value="shared">{t('ma7acil.ownershipTypes.shared')}</option>
                               </select>
                               <div className="absolute left-3 md:left-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
                                 <ChevronDown className="w-4 h-4 md:w-5 md:h-5 text-emerald-600" />
@@ -304,7 +311,7 @@ export const Ma7acil = () => {
                           {crop.ownershipType === 'shared' && (
                             <div className="cal-input-bg">
                               <label className="font-semibold text-gray-700 text-xs md:text-sm block mb-2">
-                                نصيبك من الملكية (%)
+                                {t('ma7acil.fields.ownershipShare')}
                               </label>
                               <div className="relative">
                                 <input
@@ -312,11 +319,13 @@ export const Ma7acil = () => {
                                   className="cal-input text-sm md:text-base"
                                   value={crop.ownershipShare}
                                   onChange={e => updateCrop(index, 'ownershipShare', e.target.value)}
-                                  placeholder="أدخل النسبة المئوية"
+                                  placeholder={t('ma7acil.fields.ownershipSharePlaceholder')}
                                   min="0"
                                   max="100"
                                 />
-                                <span className="DA absolute right-2 md:right-3 top-1/2 text-xs md:text-sm">%</span>
+                                <span className="DA absolute right-2 md:right-3 top-1/2 text-xs md:text-sm">
+                                  {t('ma7acil.percent')}
+                                </span>
                                 <div className="absolute left-2 md:left-3 top-1/2 transform -translate-y-1/2">
                                   <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
                                 </div>
@@ -328,14 +337,16 @@ export const Ma7acil = () => {
                           {crop.zakatDue >= 0 && (
                             <div className="bg-gradient-to-r from-green-100 to-emerald-100 border border-green-300 rounded-lg p-3 md:p-4">
                               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                                <span className="font-bold text-green-800 text-sm md:text-base">الزكاة المستحقة:</span>
+                                <span className="font-bold text-green-800 text-sm md:text-base">
+                                  {t('ma7acil.zakatDue')}
+                                </span>
                                 <span className="text-xl md:text-2xl font-bold text-green-700">
-                                  {crop.zakatDue.toFixed(2)} كغ
+                                  {crop.zakatDue.toFixed(2)} {t('ma7acil.kg')}
                                 </span>
                               </div>
                               <div className="text-xs md:text-sm text-green-600 mt-2 break-words">
-                                المعدل المطبق: {getWateringMethodLabel(crop.wateringMethod)} • 
-                                {crop.ownershipType === 'shared' && ` نصيبك: ${crop.ownershipShare}%`}
+                                {t('ma7acil.rateApplied')} {getWateringMethodLabel(crop.wateringMethod)}
+                                {crop.ownershipType === 'shared' && ` • ${t('ma7acil.yourShare')} ${crop.ownershipShare}${t('ma7acil.percent')}`}
                               </div>
                             </div>
                           )}
@@ -350,7 +361,7 @@ export const Ma7acil = () => {
                       onClick={addCrop}
                       className="custom-button py-3 md:py-4 rounded-sm w-full sm:w-1/2 font-bold text-sm md:text-base"
                     >
-                      إضافة محصول جديد
+                      {t('ma7acil.addCrop')}
                     </button>
                   </div>
 
@@ -361,7 +372,7 @@ export const Ma7acil = () => {
                         className="custom-button py-3 md:py-4 rounded-sm w-full sm:w-1/2 font-bold text-sm md:text-base"
                         onClick={calculateZakat}
                       >
-                        احسب الزكاة
+                        {t('ma7acil.calculate')}
                       </button>
                       
                       {getTotalZakat() > 0 && (
@@ -370,7 +381,7 @@ export const Ma7acil = () => {
                           onClick={saveZakatHistory}
                           disabled={isLoading}
                         >
-                          {isLoading ? "جاري الحفظ..." : "حفظ النتائج"}
+                          {isLoading ? t('ma7acil.saving') : t('ma7acil.saveResults')}
                         </button>
                       )}
                     </div>
@@ -386,9 +397,11 @@ export const Ma7acil = () => {
                   <span className="text-xl md:text-2xl"><WarninIcon></WarninIcon></span>
                 </div>
                 <div className="min-w-0">
-                  <h3 className="font-bold text-amber-800 mb-1 text-sm md:text-base">معلومات مهمة</h3>
+                  <h3 className="font-bold text-amber-800 mb-1 text-sm md:text-base">
+                    {t('ma7acil.info.title')}
+                  </h3>
                   <p className="text-amber-700 text-xs md:text-sm break-words">
-                    النصاب للمحاصيل الزراعية: {NISAB.toLocaleString()} كيلوغرام • السقي بالمطر أو الأنهار: 10% من المحصول • السقي المختلط: 7.5% من المحصول • السقي الاصطناعي (بالآلات): 5% من المحصول
+                    {t('ma7acil.info.nissabText').replace('{nissab}', NISAB.toLocaleString())} • {t('ma7acil.info.rainWatering')} • {t('ma7acil.info.mixedWatering')} • {t('ma7acil.info.artificialWatering')}
                   </p>
                 </div>
               </div>

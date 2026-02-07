@@ -96,12 +96,10 @@ export const translations = {
         fields: {
           s1: "أسهم للاحتكار",
           s2: "أسهم بنية",
-          
         },
         descriptions: {
           s1: "الأسهم المتداولة في الأسواق المحلية",
           s2: "الأسهم المتداولة في الأسواق الدولية",
-          
         }
       },
       "6": {
@@ -233,6 +231,63 @@ export const translations = {
         button: "ابدأ الآن",
         imageAlt: "صورة حساب الزكاة"
       }
+    },
+    ma7acil: {
+      title: "زكاة المحاصيل الزراعية",
+      subtitle: "احسب زكاة محاصيلك الزراعية وفقاً للمعايير الشرعية المعتمدة",
+      formHeader: "بيانات المحاصيل الزراعية",
+      formDescription: "النصاب: {nissab} كغ • أضف محاصيلك واحسب زكاتها",
+      cropLabel: "المحصول {number}",
+      addCrop: "إضافة محصول جديد",
+      calculate: "احسب الزكاة",
+      saveResults: "حفظ النتائج",
+      saving: "جاري الحفظ...",
+      
+      fields: {
+        cropType: "نوع المحصول",
+        cropTypePlaceholder: "أدخل نوع المحصول (قمح، شعير، تمر...)",
+        wateringMethod: "طريقة السقي",
+        quantity: "الكمية (كيلوغرام)",
+        quantityPlaceholder: "أدخل الكمية",
+        ownershipType: "نوع الملكية",
+        ownershipShare: "نصيبك من الملكية (%)",
+        ownershipSharePlaceholder: "أدخل النسبة المئوية"
+      },
+      
+      wateringMethods: {
+        rain: "سقي بالمطر (10%)",
+        mixed: "سقي مختلط (7.5%)",
+        artificial: "سقي اصطناعي (5%)"
+      },
+      
+      ownershipTypes: {
+        individual: "ملكية فردية",
+        shared: "ملكية مشتركة"
+      },
+      
+      zakatDue: "الزكاة المستحقة:",
+      rateApplied: "المعدل المطبق:",
+      yourShare: "نصيبك:",
+      kg: "كغ",
+      percent: "%",
+      
+      info: {
+        title: "معلومات مهمة",
+        nissabText: "النصاب للمحاصيل الزراعية: {nissab} كيلوغرام",
+        rainWatering: "السقي بالمطر أو الأنهار: 10% من المحصول",
+        mixedWatering: "السقي المختلط: 7.5% من المحصول",
+        artificialWatering: "السقي الاصطناعي (بالآلات): 5% من المحصول"
+      },
+      
+      messages: {
+        loginRequired: "يجب تسجيل الدخول أولاً للحفظ",
+        noZakatToBeSaved: "لا توجد محاصيل مستحقة للزكاة للحفظ",
+        saveSuccess: "تم حفظ المحاصيل بنجاح!",
+        saveFailed: "فشل حفظ المحاصيل، حاول مرة أخرى"
+      },
+      
+      show: "إظهار",
+      hide: "إخفاء"
     }
   },
   fr: {
@@ -328,14 +383,10 @@ export const translations = {
         fields: {
           s1: "Actions locales",
           s2: "Actions internationales",
-          s3: "Actions de croissance",
-          s4: "Actions à dividendes"
         },
         descriptions: {
           s1: "Actions négociées sur les marchés locaux",
           s2: "Actions négociées sur les marchés internationaux",
-          s3: "Actions axées sur la croissance du capital",
-          s4: "Actions versant des dividendes réguliers aux actionnaires"
         }
       },
       "6": {
@@ -467,6 +518,63 @@ export const translations = {
         button: "Commencer maintenant",
         imageAlt: "Image calcul Zakat"
       }
+    },
+    ma7acil: {
+      title: "Zakat des Récoltes Agricoles",
+      subtitle: "Calculez la Zakat de vos récoltes agricoles selon les normes de la charia",
+      formHeader: "Données des Récoltes Agricoles",
+      formDescription: "Nissab: {nissab} kg • Ajoutez vos récoltes et calculez leur Zakat",
+      cropLabel: "Récolte {number}",
+      addCrop: "Ajouter une nouvelle récolte",
+      calculate: "Calculer la Zakat",
+      saveResults: "Enregistrer les résultats",
+      saving: "Enregistrement en cours...",
+      
+      fields: {
+        cropType: "Type de récolte",
+        cropTypePlaceholder: "Entrez le type de récolte (blé, orge, dattes...)",
+        wateringMethod: "Méthode d'irrigation",
+        quantity: "Quantité (kilogrammes)",
+        quantityPlaceholder: "Entrez la quantité",
+        ownershipType: "Type de propriété",
+        ownershipShare: "Votre part de propriété (%)",
+        ownershipSharePlaceholder: "Entrez le pourcentage"
+      },
+      
+      wateringMethods: {
+        rain: "Irrigation par pluie (10%)",
+        mixed: "Irrigation mixte (7,5%)",
+        artificial: "Irrigation artificielle (5%)"
+      },
+      
+      ownershipTypes: {
+        individual: "Propriété individuelle",
+        shared: "Propriété partagée"
+      },
+      
+      zakatDue: "Zakat due:",
+      rateApplied: "Taux appliqué:",
+      yourShare: "Votre part:",
+      kg: "kg",
+      percent: "%",
+      
+      info: {
+        title: "Informations importantes",
+        nissabText: "Nissab pour les récoltes agricoles: {nissab} kilogrammes",
+        rainWatering: "Irrigation par pluie ou rivières: 10% de la récolte",
+        mixedWatering: "Irrigation mixte: 7,5% de la récolte",
+        artificialWatering: "Irrigation artificielle (par machines): 5% de la récolte"
+      },
+      
+      messages: {
+        loginRequired: "Vous devez d'abord vous connecter pour enregistrer",
+        noZakatToBeSaved: "Aucune récolte soumise à la Zakat à enregistrer",
+        saveSuccess: "Récoltes enregistrées avec succès!",
+        saveFailed: "Échec de l'enregistrement des récoltes, réessayez"
+      },
+      
+      show: "Afficher",
+      hide: "Masquer"
     }
   },
   en: {
@@ -562,14 +670,10 @@ export const translations = {
         fields: {
           s1: "Local stocks",
           s2: "International stocks",
-          s3: "Growth stocks",
-          s4: "Dividend stocks"
         },
         descriptions: {
           s1: "Stocks traded on local markets",
           s2: "Stocks traded on international markets",
-          s3: "Stocks focused on capital growth",
-          s4: "Stocks paying regular dividends to shareholders"
         }
       },
       "6": {
@@ -701,6 +805,63 @@ export const translations = {
         button: "Start Now",
         imageAlt: "Zakat Calculation Image"
       }
+    },
+    ma7acil: {
+      title: "Agricultural Crops Zakat",
+      subtitle: "Calculate your agricultural crops Zakat according to approved Sharia standards",
+      formHeader: "Agricultural Crops Data",
+      formDescription: "Nissab: {nissab} kg • Add your crops and calculate their Zakat",
+      cropLabel: "Crop {number}",
+      addCrop: "Add New Crop",
+      calculate: "Calculate Zakat",
+      saveResults: "Save Results",
+      saving: "Saving...",
+      
+      fields: {
+        cropType: "Crop Type",
+        cropTypePlaceholder: "Enter crop type (wheat, barley, dates...)",
+        wateringMethod: "Watering Method",
+        quantity: "Quantity (kilograms)",
+        quantityPlaceholder: "Enter quantity",
+        ownershipType: "Ownership Type",
+        ownershipShare: "Your Ownership Share (%)",
+        ownershipSharePlaceholder: "Enter percentage"
+      },
+      
+      wateringMethods: {
+        rain: "Rain watering (10%)",
+        mixed: "Mixed watering (7.5%)",
+        artificial: "Artificial watering (5%)"
+      },
+      
+      ownershipTypes: {
+        individual: "Individual ownership",
+        shared: "Shared ownership"
+      },
+      
+      zakatDue: "Zakat Due:",
+      rateApplied: "Rate applied:",
+      yourShare: "Your share:",
+      kg: "kg",
+      percent: "%",
+      
+      info: {
+        title: "Important Information",
+        nissabText: "Nissab for agricultural crops: {nissab} kilograms",
+        rainWatering: "Rain or river watering: 10% of the crop",
+        mixedWatering: "Mixed watering: 7.5% of the crop",
+        artificialWatering: "Artificial watering (by machines): 5% of the crop"
+      },
+      
+      messages: {
+        loginRequired: "You must login first to save",
+        noZakatToBeSaved: "No crops subject to Zakat to save",
+        saveSuccess: "Crops saved successfully!",
+        saveFailed: "Failed to save crops, try again"
+      },
+      
+      show: "Show",
+      hide: "Hide"
     }
   }
 };
@@ -766,8 +927,6 @@ export const getZakatForm = (t) => [
     children: [
       { name: 's1', label: t('forms.5.fields.s1'), description: t('forms.5.descriptions.s1'), children: [] },
       { name: 's2', label: t('forms.5.fields.s2'), description: t('forms.5.descriptions.s2'), children: [] },
-    
-   
     ]
   },
   {
