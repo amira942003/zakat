@@ -3,8 +3,7 @@ import { ChevronDown, ChevronUp, Trash } from "lucide-react";
 import { WarninIcon } from '@/assets/Svg/WarninIcon';
 import { MessagePopup } from './MessagePopup';
 import { useApi } from "@/ApiProvider";
-import { useLanguage } from "@/LanguageProvider";
-
+import { useLanguage } from "./LanguageProvider";
 export const Ma7acil = () => {
   const api = useApi();
   const { t } = useLanguage();
