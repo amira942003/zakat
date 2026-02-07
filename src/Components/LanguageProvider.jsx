@@ -288,6 +288,100 @@ export const translations = {
       
       show: "إظهار",
       hide: "إخفاء"
+    },
+    mawachi: {
+      title: "زكاة المواشي",
+      subtitle: "احسب زكاة الإبل والبقر والغنم وفقاً للشريعة الإسلامية",
+      formHeader: "بيانات المواشي",
+      formDescription: "أضف مواشيك واحسب زكاتها حسب النصاب الشرعي",
+      addAnimal: "إضافة ماشية جديدة",
+      calculate: "احسب الزكاة",
+      saveResults: "حفظ النتائج",
+      saving: "جاري الحفظ...",
+      
+      fields: {
+        animalType: "نوع الماشية",
+        quantity: "العدد",
+        quantityPlaceholder: "أدخل عدد الرؤوس"
+      },
+      
+      animalTypes: {
+        camel: "الإبل",
+        cow: "البقر",
+        sheep: "الغنم"
+      },
+      
+      zakatDue: "الزكاة المستحقة:",
+      head: "رأس",
+      noZakat: "لا شيء",
+      
+      camel: {
+        sheep1: "شاة واحدة",
+        sheep2: "شاتان",
+        sheep3: "ثلاث شياه",
+        sheep4: "أربع شياه",
+        bintMakhad: "بنت مخاض (في السنة الثانية)",
+        bintLaboun: "بنت لبون (في السنة الثالثة)",
+        hiqqah: "حِقّة (في السنة الرابعة)",
+        jadhaah: "جذعة (في السنة الخامسة)",
+        bintLaboun2: "بنتا لبون",
+        hiqqah2: "حقتان",
+        bintLaboun3: "ثلاث بنات لبون",
+        hiqqaBintLaboun2: "حقة + بنتا لبون",
+        hiqqah2BintLaboun: "حقتان + بنت لبون",
+        hiqqah3: "ثلاث حقاق",
+        bintLaboun4: "أربع بنات لبون",
+        hiqqaBintLaboun3: "حقة + ثلاث بنات لبون",
+        hiqqah2BintLaboun2: "حقتان + بنتا لبون",
+        hiqqah3BintLaboun: "ثلاث حقاق + بنت لبون",
+        hiqqah4OrBintLaboun5: "أربع حقاق أو خمس بنات لبون",
+        hiqqaBintLaboun4: "حقة + أربع بنات لبون",
+        hiqqah2BintLaboun3: "حقتان + ثلاث بنات لبون",
+        hiqqah3BintLaboun2: "ثلاث حقاق + بنتا لبون",
+        hiqqah4BintLaboun: "أربع حقاق + بنت لبون",
+        above249: "{hiqqah} حقة و {bintLaboun} بنت لبون (عن كل 50 حقة، وعن كل 40 بنت لبون)"
+      },
+      
+      cow: {
+        tabee: "تبيع أو تبيعة (في السنة الثانية)",
+        musinnah: "مسنة (في السنة الثالثة)",
+        tabee2: "تبيعان أو تبيعتان",
+        musinnahTabee: "مسنة + تبيع أو تبيعة",
+        musinnah2: "مسنتان",
+        tabee3: "ثلاثة أتبعة أو ثلاث تبيعات",
+        musinnahTabee2: "مسنة + تبيعان أو تبيعتان",
+        musinnah2Tabee: "مسنتان + تبيع أو تبيعة",
+        musinnah3OrTabee4: "ثلاث مسنات أو أربع تبيعات",
+        above129: "{tabee} تبيع و {musinnah} مسنة (عن كل 30 تبيع، وعن كل 40 مسنة)"
+      },
+      
+      sheep: {
+        sheep1: "شاة واحدة",
+        sheep2: "شاتان",
+        sheep3: "ثلاث شياه",
+        sheep4: "أربع شياه",
+        above499: "{count} شاة (عن كل 100 رأس شاة واحدة)"
+      },
+      
+      info: {
+        title: "معلومات مهمة",
+        camelTitle: "الإبل:",
+        camelNissab: "النصاب من 5 رؤوس",
+        cowTitle: "البقر:",
+        cowNissab: "النصاب من 30 رأساً",
+        sheepTitle: "الغنم:",
+        sheepNissab: "النصاب من 40 رأساً"
+      },
+      
+      messages: {
+        loginRequired: "يجب تسجيل الدخول أولاً للحفظ",
+        noZakatToBeSaved: "لا توجد مواشي مستحقة للزكاة للحفظ",
+        saveSuccess: "تم حفظ المواشي بنجاح!",
+        saveFailed: "فشل حفظ المواشي، حاول مرة أخرى"
+      },
+      
+      show: "إظهار",
+      hide: "إخفاء"
     }
   },
   fr: {
@@ -575,6 +669,100 @@ export const translations = {
       
       show: "Afficher",
       hide: "Masquer"
+    },
+    mawachi: {
+      title: "Zakat du Bétail",
+      subtitle: "Calculez la Zakat des chameaux, bovins et ovins selon la charia islamique",
+      formHeader: "Données du Bétail",
+      formDescription: "Ajoutez votre bétail et calculez sa Zakat selon le Nissab légal",
+      addAnimal: "Ajouter un animal",
+      calculate: "Calculer la Zakat",
+      saveResults: "Enregistrer les résultats",
+      saving: "Enregistrement en cours...",
+      
+      fields: {
+        animalType: "Type d'animal",
+        quantity: "Nombre",
+        quantityPlaceholder: "Entrez le nombre de têtes"
+      },
+      
+      animalTypes: {
+        camel: "Chameaux",
+        cow: "Bovins",
+        sheep: "Ovins"
+      },
+      
+      zakatDue: "Zakat due:",
+      head: "tête",
+      noZakat: "Aucune",
+      
+      camel: {
+        sheep1: "Un mouton",
+        sheep2: "Deux moutons",
+        sheep3: "Trois moutons",
+        sheep4: "Quatre moutons",
+        bintMakhad: "Bint Makhad (2ème année)",
+        bintLaboun: "Bint Laboun (3ème année)",
+        hiqqah: "Hiqqah (4ème année)",
+        jadhaah: "Jadhaah (5ème année)",
+        bintLaboun2: "Deux Bint Laboun",
+        hiqqah2: "Deux Hiqqah",
+        bintLaboun3: "Trois Bint Laboun",
+        hiqqaBintLaboun2: "Hiqqah + deux Bint Laboun",
+        hiqqah2BintLaboun: "Deux Hiqqah + Bint Laboun",
+        hiqqah3: "Trois Hiqqah",
+        bintLaboun4: "Quatre Bint Laboun",
+        hiqqaBintLaboun3: "Hiqqah + trois Bint Laboun",
+        hiqqah2BintLaboun2: "Deux Hiqqah + deux Bint Laboun",
+        hiqqah3BintLaboun: "Trois Hiqqah + Bint Laboun",
+        hiqqah4OrBintLaboun5: "Quatre Hiqqah ou cinq Bint Laboun",
+        hiqqaBintLaboun4: "Hiqqah + quatre Bint Laboun",
+        hiqqah2BintLaboun3: "Deux Hiqqah + trois Bint Laboun",
+        hiqqah3BintLaboun2: "Trois Hiqqah + deux Bint Laboun",
+        hiqqah4BintLaboun: "Quatre Hiqqah + Bint Laboun",
+        above249: "{hiqqah} Hiqqah et {bintLaboun} Bint Laboun (pour chaque 50: Hiqqah, pour chaque 40: Bint Laboun)"
+      },
+      
+      cow: {
+        tabee: "Tabee ou Tabeea (2ème année)",
+        musinnah: "Musinnah (3ème année)",
+        tabee2: "Deux Tabee ou Tabeea",
+        musinnahTabee: "Musinnah + Tabee ou Tabeea",
+        musinnah2: "Deux Musinnah",
+        tabee3: "Trois Tabee ou Tabeea",
+        musinnahTabee2: "Musinnah + deux Tabee ou Tabeea",
+        musinnah2Tabee: "Deux Musinnah + Tabee ou Tabeea",
+        musinnah3OrTabee4: "Trois Musinnah ou quatre Tabee",
+        above129: "{tabee} Tabee et {musinnah} Musinnah (pour chaque 30: Tabee, pour chaque 40: Musinnah)"
+      },
+      
+      sheep: {
+        sheep1: "Un mouton",
+        sheep2: "Deux moutons",
+        sheep3: "Trois moutons",
+        sheep4: "Quatre moutons",
+        above499: "{count} moutons (un mouton pour chaque 100 têtes)"
+      },
+      
+      info: {
+        title: "Informations importantes",
+        camelTitle: "Chameaux:",
+        camelNissab: "Nissab à partir de 5 têtes",
+        cowTitle: "Bovins:",
+        cowNissab: "Nissab à partir de 30 têtes",
+        sheepTitle: "Ovins:",
+        sheepNissab: "Nissab à partir de 40 têtes"
+      },
+      
+      messages: {
+        loginRequired: "Vous devez d'abord vous connecter pour enregistrer",
+        noZakatToBeSaved: "Aucun bétail soumis à la Zakat à enregistrer",
+        saveSuccess: "Bétail enregistré avec succès!",
+        saveFailed: "Échec de l'enregistrement du bétail, réessayez"
+      },
+      
+      show: "Afficher",
+      hide: "Masquer"
     }
   },
   en: {
@@ -858,6 +1046,100 @@ export const translations = {
         noZakatToBeSaved: "No crops subject to Zakat to save",
         saveSuccess: "Crops saved successfully!",
         saveFailed: "Failed to save crops, try again"
+      },
+      
+      show: "Show",
+      hide: "Hide"
+    },
+    mawachi: {
+      title: "Livestock Zakat",
+      subtitle: "Calculate Zakat for camels, cattle and sheep according to Islamic law",
+      formHeader: "Livestock Data",
+      formDescription: "Add your livestock and calculate its Zakat according to legal Nissab",
+      addAnimal: "Add New Animal",
+      calculate: "Calculate Zakat",
+      saveResults: "Save Results",
+      saving: "Saving...",
+      
+      fields: {
+        animalType: "Animal Type",
+        quantity: "Number",
+        quantityPlaceholder: "Enter number of heads"
+      },
+      
+      animalTypes: {
+        camel: "Camels",
+        cow: "Cattle",
+        sheep: "Sheep"
+      },
+      
+      zakatDue: "Zakat Due:",
+      head: "head",
+      noZakat: "None",
+      
+      camel: {
+        sheep1: "One sheep",
+        sheep2: "Two sheep",
+        sheep3: "Three sheep",
+        sheep4: "Four sheep",
+        bintMakhad: "Bint Makhad (2nd year)",
+        bintLaboun: "Bint Laboun (3rd year)",
+        hiqqah: "Hiqqah (4th year)",
+        jadhaah: "Jadhaah (5th year)",
+        bintLaboun2: "Two Bint Laboun",
+        hiqqah2: "Two Hiqqah",
+        bintLaboun3: "Three Bint Laboun",
+        hiqqaBintLaboun2: "Hiqqah + two Bint Laboun",
+        hiqqah2BintLaboun: "Two Hiqqah + Bint Laboun",
+        hiqqah3: "Three Hiqqah",
+        bintLaboun4: "Four Bint Laboun",
+        hiqqaBintLaboun3: "Hiqqah + three Bint Laboun",
+        hiqqah2BintLaboun2: "Two Hiqqah + two Bint Laboun",
+        hiqqah3BintLaboun: "Three Hiqqah + Bint Laboun",
+        hiqqah4OrBintLaboun5: "Four Hiqqah or five Bint Laboun",
+        hiqqaBintLaboun4: "Hiqqah + four Bint Laboun",
+        hiqqah2BintLaboun3: "Two Hiqqah + three Bint Laboun",
+        hiqqah3BintLaboun2: "Three Hiqqah + two Bint Laboun",
+        hiqqah4BintLaboun: "Four Hiqqah + Bint Laboun",
+        above249: "{hiqqah} Hiqqah and {bintLaboun} Bint Laboun (for each 50: Hiqqah, for each 40: Bint Laboun)"
+      },
+      
+      cow: {
+        tabee: "Tabee or Tabeea (2nd year)",
+        musinnah: "Musinnah (3rd year)",
+        tabee2: "Two Tabee or Tabeea",
+        musinnahTabee: "Musinnah + Tabee or Tabeea",
+        musinnah2: "Two Musinnah",
+        tabee3: "Three Tabee or Tabeea",
+        musinnahTabee2: "Musinnah + two Tabee or Tabeea",
+        musinnah2Tabee: "Two Musinnah + Tabee or Tabeea",
+        musinnah3OrTabee4: "Three Musinnah or four Tabee",
+        above129: "{tabee} Tabee and {musinnah} Musinnah (for each 30: Tabee, for each 40: Musinnah)"
+      },
+      
+      sheep: {
+        sheep1: "One sheep",
+        sheep2: "Two sheep",
+        sheep3: "Three sheep",
+        sheep4: "Four sheep",
+        above499: "{count} sheep (one sheep for each 100 heads)"
+      },
+      
+      info: {
+        title: "Important Information",
+        camelTitle: "Camels:",
+        camelNissab: "Nissab from 5 heads",
+        cowTitle: "Cattle:",
+        cowNissab: "Nissab from 30 heads",
+        sheepTitle: "Sheep:",
+        sheepNissab: "Nissab from 40 heads"
+      },
+      
+      messages: {
+        loginRequired: "You must login first to save",
+        noZakatToBeSaved: "No livestock subject to Zakat to save",
+        saveSuccess: "Livestock saved successfully!",
+        saveFailed: "Failed to save livestock, try again"
       },
       
       show: "Show",
