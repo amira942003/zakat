@@ -29,7 +29,8 @@ import { HomePage } from "./pages/HomePage.jsx";
 import "./i18n";
 import ScrollToTop from "./Components/ScrollToTop.jsx";
 import { Ma7acil } from "./Components/Ma7acil.jsx";
-import { Mawachi } from "./Components/Mawachi.jsx";
+import { Mawachi } from "./Components/mawachi.jsx";
+
 import Awkaf from "./pages/Awkaf/Awkaf.jsx";
 import Ma7acilHistory from "./pages/Ma7acilHistory.jsx";
 import { LanguageProvider } from "./Components/LanguageProvider.jsx";
@@ -262,14 +263,13 @@ const router = createBrowserRouter([
         </ProtectedRoute>
       </ScrollToTop>
     ),
-  },
-  {
+  },{
     path: "/mawachi",
     element: (
       <ScrollToTop>
         <ProtectedRoute>
           <Layout>
-            <Mawachi />
+            <Ma7acil />
           </Layout>
         </ProtectedRoute>
       </ScrollToTop>
