@@ -269,7 +269,7 @@ const router = createBrowserRouter([
       <ScrollToTop>
         <ProtectedRoute>
           <Layout>
-            <Ma7acil />
+            <mawachi />
           </Layout>
         </ProtectedRoute>
       </ScrollToTop>
