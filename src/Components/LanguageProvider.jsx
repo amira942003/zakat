@@ -19,15 +19,15 @@ export const translations = {
           x9: "نقود من بيع أصول"
         },
         descriptions: {
-          x1: "النقود المتوفرة مباشرة في صندوق الشركة أو المكتب",
-          x2: "النقود الموجودة في الحسابات المصرفية الجارية أو تحت الطلب",
-          x3: "الشيكات الصادرة والمصدّقة من البنوك والتي يمكن صرفها",
-          x4: "أي أموال نقدية بعملات أجنبية متاحة في الشركة",
-          x5: "الأموال الرقمية أو العملات المشفرة المتاحة للتصرف فيها",
-          x6: "الودائع التي يمكن سحبها أو التصرف فيها عند الحاجة",
-          x7: "القروض الحسنة التي تم إعطاؤها والتي لم يتم تحصيلها بعد",
-          x8: "الإيرادات المستحقة على الشركة ولم يتم قبضها بعد",
-          x9: "الأموال الناتجة من بيع أصول لا تدخل ضمن الزكاة"
+          x1: "وهي الأوراق النقدية والقطع المعدنية التي تحتفظ بها مباشرة في يدك أو في خزنتك. هذه المبالغ متاحة فوراً وتُعتبر خاضعة للزكاة إذا بلغت النصاب ومضت عليها سنة هجرية كاملة",
+          x2: "ويقصد بها الأرصدة المتوفرة في حساباتك البنكية والتي يمكن سحبها أو استخدامها في أي وقت. سواءً أبقيتها في البنك أو استعملتها باستمرار، فهي تعتبر سيولة متاحة، وبالتالي خاضعة للزكاة",
+          x3: "هي الشيكات التي صدّقتها أو ضمِنتها البنوك، والتي يمكنك صرفها مباشرة. وتُعتبر مالاً نقدياً متوفراً، ولذلك يجب إدخالها في وعاء الزكاة",
+          x4: "إذا كنتَ تملك عملات أجنبية (دولار، يورو، إلخ)، فيجب أخذها بعين الاعتبار. يتم تحويلها إلى العملة المحلية بسعر الصرف في يوم حساب الزكاة، ثم تُضاف إلى الوعاء الزكوي",
+          x5: "مثل البيتكوين والإيثيريوم وغيرها من العملات القابلة للبيع أو الاستخدام الفوري. تُقوّم بسعر السوق الحالي وتُضاف لقيمة الأموال الخاضعة للزكاة",
+          x6: "وهي الأموال المودَعة في حسابات لأجل أو كضمانات يمكن سحبها حالياً. في هذه الحالة تُعتبر سيولة وتدخل في حساب الزكاة",
+          x7: "المال الذي أقرضته لشخص آخر بدون فائدة. ما دام لم يُسترجع فلا يدخل في وعاء الزكاة. عند استرجاعه، يُضم إلى أموالك وتزكيه في نفس السنة",
+          x8: "وهي المبالغ التي تستحق لك (مثل أجور أو إيجارات أو خدمات أُنجزت) لكنك لم تستلمها بعد. لا تدفع الزكاة عليها إلا عند قبضها فعلاً",
+          x9: "إذا حصلت على أموال نتيجة بيع أصول غير خاضعة للزكاة (مثل بيت سكني أو ميراث أو هبة)، فإنها لا تدخل في وعاء الزكاة إلا إذا استوفت الشروط: بلوغ النصاب ومضي الحول"
         }
       },
       "2": {
@@ -42,13 +42,13 @@ export const translations = {
           y7: "ديون مشكوك فيها"
         },
         descriptions: {
-          y1: "الديون المستحقة حالياً من العملاء والمتوقع تحصيلها قريباً",
-          y2: "الديون التي تم تأجيل تحصيلها والمتوقعة الحصول عليها لاحقاً",
-          y3: "الشيكات أو المستندات التي تثبت الحق في استلام الأموال",
-          y4: "القروض الحسنة أو الديون الخاصة بمبيعات حصرية",
-          y5: "الديون الناتجة عن بيع أصول لا تدخل ضمن الزكاة",
-          y6: "الإيرادات المؤجلة من العقارات أو المعدات المؤجرة",
-          y7: "الديون التي لا يُتوقع تحصيلها بسهولة أو مستحيلة"
+          y1: "أي أموال استحق أجلها ولم تُدفع بعد، وكان العميل قادراً على السداد. تُعتبر مالاً مؤكداً ويجب إدخالها فوراً في حساب الزكاة",
+          y2: "ديون مقررة الدفع في المستقبل (مثال: عقد دفع بعد 6 أشهر) مع ضمان قدرة العميل. تُعتبر مضمونة وتُزكى فوراً",
+          y3: "وهي مستندات قانونية تثبت ديناً مؤكداً على الغير يمكن قبضه عند الاستحقاق. تُعتبر ديناً مؤكداً وتُزكى",
+          y4: "إذا أقرضت مالاً بدون فائدة أو بعت ببيع خاص مضمون السداد، فهي ديون مؤكدة. تُضم لوعاء الزكاة",
+          y5: "مثل: بيع منزل سكني، مهر (صداق) مستحق، أو إرث لم يُقبض بعد. لا تُزكى إلا عند قبضها فعلياً",
+          y6: "إذا حان أجلها ولم تُدفع (مثل إيجار مستحق في يناير ولم يُدفع بعد)، فهي داخلة في وعاء الزكاة",
+          y7: "مثل: عميل مفلس، شخص مفقود، أو دين قديم منسي. لا تُزكى الآن. عند تحصيلها تُزكى في نفس السنة"
         }
       },
       "3": {
@@ -60,10 +60,10 @@ export const translations = {
           z4: "أربعون بالمئة من قيمة سوقية للاسهم بنية الاحتفاظ"
         },
         descriptions: {
-          z1: "الأسهم والسندات والحصص المستخدمة في التجارة",
-          z2: "الحصص في العقارات التي تستخدم للأغراض التجارية",
-          z3: "الاستثمارات في السندات وأذون الخزينة القابلة للزكاة",
-          z4: "الأسهم المحتفظ بها بغرض العائد على المدى الطويل"
+          z1: "إذا اشتريت أسهماً أو صكوكاً بنية بيعها بربح، فهي مثل البضائع التجارية. تُزكى بقيمتها السوقية عند الحول",
+          z2: "مثل شراء أرض أو شقة بنية إعادة بيعها. تُزكى على القيمة السوقية الحالية، لا على ثمن الشراء",
+          z3: "إذا كانت شرعية (صكوك)، فتُعامل كالبضاعة إذا نويت البيع، أو تزكى أرباحها إذا للاحتفاظ بالعائد",
+          z4: "إذا كنت تملك أسهماً للاستفادة من الأرباح لا لإعادة البيع: إما تزكي على نسبة أصول الشركة الزكوية بما يتناسب مع حصتك، أو تزكي فقط على الأرباح المستلمة"
         }
       },
       "4": {
@@ -80,14 +80,14 @@ export const translations = {
           a9: "بضاعة كاسدة"
         },
         descriptions: {
-          a1: "البضائع الجاهزة للبيع دون أي تعديل",
-          a2: "البضائع في مرحلة التصنيع أو التجهيز",
-          a3: "المواد الخام المستخدمة في الإنتاج",
+          a1: "البضائع الجاهزة للبيع دون أي تعديل. تُزكى بقيمتها السوقية",
+          a2: "البضائع في مرحلة التصنيع أو التجهيز. تزكى بقيمة ما أُنجز فيها",
+          a3: "المواد الخام المستخدمة في الإنتاج. تدخل في الوعاء بقيمتها الحالية",
           a4: "البضائع التي تم شراؤها ولكن لم تصل بعد",
           a5: "البضائع المخزنة أو المعطاة للآخرين تحت الأمانة",
           a6: "قطع الغيار المخصصة للبيع أو التجارة",
-          a7: "البضائع التي تم الحصول عليها كهدية أو إرث",
-          a8: "العقارات المستخدمة للتجارة والاحتكار",
+          a7: "البضائع المشتراة لإعادة البيع. تزكى بسعر البيع الحالي",
+          a8: "العقارات المستخدمة للتجارة. تزكى بقيمتها السوقية",
           a9: "البضائع الفاسدة أو غير المعدة للبيع"
         }
       },
@@ -114,13 +114,13 @@ export const translations = {
           c7: "احتياطيات عامة"
         },
         descriptions: {
-          c1: "القروض القصيرة الأجل التي يجب دفعها خلال السنة",
-          c2: "المبالغ المستحقة للدفع للموردين أو الدائنين",
-          c3: "الالتزامات تجاه الموظفين مثل الرواتب والإجازات",
-          c4: "الضرائب المستحقة على الشركة خلال السنة",
-          c5: "الأرباح التي تخص شركاء أو مستثمرين آخرين",
-          c6: "أي تأمينات أو مبالغ مقدمة من العملاء للرد عليها",
-          c7: "المخصصات المالية العامة والاحتياطيات المتوقعة"
+          c1: "الديون والقروض القصيرة الأجل (≤ 12 شهراً) تخصم من الوعاء الزكوي",
+          c2: "المبالغ المستحقة للدفع للموردين أو الدائنين. تُخصم من الوعاء",
+          c3: "الالتزامات تجاه الموظفين مثل الرواتب والإجازات. تُخصم",
+          c4: "الضرائب المستحقة على الشركة خلال السنة. تُخصم",
+          c5: "الأرباح التي تخص شركاء أو مستثمرين آخرين. تُخصم",
+          c6: "أي تأمينات أو مبالغ مقدمة من العملاء للرد عليها. تُخصم",
+          c7: "المخصصات الإلزامية مثل: الضرائب المستحقة، أجور الإجازات، الفواتير المستحقة. المخصصات العامة (احتياطيات احتمالية) لا تُخصم"
         }
       },
       malikiAssets: {
@@ -398,15 +398,15 @@ export const translations = {
           x9: "Argent provenant de la vente d'actifs"
         },
         descriptions: {
-          x1: "Liquidités disponibles directement dans la caisse de l'entreprise ou du bureau",
-          x2: "Fonds dans les comptes bancaires courants ou à vue",
-          x3: "Chèques émis et certifiés par les banques pouvant être encaissés",
-          x4: "Toute somme en devises étrangères disponible dans l'entreprise",
-          x5: "Actifs numériques ou cryptomonnaies disponibles pour disposition",
-          x6: "Dépôts pouvant être retirés ou utilisés en cas de besoin",
-          x7: "Prêts à bon crédit accordés non encore encaissés",
-          x8: "Revenus dus à l'entreprise non encore perçus",
-          x9: "Fonds provenant de la vente d'actifs non soumis à la Zakat"
+          x1: "Ce sont les billets et pièces que vous avez directement dans vos mains ou dans votre coffre. Ces montants sont immédiatement disponibles et sont soumis à la zakat s'ils atteignent le nisab et qu'une année lunaire s'est écoulée",
+          x2: "Il s'agit des soldes que vous possédez sur vos comptes bancaires, accessibles à tout moment sans délai. Peu importe si vous les laissez dormir à la banque ou si vous les utilisez fréquemment : ce sont des liquidités disponibles, donc zakatables",
+          x3: "Ce sont des chèques déjà validés ou certifiés par la banque, que vous détenez et que vous pouvez encaisser immédiatement. Ils sont considérés comme de l'argent liquide disponible et doivent donc être inclus dans le calcul de la zakat",
+          x4: "Si vous possédez des devises étrangères (dollars, euros, etc.), elles doivent aussi être prises en compte. On les convertit dans la monnaie locale au taux du jour (au moment du calcul de la zakat), puis on les inclut dans l'assiette zakatable",
+          x5: "Les cryptomonnaies (Bitcoin, Ethereum, etc.) détenues et pouvant être utilisées ou revendues immédiatement sont assimilées à des liquidités. Leur valeur au marché (prix actuel de la crypto) est ajoutée au calcul de la zakat",
+          x6: "Ce sont des sommes placées en dépôt à terme ou sous forme de dépôts de garantie, mais disponibles actuellement (vous pouvez les retirer ou les utiliser). Dans ce cas, elles sont considérées comme des liquidités et doivent être incluses dans la zakat",
+          x7: "C'est l'argent que vous avez prêté à quelqu'un à titre gratuit (sans intérêt). Tant que vous ne l'avez pas récupéré, il n'entre pas dans votre calcul. La zakat ne s'applique qu'au moment où l'argent vous est restitué",
+          x8: "Ce sont les revenus qui vous sont dus (par exemple des honoraires, des loyers, des prestations déjà effectuées) mais que vous n'avez pas encore encaissés. La règle est simple : vous ne payez la zakat que lorsque vous recevez effectivement cet argent",
+          x9: "Si vous recevez de l'argent suite à la vente d'actifs non zakatables (comme une maison utilisée pour habiter, ou un bien reçu gratuitement – don, héritage, etc.), cet argent ne devient zakatable que lorsqu'il remplit les conditions de la zakat (atteinte du nisab, écoulement d'une année lunaire, etc.)"
         }
       },
       "2": {
@@ -421,13 +421,13 @@ export const translations = {
           y7: "Dettes douteuses"
         },
         descriptions: {
-          y1: "Dettes actuellement dues par les clients et dont le recouvrement est attendu prochainement",
-          y2: "Dettes dont le recouvrement a été reporté et attendu ultérieurement",
-          y3: "Chèques ou documents prouvant le droit de recevoir des fonds",
-          y4: "Prêts à bon crédit ou dettes relatives à des ventes exclusives",
-          y5: "Dettes résultant de la vente d'actifs non soumis à la Zakat",
-          y6: "Revenus différés provenant de biens immobiliers ou équipements loués",
-          y7: "Dettes dont le recouvrement est incertain ou impossible"
+          y1: "C'est l'argent que vos clients vous doivent et dont la date de paiement est déjà arrivée. Ces créances doivent être incluses dans votre calcul de zakat dès maintenant, car elles sont assimilées à de l'argent liquide, simplement en attente d'être encaissé",
+          y2: "Il s'agit aussi de dettes de vos clients, mais avec un paiement prévu plus tard, à une date future. Si vous êtes sûr de la solvabilité du client et que cette créance est garantie, vous devez inclure ces montants dans la zakat",
+          y3: "Ce sont les billets à ordre, les lettres de change ou tout autre document écrit qui constate une dette certaine d'un tiers envers vous. Comme il s'agit d'une créance solide et garantie, elle doit être intégrée dans l'assiette zakatable",
+          y4: "Il s'agit d'argent que vous avez prêté à quelqu'un (sans intérêt), ou d'argent dû à la suite d'une vente spécifique. Si vous êtes confiant que le débiteur vous remboursera, on inclut ces créances dans le calcul de la zakat",
+          y5: "Parfois, vous pouvez avoir de l'argent à recevoir, mais qui ne provient pas d'une activité commerciale (vente d'une maison personnelle, dot, héritage). La zakat ne s'applique donc qu'au moment où vous recevez réellement ces sommes",
+          y6: "Si vous avez des revenus locatifs qui sont arrivés à échéance mais pas encore encaissés, ils doivent être pris en compte dans le calcul de la zakat. Tout revenu arrivé à échéance et dû fait partie de l'assiette de la zakat",
+          y7: "C'est le cas où vous avez une créance, mais vous doutez sérieusement que le débiteur vous paie un jour (client en faillite, personne disparue, dette très ancienne). Vous n'êtes pas tenu de les inclure dans votre zakat immédiatement. Vous attendez de les récupérer réellement"
         }
       },
       "3": {
@@ -439,10 +439,10 @@ export const translations = {
           z4: "Actions avec retour sur investissement"
         },
         descriptions: {
-          z1: "Actions, obligations et parts utilisées dans le commerce",
-          z2: "Parts dans des biens immobiliers utilisés à des fins commerciales",
-          z3: "Investissements dans des obligations et bons du Trésor soumis à la Zakat",
-          z4: "Actions détenues dans le but d'un rendement à long terme"
+          z1: "Ce sont les actions (parts d'entreprises) et les Sukuk (titres financiers islamiques) que vous achetez dans l'objectif de les revendre avec une plus-value. Ces titres sont traités comme un stock de marchandises : on paie la zakat sur leur valeur actuelle de marché",
+          z2: "Cela concerne les biens immobiliers achetés uniquement dans un but de revente avec profit. L'immobilier est assimilé à une marchandise. On calcule la zakat sur la valeur marchande actuelle du bien, pas sur le prix d'achat ni sur les loyers",
+          z3: "Il s'agit des placements en obligations ou bons du Trésor. Lorsqu'il s'agit de sukuk conformes, ou de produits autorisés, on paie la zakat sur leur valeur de marché si on les détient pour les revendre, ou sur les revenus générés si on les conserve",
+          z4: "Dans ce cas, vous n'achetez pas les actions pour les revendre rapidement, mais pour toucher chaque année une part des bénéfices. Soit vous calculez la zakat sur la partie zakatable des actifs de la société, soit vous appliquez la zakat uniquement sur les dividendes encaissés"
         }
       },
       "4": {
@@ -459,14 +459,14 @@ export const translations = {
           a9: "Marchandise périmée"
         },
         descriptions: {
-          a1: "Marchandises prêtes à la vente sans aucune modification",
-          a2: "Marchandises en phase de fabrication ou de préparation",
-          a3: "Matières premières utilisées dans la production",
+          a1: "Ce sont les biens que votre entreprise détient pour les vendre directement, prêts à être commercialisés. La zakat se calcule sur la valeur marchande actuelle",
+          a2: "Ce sont les biens qui ne sont pas encore terminés mais qui sont déjà en cours de production. La zakat s'applique sur cette valeur intermédiaire",
+          a3: "Ce sont les matériaux de base utilisés pour fabriquer vos produits finis. Ces matières premières sont considérées comme marchandises destinées à la vente indirecte, donc elles entrent dans le calcul de la zakat",
           a4: "Marchandises achetées mais non encore reçues",
           a5: "Marchandises entreposées ou confiées à des tiers",
           a6: "Pièces de rechange destinées à la vente ou au commerce",
-          a7: "Marchandises obtenues par donation ou héritage",
-          a8: "Biens immobiliers utilisés pour le commerce et la spéculation",
+          a7: "Il s'agit des biens achetés dans le but de les revendre tels quels, sans aucune transformation. La zakat se calcule sur la valeur totale de revente",
+          a8: "Biens immobiliers utilisés pour le commerce. La zakat se calcule sur leur valeur marchande",
           a9: "Marchandises avariées ou non destinées à la vente"
         }
       },
@@ -493,13 +493,13 @@ export const translations = {
           c7: "Réserves générales"
         },
         descriptions: {
-          c1: "Prêts à court terme devant être remboursés dans l'année",
-          c2: "Montants dus aux fournisseurs ou créanciers",
-          c3: "Obligations envers les employés telles que salaires et congés",
-          c4: "Taxes dues par l'entreprise dans l'année",
-          c5: "Bénéfices appartenant à des partenaires ou autres investisseurs",
-          c6: "Cautions ou avances de clients à rembourser",
-          c7: "Provisions financières générales et réserves prévues"
+          c1: "Toutes les dettes qui doivent être remboursées dans les 12 mois à venir. Ces montants viennent en déduction de l'assiette de la zakat",
+          c2: "Toutes les factures et obligations financières vis-à-vis des fournisseurs, arrivant à échéance durant l'année. Cette dette est déductible",
+          c3: "Obligations envers les employés (salaires, congés payés). Elles se déduisent",
+          c4: "Impôts et taxes dues et exigibles dans l'année. Elles se déduisent",
+          c5: "Bénéfices appartenant à des partenaires ou autres investisseurs. Ils sont déduits",
+          c6: "Cautions, dépôts reçus des clients, avances qui doivent être restituées. Elles sont déduites car elles ne nous appartiennent pas réellement",
+          c7: "Certaines provisions obligatoires doivent être considérées car elles représentent des obligations certaines. Les provisions générales ou estimatives ne sont pas déductibles"
         }
       },
       malikiAssets: {
@@ -518,7 +518,7 @@ export const translations = {
     },
     methods: {
       maliki: "Formule de calcul Zakat des entreprises (Maliki)",
-      companies: "Formule de calcul des entreprises",
+      companies: "Formule AAOIFI de calcul des entreprises",
       alioua: "Formule Alioua",
       netWealth: "Formule de richesse nette"
     },
@@ -777,15 +777,15 @@ export const translations = {
           x9: "Money from sale of assets"
         },
         descriptions: {
-          x1: "Cash directly available in the company's cash register or office",
-          x2: "Funds in current or demand bank accounts",
-          x3: "Checks issued and certified by banks that can be cashed",
-          x4: "Any cash in foreign currencies available in the company",
-          x5: "Digital assets or cryptocurrencies available for disposal",
-          x6: "Deposits that can be withdrawn or used when needed",
-          x7: "Good credit loans granted not yet collected",
-          x8: "Income due to the company not yet received",
-          x9: "Funds from the sale of assets not subject to Zakat"
+          x1: "These are the banknotes and coins you physically have in your hands or stored in a safe. These amounts are immediately available and subject to zakat if they reach the nisab threshold and a lunar year has passed",
+          x2: "These are the balances you hold in your bank accounts, accessible at any time without delay. Regardless of whether you keep them idle in the bank or use them frequently, they are considered available liquid assets, and therefore zakatable",
+          x3: "These are checks already validated or certified by the bank, which you hold and can cash immediately. They are treated as available liquid money and must be included in zakat calculations",
+          x4: "If you hold foreign currencies (dollars, euros, etc.), they must also be included. They should be converted into local currency at the current exchange rate (on the zakat calculation date), and then added to the zakatable base",
+          x5: "Cryptocurrencies (Bitcoin, Ethereum, etc.) that are held and can be immediately used or sold are considered liquid assets. Their market value (current crypto price) is added to the zakat calculation",
+          x6: "These are sums placed in time deposits, escrow, or as security deposits but which are currently accessible (you can withdraw or use them). In this case, they are considered liquid and must be included in zakat",
+          x7: "This refers to money you lent to someone free of charge (without interest). As long as it has not been returned, it is not included in your zakat calculation. Zakat becomes due only once the money is repaid to you",
+          x8: "These are amounts owed to you (fees, rent, or services already rendered) but not yet received. The rule is simple: you only pay zakat once you actually collect the money",
+          x9: "If you receive money from selling non-zakatable assets (such as a personal house, or a gift/inheritance), that money only becomes zakatable once it meets zakat conditions (reaches nisab, one lunar year passes, etc.)"
         }
       },
       "2": {
@@ -800,13 +800,13 @@ export const translations = {
           y7: "Doubtful debts"
         },
         descriptions: {
-          y1: "Debts currently due from customers expected to be collected soon",
-          y2: "Debts whose collection has been deferred and expected later",
-          y3: "Checks or documents proving the right to receive funds",
-          y4: "Good credit loans or debts from exclusive sales",
-          y5: "Debts resulting from the sale of assets not subject to Zakat",
-          y6: "Deferred income from rented properties or equipment",
-          y7: "Debts that are unlikely to be collected easily or impossible"
+          y1: "This refers to money clients owe you where the payment date has already passed. These amounts must be included in zakat immediately, as they are equivalent to cash simply awaiting collection",
+          y2: "This is also money owed by clients but with payment scheduled for a future date. If the client is solvent and repayment is guaranteed, these amounts must be included in zakat since they represent guaranteed wealth",
+          y3: "These are promissory notes, bills of exchange, or any written document confirming a certain debt owed to you by a third party. As these are solid, guaranteed receivables, they must be included in zakat",
+          y4: "This is money you lent to someone (interest-free, since interest is prohibited in Islam), or money owed from special types of sales. If repayment is assured, these must also be included in zakat",
+          y5: "Sometimes money owed to you doesn't come from trade (selling a personal house, a dowry owed, an inheritance). In such cases, zakat only applies once the money is actually collected",
+          y6: "If you have rental income, service fees, or farm lease payments that are due but unpaid, they must be included in zakat. Any income already due is part of zakat, even if delayed",
+          y7: "This is when you doubt repayment (bankrupt client, missing debtor, old unpaid debt). These are excluded from zakat until actually recovered. If they are ever recovered, they are included in zakat that year"
         }
       },
       "3": {
@@ -818,10 +818,10 @@ export const translations = {
           z4: "Return on investment stocks"
         },
         descriptions: {
-          z1: "Stocks, bonds, and shares used in trade",
-          z2: "Shares in real estate used for commercial purposes",
-          z3: "Investments in bonds and treasury bills subject to Zakat",
-          z4: "Stocks held for long-term return purposes"
+          z1: "These are shares (of listed or unlisted companies) or Islamic Sukuk bought with the aim of resale for profit. These are treated as trade goods: zakat is paid on their current market value at year-end",
+          z2: "This refers to properties (apartments, houses, land, premises) bought only for resale. Zakat applies to their current market value, not purchase price or rental income",
+          z3: "These include bonds, treasury bills, etc. For shariah-compliant Sukuk: if held for trading → zakat on their market value. If held for income → zakat on income generated",
+          z4: "Here, shares are held long-term to earn annual dividends. Two approaches apply: Calculate zakat on zakatable assets of the company proportional to your ownership, or pay zakat only on dividends received"
         }
       },
       "4": {
@@ -838,14 +838,14 @@ export const translations = {
           a9: "Spoiled goods"
         },
         descriptions: {
-          a1: "Goods ready for sale without any modification",
-          a2: "Goods in the manufacturing or preparation phase",
-          a3: "Raw materials used in production",
+          a1: "These are goods held for direct sale. Zakat is based on current market value, not purchase cost",
+          a2: "Goods not yet finished but already in production. Zakat applies to their intermediate value",
+          a3: "Materials used to make finished goods. These are zakatable at current market value",
           a4: "Goods purchased but not yet received",
           a5: "Goods stored or entrusted to others",
           a6: "Spare parts intended for sale or trade",
-          a7: "Goods obtained through donation or inheritance",
-          a8: "Real estate used for trade and speculation",
+          a7: "Goods bought to be resold as is. Zakat applies to their resale value, not cost price",
+          a8: "Real estate used for trade and speculation. Zakat based on market value",
           a9: "Spoiled goods or those not intended for sale"
         }
       },
@@ -872,13 +872,13 @@ export const translations = {
           c7: "General reserves"
         },
         descriptions: {
-          c1: "Short-term loans that must be repaid within the year",
-          c2: "Amounts due to suppliers or creditors",
-          c3: "Obligations to employees such as salaries and leave",
-          c4: "Taxes due by the company within the year",
-          c5: "Profits belonging to partners or other investors",
-          c6: "Deposits or advances from clients to be returned",
-          c7: "General financial provisions and expected reserves"
+          c1: "All debts due within 12 months. Deducted from zakatable assets",
+          c2: "All bills/obligations to suppliers or partners due within the year. This debt is deductible",
+          c3: "Obligations to employees (salaries, paid leave). They are deducted",
+          c4: "Taxes due and payable within the year. They are deducted",
+          c5: "Profits belonging to partners or other investors. They are deducted",
+          c6: "Deposits or advances from clients to be returned. They are deducted as they don't truly belong to you",
+          c7: "Certain mandatory provisions must be considered as they represent certain obligations. General or estimated provisions are not deductible"
         }
       },
       malikiAssets: {
@@ -897,7 +897,7 @@ export const translations = {
     },
     methods: {
       maliki: "Maliki Corporate Zakat Calculation Formula",
-      companies: "Corporate Calculation Formula",
+      companies: "AAOIFI Corporate Calculation Formula",
       alioua: "Alioua Formula",
       netWealth: "Net Wealth Formula"
     },
