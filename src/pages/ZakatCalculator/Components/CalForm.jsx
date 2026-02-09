@@ -355,7 +355,7 @@ export const CalForm = () => {
                     value={methodCalcul}
                   >
                     <option value="Maliki">{t('معادلة حساب زكاة الشركات المالكي')}</option>
-                    <option value="AAOIFI">{t('معادلة حساب الشركات')}</option>
+                    <option value="AAOIFI">{t(' AAOIFI معادلة حساب الشركات')}</option>
                     <option value="Alioua">{t('معادلة باسم عليوة')}</option>
                     <option value="Net">{t('معادلة صافي الغنى')}</option>
                   </select>
