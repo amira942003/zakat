@@ -94,7 +94,7 @@ export const Header = () => {
           زكاة
         </Link>
 
-        {/* Nav links desktop */}
+        {/* Nav links + Auth desktop */}
         <div className="hidden lg:flex items-center gap-6">
           {navLinks.map(({ path, label, requiresAuth }) => (
             <Link
@@ -108,9 +108,34 @@ export const Header = () => {
               {requiresAuth && !isLoggedIn && " 🔒"}
             </Link>
           ))}
+
+          {/* AUTH DESKTOP */}
+          {isLoggedIn ? (
+            <button
+              onClick={handleLogout}
+              className="ml-4 px-4 py-1 text-sm font-semibold rounded-full bg-white text-green-800 hover:bg-green-100 transition"
+            >
+              {translations[language].logout}
+            </button>
+          ) : (
+            <div className="flex items-center gap-2 ml-4">
+              <Link
+                to="/login"
+                className="px-4 py-1 text-sm rounded-full bg-green-500 hover:bg-green-400 text-black"
+              >
+                {translations[language].login}
+              </Link>
+              <Link
+                to="/Register"
+                className="px-4 py-1 text-sm rounded-full bg-white text-green-700 hover:bg-green-100"
+              >
+                {translations[language].register}
+              </Link>
+            </div>
+          )}
         </div>
 
-        {/* LANGUAGES – TOUJOURS VISIBLES (PC + MOBILE) */}
+        {/* LANGUAGES */}
         <div className="flex items-center gap-1">
           {["ar", "fr", "en"].map((lng) => (
             <button
@@ -129,10 +154,7 @@ export const Header = () => {
         </div>
 
         {/* Mobile menu button */}
-        <button
-          className="lg:hidden p-2"
-          onClick={() => setIsOpen(!isOpen)}
-        >
+        <button className="lg:hidden p-2" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </nav>
@@ -160,10 +182,16 @@ export const Header = () => {
             </button>
           ) : (
             <div className="flex gap-2 mt-3">
-              <Link to="/login" className="flex-1 bg-green-400 text-black py-2 text-center rounded">
+              <Link
+                to="/login"
+                className="flex-1 bg-green-400 text-black py-2 text-center rounded"
+              >
                 {translations[language].login}
               </Link>
-              <Link to="/Register" className="flex-1 bg-white text-green-700 py-2 text-center rounded">
+              <Link
+                to="/Register"
+                className="flex-1 bg-white text-green-700 py-2 text-center rounded"
+              >
                 {translations[language].register}
               </Link>
             </div>
