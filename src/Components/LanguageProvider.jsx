@@ -139,11 +139,11 @@ export const translations = {
     },
     methods: {
       Maliki: "معادلة حساب الشركات مالك ",
-      Hanafi:        "معادلة حساب الشركات مالك ",
+      Hanafi:        "معادلة حساب شركات AAOIFI ",
 
-      Shafi:        "معادلة حساب الشركات مالك",
+      Shafi: "      معادلة باسم عليوة",
 
-      AAOIFI:        "معادلة حساب شركات AAOIFI ",
+      AAOIFI:         "معادلة طريقة صافي الغنى",
 
     
     },
