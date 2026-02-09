@@ -138,14 +138,10 @@ export const translations = {
       }
     },
     methods: {
-      Maliki: "معادلة حساب الشركات مالك ",
-      Hanafi:        "معادلة حساب شركات AAOIFI ",
-
-      Shafi: "      معادلة باسم عليوة",
-
-      AAOIFI:         "معادلة طريقة صافي الغنى",
-
-    
+      maliki: "معادلة حساب زكاة الشركات المالكي",
+      companies: "معادلة حساب الشركات",
+      alioua: "معادلة باسم عليوة",
+      netWealth: "معادلة صافي الغنى"
     },
     ui: {
       goldPrice: {
@@ -521,12 +517,10 @@ export const translations = {
       }
     },
     methods: {
-      Maliki: "Maliki",
-      Hanafi: "Hanafi",
-      Shafi: "Shafi",
-      AAOIFI: "AAOIFI",
-      Alioua: "Alioua",
-      Net: "Net"
+      maliki: "Formule de calcul Zakat des entreprises (Maliki)",
+      companies: "Formule de calcul des entreprises",
+      alioua: "Formule Alioua",
+      netWealth: "Formule de richesse nette"
     },
     ui: {
       goldPrice: {
@@ -902,12 +896,10 @@ export const translations = {
       }
     },
     methods: {
-      Maliki: "Maliki",
-      Hanafi: "Hanafi",
-      Shafi: "Shafi",
-      AAOIFI: "AAOIFI",
-      Alioua: "Alioua",
-      Net: "Net"
+      maliki: "Maliki Corporate Zakat Calculation Formula",
+      companies: "Corporate Calculation Formula",
+      alioua: "Alioua Formula",
+      netWealth: "Net Wealth Formula"
     },
     ui: {
       goldPrice: {
