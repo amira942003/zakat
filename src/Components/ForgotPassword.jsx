@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useApi } from "@/ApiProvider";
-import { useLanguage } from "../Components/LanguageProvider"; // <-- même logique
+import { useLanguage } from "../Components/LanguageProvider"; // 
 
 // -------------------- Translations --------------------
 const translations = {

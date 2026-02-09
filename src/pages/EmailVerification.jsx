@@ -6,7 +6,7 @@ export function EmailVerification() {
   const { uid, token } = useParams();
   const navigate = useNavigate();
   const api = useApi();
-  const [status, setStatus] = useState('verifying'); // verifying, success, error
+  const [status, setStatus] = useState('verifying'); 
   const [message, setMessage] = useState('');
 
   useEffect(() => {

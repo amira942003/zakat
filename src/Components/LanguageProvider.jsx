@@ -138,12 +138,14 @@ export const translations = {
       }
     },
     methods: {
-      Maliki: "مالكي",
-      Hanafi: "حنفي",
-      Shafi: "شافعي",
-      AAOIFI: "هيئة المحاسبة",
-      Alioua: "علي وع",
-      Net: "صافي"
+      Maliki: "معادلة حساب الشركات مالك ",
+      Hanafi:        "معادلة حساب الشركات مالك ",
+
+      Shafi:        "معادلة حساب الشركات مالك",
+
+      AAOIFI:        "معادلة حساب شركات AAOIFI ",
+
+    
     },
     ui: {
       goldPrice: {
