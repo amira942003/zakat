@@ -64,7 +64,9 @@ export const translations = {
           z1: "إذا اشتريت أسهماً أو صكوكاً بنية بيعها بربح، فهي مثل البضائع التجارية. تُزكى بقيمتها السوقية عند الحول",
           z2: "مثل شراء أرض أو شقة بنية إعادة بيعها. تُزكى على القيمة السوقية الحالية، لا على ثمن الشراء",
           z3: "إذا كانت شرعية (صكوك)، فتُعامل كالبضاعة إذا نويت البيع، أو تزكى أرباحها إذا للاحتفاظ بالعائد",
-          z4: "إذا كنت تملك أسهماً للاستفادة من الأرباح لا لإعادة البيع: إما تزكي على نسبة أصول الشركة الزكوية بما يتناسب مع حصتك، أو تزكي فقط على الأرباح المستلمة"
+          z4: "إذا كنت تملك أسهماً للاستفادة من الأرباح لا لإعادة البيع: إما تزكي على نسبة أصول الشركة الزكوية بما يتناسب مع حصتك، أو تزكي فقط على الأرباح المستلمة",
+         z5: "الأرباح الموزعة (توزيعات الأرباح) المستلمة من الأسهم المحتفظ بها. تُزكى عند استلامها"
+
         }
       },
       "4": {
@@ -437,13 +439,17 @@ export const translations = {
           z1: "Actions commerciales",
           z2: "Parts immobilières",
           z3: "Investissements en obligations",
-          z4: "Actions avec retour sur investissement"
+          z4: "Actions avec retour sur investissement", 
+              z5: "Dividendes des actions"
+
         },
         descriptions: {
           z1: "Ce sont les actions (parts d'entreprises) et les Sukuk (titres financiers islamiques) que vous achetez dans l'objectif de les revendre avec une plus-value. Ces titres sont traités comme un stock de marchandises : on paie la zakat sur leur valeur actuelle de marché",
           z2: "Cela concerne les biens immobiliers achetés uniquement dans un but de revente avec profit. L'immobilier est assimilé à une marchandise. On calcule la zakat sur la valeur marchande actuelle du bien, pas sur le prix d'achat ni sur les loyers",
           z3: "Il s'agit des placements en obligations ou bons du Trésor. Lorsqu'il s'agit de sukuk conformes, ou de produits autorisés, on paie la zakat sur leur valeur de marché si on les détient pour les revendre, ou sur les revenus générés si on les conserve",
-          z4: "Dans ce cas, vous n'achetez pas les actions pour les revendre rapidement, mais pour toucher chaque année une part des bénéfices. Soit vous calculez la zakat sur la partie zakatable des actifs de la société, soit vous appliquez la zakat uniquement sur les dividendes encaissés"
+          z4: "Dans ce cas, vous n'achetez pas les actions pour les revendre rapidement, mais pour toucher chaque année une part des bénéfices. Soit vous calculez la zakat sur la partie zakatable des actifs de la société, soit vous appliquez la zakat uniquement sur les dividendes encaissés",
+             z5: "Les dividendes (distributions de bénéfices) reçus des actions conservées. La zakat s'applique lors de leur réception"
+
         }
       },
       "4": {
@@ -816,13 +822,17 @@ export const translations = {
           z1: "Trade stocks",
           z2: "Real estate shares",
           z3: "Bond investments",
-          z4: "Return on investment stocks"
+          z4: "Return on investment stocks", 
+              z5: "Stock dividends"
+
         },
         descriptions: {
           z1: "These are shares (of listed or unlisted companies) or Islamic Sukuk bought with the aim of resale for profit. These are treated as trade goods: zakat is paid on their current market value at year-end",
           z2: "This refers to properties (apartments, houses, land, premises) bought only for resale. Zakat applies to their current market value, not purchase price or rental income",
           z3: "These include bonds, treasury bills, etc. For shariah-compliant Sukuk: if held for trading → zakat on their market value. If held for income → zakat on income generated",
-          z4: "Here, shares are held long-term to earn annual dividends. Two approaches apply: Calculate zakat on zakatable assets of the company proportional to your ownership, or pay zakat only on dividends received"
+          z4: "Here, shares are held long-term to earn annual dividends. Two approaches apply: Calculate zakat on zakatable assets of the company proportional to your ownership, or pay zakat only on dividends received",
+            z5: "Dividends (profit distributions) received from held stocks. Zakat applies upon receipt"
+
         }
       },
       "4": {
@@ -1181,6 +1191,8 @@ export const getZakatForm = (t) => [
       { name: 'z2', label: t('forms.3.fields.z2'), description: t('forms.3.descriptions.z2'), children: [] },
       { name: 'z3', label: t('forms.3.fields.z3'), description: t('forms.3.descriptions.z3'), children: [] },
       { name: 'z4', label: t('forms.3.fields.z4'), description: t('forms.3.descriptions.z4'), children: [] },
+      { name: 'z5', label: t('forms.3.fields.z5'), description: t('forms.3.descriptions.z5'), children: [] },
+
     ]
   },
   {
