@@ -40,6 +40,7 @@ import { ApiProvider } from "./ApiProvider.jsx";
 import "./index.css";
 import { LoginPage } from "./pages/Login/LoginPage.jsx";
 import { EmailVerification } from "./pages/EmailVerification.jsx";
+import { Documentation } from "./Components/Documentations.jsx"; 
 
 const router = createBrowserRouter([
   {
@@ -177,6 +178,16 @@ const router = createBrowserRouter([
     ),
   },
   {
+    path: "/Documentation",  // ← ROUTE AJOUTÉE
+    element: (
+      <ScrollToTop>
+        <Layout>
+          <Documentation />
+        </Layout>
+      </ScrollToTop>
+    ),
+  },
+  {
     path: "/Contact",
     element: (
       <ScrollToTop>
@@ -263,7 +274,8 @@ const router = createBrowserRouter([
         </ProtectedRoute>
       </ScrollToTop>
     ),
-  },{
+  },
+  {
     path: "/mawachi",
     element: (
       <ScrollToTop>
