@@ -388,15 +388,15 @@ export const translations = {
   fr: {
     forms: {
       "1": {
-        label: "Argent et équivalents",
+        label: "Liquidités et équivalents",
         fields: {
-          x1: "Liquidités en caisse",
+          x1: "Espèces en caisse",
           x2: "Liquidités en banque",
           x3: "Chèques certifiés",
           x4: "Devises étrangères",
-          x5: "Actifs numériques disponibles",
-          x6: "Dépôts en fiducie",
-          x7: "Prêt à bon crédit",
+          x5: "Actifs numériques/cryptomonnaies disponibles",
+          x6: "Dépôts de garantie/comptes fixes accessibles",
+          x7: "Prêt sans intérêt accordé (jusqu'à encaissement)",
           x8: "Revenus à recevoir",
           x9: "Argent provenant de la vente d'actifs"
         },
@@ -413,14 +413,14 @@ export const translations = {
         }
       },
       "2": {
-        label: "Créances",
+        label: "Créances recouvrable",
         fields: {
-          y1: "Dettes à court terme attendues",
-          y2: "Dettes différées",
-          y3: "Effets à recevoir",
-          y4: "Dettes attendues",
-          y5: "Dettes provenant de la vente d'actifs",
-          y6: "Revenus locatifs",
+          y1: "Créances clients courantes recouvrables",
+          y2: "Créances différées recouvrables",
+          y3: "Créances recouvrables (prêt sans intérêt/vente monopolistique)",
+          y4: "Créances sur vente d'actifs non zakatable/non commerciaux",
+          y5: "Revenus de location/loyer échus",
+          y6: "Créances douteuses/irrécouvrables",
           y7: "Dettes douteuses"
         },
         descriptions: {
@@ -436,10 +436,10 @@ export const translations = {
       "3": {
         label: "Investissements soumis à la Zakat",
         fields: {
-          z1: "Actions commerciales",
-          z2: "Parts immobilières",
-          z3: "Investissements en obligations",
-          z4: "Actions avec retour sur investissement", 
+          z1: "Actions/Sukuk/parts commerciales",
+          z2: "Parts immobilières commerciales",
+          z3: "Investissements obligations/bons du Trésor",
+          z4: "Actions d'infrastructure à rendement (détention)", 
               z5: "Dividendes des actions"
 
         },
@@ -510,11 +510,11 @@ export const translations = {
         }
       },
       malikiAssets: {
-        label: "Actifs financiers",
+        label: "Responsabilité financiers",
         fields: {
-          SPA: "Actifs de la société",
+          SPA: "Responsabilité financière de la société",
           SARL: "Actifs de l'individu",
-          limit: "Limite de faillite"
+          limit: "Limite d'insolvabilité"
         },
         descriptions: {
           SPA: "Ressources financières de l'entreprise détenues par les associés",
