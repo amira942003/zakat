@@ -1,19 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ZakatPrice } from "./ZakatPrice";
 import { MessagePopup } from "../../../Components/MessagePopup";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/Components/ui/tooltip"
 import { ZakatContext } from "../../../Components/ZakatProvider";
-import { ChevronDown, ChevronUp, Plus, Minus, HelpCircle } from "lucide-react";
+import { ChevronDown, Plus, Minus, HelpCircle, X } from "lucide-react";
 import { WarninIcon } from "@/assets/Svg/WarninIcon";
-import { Link } from "react-router-dom";
 import { GoldPrice } from "./GoldPrice";
-
 import { getZakatForm, useLanguage } from "@/Components/LanguageProvider";
 import { LanguageSwitcher } from "@/Components/LanguageSwitcher";
+
 export const formatNumber = (num) =>
   !num ? "" : num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
@@ -26,6 +20,8 @@ export const CalForm = () => {
   const [companyType, setCompanyType] = useState("SARL");
   const [collapsedSections, setCollapsedSections] = useState({});
   const [additionalFields, setAdditionalFields] = useState({});
+  // ✅ Nouvel état : quel champ a sa description ouverte
+  const [openDescription, setOpenDescription] = useState(null);
 
   useEffect(() => {
     setFormData(getZakatForm(t));
@@ -36,6 +32,11 @@ export const CalForm = () => {
       ...prev,
       [sectionName]: !prev[sectionName]
     }));
+  };
+
+  // ✅ Toggle description au clic — fonctionne sur mobile ET desktop
+  const toggleDescription = (fieldName) => {
+    setOpenDescription(prev => prev === fieldName ? null : fieldName);
   };
 
   const addField = (fieldName) => {
@@ -57,7 +58,7 @@ export const CalForm = () => {
     if (!isNaN(rawValue) && rawValue >= 0) {
       setAdditionalFields(prev => ({
         ...prev,
-        [fieldName]: prev[fieldName].map(field => 
+        [fieldName]: prev[fieldName].map(field =>
           field.id === fieldId ? { ...field, value: rawValue } : field
         )
       }));
@@ -66,7 +67,7 @@ export const CalForm = () => {
 
   const calculateTotalForField = (fieldName, mainValue) => {
     const mainVal = Number(mainValue) || 0;
-    const additionalVals = (additionalFields[fieldName] || []).reduce((sum, field) => 
+    const additionalVals = (additionalFields[fieldName] || []).reduce((sum, field) =>
       sum + (Number(field.value) || 0), 0
     );
     return mainVal + additionalVals;
@@ -104,64 +105,64 @@ export const CalForm = () => {
   };
 
   const calcZakat = (method) => {
-    if(nissab === null) {
-      setPopup({message: (" يرجى تحديد نسبة النصاب"), type:'error'});
-      return
-    }   
+    if (nissab === null) {
+      setPopup({ message: ("يرجى تحديد نسبة النصاب"), type: 'error' });
+      return;
+    }
     const values = flattenData(formData);
-    
-    const commonAssets = 
+
+    const commonAssets =
       (values.x1 || 0) + (values.x2 || 0) + (values.x3 || 0) +
       (values.x4 || 0) + (values.x5 || 0) + (values.x6 || 0) +
       (values.a1 || 0) + (values.a4 || 0) + (values.a5 || 0);
-      
+
     let zakatBase = 0;
     let A = 0;
     let F = 0;
-    
-    switch(method) {
+
+    switch (method) {
       case "Maliki":
-        const somme = (values.y1 || 0) + (values.y2 || 0) + (values.y3 || 0) + (values.y4 || 0) 
-                      +(values.y6 || 0)+(values.z1 || 0 )+(values.z2 || 0)+(values.a2 || 0)+
-                      (values.a3 || 0)+(values.a6 || 0)+(values.a7 || 0)+(values.a8 || 0);
+        const somme = (values.y1 || 0) + (values.y2 || 0) + (values.y3 || 0) + (values.y4 || 0)
+          + (values.y6 || 0) + (values.z1 || 0) + (values.z2 || 0) + (values.a2 || 0) +
+          (values.a3 || 0) + (values.a6 || 0) + (values.a7 || 0) + (values.a8 || 0);
 
         const D = (values.c1 || 0) + (values.c2 || 0) + (values.c4 || 0) + (values.c5 || 0) + (values.c6 || 0);
 
-        companyType === "SARL" ? A = (values.SPA || 0) : A = (values.SPA || 0)+(values.SARL || 0);
+        companyType === "SARL" ? A = (values.SPA || 0) : A = (values.SPA || 0) + (values.SARL || 0);
 
         const C = A - (values.limit || 0);
-        
-        C <= D ? F = D-C : null;
+
+        C <= D ? F = D - C : null;
 
         zakatBase = commonAssets + somme - F;
         break;
       case "AAOIFI":
         zakatBase = commonAssets + (values.y1 || 0) + (values.y2 || 0) + (values.y3 || 0) + (values.y4 || 0) +
-        (values.z2 || 0) + (values.z3 || 0) + (values.z4 || 0)  + (values.z1 || 0) +
-        (values.a2 || 0) + (values.a3 || 0)  + (values.a6 || 0) +
-        (values.a7 || 0) + (values.a8 || 0) - ((values.c1 || 0) + (values.c2 || 0) + (values.c4 || 0) +
-        (values.c5 || 0) + (values.c6 || 0));
+          (values.z2 || 0) + (values.z3 || 0) + (values.z4 || 0) + (values.z1 || 0) +
+          (values.a2 || 0) + (values.a3 || 0) + (values.a6 || 0) +
+          (values.a7 || 0) + (values.a8 || 0) - ((values.c1 || 0) + (values.c2 || 0) + (values.c4 || 0) +
+            (values.c5 || 0) + (values.c6 || 0));
         break;
       case "Alioua":
         zakatBase = commonAssets + (values.x7 || 0) + (values.x8 || 0) + (values.x9 || 0) + (values.y1 || 0) +
-        (values.y2 || 0) + (values.y3 || 0) + (values.y4 || 0) + (values.y5 || 0) + (values.y6 || 0) +
-        (values.y7 || 0) + (values.z1 || 0) + (values.z2 || 0) + (values.z3 || 0) + (values.z4 || 0) +
-        (values.a2 || 0) + (values.a3 || 0) + (values.a6 || 0) +
-        (values.a7 || 0) + (values.a8 || 0) - ((values.c1 || 0) + (values.c2 || 0) + (values.c4 || 0) +
-        (values.c5 || 0) + (values.c6 || 0) + (values.c3 || 0));
+          (values.y2 || 0) + (values.y3 || 0) + (values.y4 || 0) + (values.y5 || 0) + (values.y6 || 0) +
+          (values.y7 || 0) + (values.z1 || 0) + (values.z2 || 0) + (values.z3 || 0) + (values.z4 || 0) +
+          (values.a2 || 0) + (values.a3 || 0) + (values.a6 || 0) +
+          (values.a7 || 0) + (values.a8 || 0) - ((values.c1 || 0) + (values.c2 || 0) + (values.c4 || 0) +
+            (values.c5 || 0) + (values.c6 || 0) + (values.c3 || 0));
         break;
       case "Net":
         zakatBase = commonAssets;
         break;
     }
 
-    const zakat = zakatBase > nissab ? zakatBase * 0.025 : 0; 
-    const calculationDate = new Date().toISOString().split("T")[0]; 
-        
+    const zakat = zakatBase > nissab ? zakatBase * 0.025 : 0;
+    const calculationDate = new Date().toISOString().split("T")[0];
+
     setZakatFormInfos(prevState => ({
       ...prevState,
-      zakatAmount: zakat.toFixed(2),  
-      totalAmount: zakatBase.toFixed(2),  
+      zakatAmount: zakat.toFixed(2),
+      totalAmount: zakatBase.toFixed(2),
       calculationDate: calculationDate,
     }));
 
@@ -177,8 +178,8 @@ export const CalForm = () => {
       return (
         <div key={index} className="my-2">
           {field.children && field.children.length > 0 ? (
-            <div className="bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 rounded-lg overflow-hidden ">
-              <div 
+            <div className="bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 rounded-lg overflow-hidden">
+              <div
                 className="flex items-center justify-between p-4 cursor-pointer hover:bg-emerald-100/50 transition-colors duration-200"
                 onClick={() => toggleSection(field.name)}
               >
@@ -198,11 +199,9 @@ export const CalForm = () => {
                 </div>
               </div>
 
-              <div 
-                className={` p-0 m-0 transition-all duration-300 ease-in-out overflow-hidden ${
-                  collapsedSections[field.name] 
-                    ? "max-h-0 opacity-0" 
-                    : "max-h-[2000px] opacity-100"
+              <div
+                className={`p-0 m-0 transition-all duration-300 ease-in-out overflow-hidden ${
+                  collapsedSections[field.name] ? "max-h-0 opacity-0" : "max-h-[2000px] opacity-100"
                 }`}
               >
                 <div className="p-2">
@@ -230,22 +229,33 @@ export const CalForm = () => {
                   >
                     <Plus className="w-4 h-4 group-hover:scale-110 transition-transform max-[515px]:w-3 max-[515px]:h-3" />
                   </button>
-                  
-                  {/* ✅ HelpCircle remplace l'image SVG externe qui ne s'affichait pas sur mobile */}
-                  <Tooltip className="max-w-xs whitespace-normal text-sm leading-relaxed">
-                    <TooltipTrigger asChild>
-                      <button className="p-1 hover:bg-gray-100 rounded-full transition-colors">
-                        <HelpCircle className="w-5 h-5 text-emerald-500 hover:text-emerald-700 transition-colors" />
-                      </button>
-                    </TooltipTrigger>
-                    <TooltipContent className="bg-emerald-600 text-white border-emerald-700 max-w-sm">
-                      <p className="text-sm leading-relaxed">
-                        {field.description}
-                      </p>
-                    </TooltipContent>
-                  </Tooltip>
+
+                  {/* ✅ Clic pour afficher/cacher la description — fonctionne sur mobile */}
+                  {field.description && (
+                    <button
+                      type="button"
+                      onClick={() => toggleDescription(field.name)}
+                      className="p-1 hover:bg-emerald-100 rounded-full transition-colors"
+                    >
+                      {openDescription === field.name
+                        ? <X className="w-5 h-5 text-emerald-600" />
+                        : <HelpCircle className="w-5 h-5 text-emerald-500 hover:text-emerald-700 transition-colors" />
+                      }
+                    </button>
+                  )}
                 </div>
               </div>
+
+              {/* ✅ Description visible sous le champ après clic — mobile friendly */}
+              {openDescription === field.name && field.description && (
+                <div
+                  className={`mb-3 p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-sm text-emerald-800 leading-relaxed ${
+                    language === 'ar' ? 'text-right' : 'text-left'
+                  }`}
+                >
+                  {field.description}
+                </div>
+              )}
 
               <div className="relative mb-3">
                 <input
@@ -256,7 +266,7 @@ export const CalForm = () => {
                   onChange={handleChange}
                   placeholder={t('ui.enterAmount')}
                 />
-                <span className={`DA  absolute ${language === 'ar' ? 'right-3' : 'left-3'}`}>{language === 'ar' ? 'د.ج' : 'DZD'}</span>
+                <span className={`DA absolute ${language === 'ar' ? 'right-3' : 'left-3'}`}>{language === 'ar' ? 'د.ج' : 'DZD'}</span>
                 <div className={`absolute ${language === 'ar' ? 'left-3' : 'right-3'} top-1/2 transform -translate-y-1/2`}>
                   <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
                 </div>
@@ -267,13 +277,13 @@ export const CalForm = () => {
                   <div className="flex items-center">
                     <div className="flex-1 relative">
                       <input
-                         className={`cal-input ${language === 'ar' ? 'pr-12' : 'pl-12'}`}
+                        className={`cal-input ${language === 'ar' ? 'pr-12' : 'pl-12'}`}
                         type="text"
                         value={formatNumber(additionalField.value || "")}
                         onChange={(e) => handleAdditionalFieldChange(field.name, additionalField.id, e.target.value)}
                         placeholder={t('ui.enterAdditionalAmount')}
                       />
-                      <span className={`DA  absolute ${language === 'ar' ? 'right-3' : 'left-3'}`}>{language === 'ar' ? 'د.ج' : 'DZD'}</span>
+                      <span className={`DA absolute ${language === 'ar' ? 'right-3' : 'left-3'}`}>{language === 'ar' ? 'د.ج' : 'DZD'}</span>
                       <div className={`absolute ${language === 'ar' ? 'left-3' : 'right-3'} top-1/2 transform -translate-y-1/2`}>
                         <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                       </div>
@@ -314,15 +324,15 @@ export const CalForm = () => {
           <p className="text-lg md:text-xl opacity-90 max-w-2xl mx-auto max-sm:text-sm">{t('ui.subtitle')}</p>
         </div>
       </div>
-      
+
       <LanguageSwitcher></LanguageSwitcher>
 
       <GoldPrice></GoldPrice>
-      
+
       <div className="max-[515px]:px-0 mx-auto px-6 pb-12">
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
-            
+
             <div className="form-header bg-gradient-to-r from-gray-50 to-emerald-50 border-b max-[515px]:p-4 border-gray-200 p-6">
               <div className="flex items-center">
                 <div className={`w-3 h-8 bg-emerald-600 ${language === 'ar' ? 'ml-4' : 'mr-4'} rounded-full`}></div>
@@ -339,7 +349,7 @@ export const CalForm = () => {
                   <div className={`w-1 h-6 bg-blue-600 ${language === 'ar' ? 'ml-3' : 'mr-3'} rounded-full`}></div>
                   <h3 className="font-bold text-blue-800 text-lg">{t('ui.calculationMethod')}</h3>
                 </div>
-                
+
                 <div className="relative">
                   <select
                     className="select-form"
@@ -381,11 +391,11 @@ export const CalForm = () => {
                     </div>
                   </div>
                 )}
-                
+
                 {renderInputs(getVisibleFields(), 0, companyType)}
-                
+
                 <div className="text-center mt-10 pt-6 border-t border-gray-200">
-                  <button 
+                  <button
                     className={`custom-button py-4 mb-4 rounded-sm w-1/2 ${language === 'ar' ? 'ml-2' : 'mr-2'} font-bold`}
                     onClick={() => calcZakat(methodCalcul)}
                   >
@@ -415,7 +425,7 @@ export const CalForm = () => {
       </div>
 
       {showResult && <ZakatPrice />}
-      
+
       <MessagePopup
         message={popup.message}
         type={popup.type}
