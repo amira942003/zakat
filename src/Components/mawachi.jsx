@@ -13,80 +13,85 @@ export const Mawachi = () => {
   const [popup, setPopup] = useState({ message: '', type: '' });
   const [isLoading, setIsLoading] = useState(false);
 
-  // Formules de calcul de Zakat
+  // ✅ Retourne descKey + descParams au lieu du texte traduit
   const calculateCamelZakat = (count) => {
-    if (count < 5) return { amount: 0, description: t('mawachi.noZakat') };
-    if (count <= 9) return { amount: 1, description: t('mawachi.camel.sheep1') };
-    if (count <= 14) return { amount: 2, description: t('mawachi.camel.sheep2') };
-    if (count <= 19) return { amount: 3, description: t('mawachi.camel.sheep3') };
-    if (count <= 24) return { amount: 4, description: t('mawachi.camel.sheep4') };
-    if (count <= 35) return { amount: 1, description: t('mawachi.camel.bintMakhad') };
-    if (count <= 45) return { amount: 1, description: t('mawachi.camel.bintLaboun') };
-    if (count <= 60) return { amount: 1, description: t('mawachi.camel.hiqqah') };
-    if (count <= 75) return { amount: 1, description: t('mawachi.camel.jadhaah') };
-    if (count <= 90) return { amount: 2, description: t('mawachi.camel.bintLaboun2') };
-    if (count <= 120) return { amount: 2, description: t('mawachi.camel.hiqqah2') };
-    if (count <= 129) return { amount: 3, description: t('mawachi.camel.bintLaboun3') };
-    if (count <= 139) return { amount: 1, description: t('mawachi.camel.hiqqaBintLaboun2') };
-    if (count <= 149) return { amount: 1, description: t('mawachi.camel.hiqqah2BintLaboun') };
-    if (count <= 159) return { amount: 3, description: t('mawachi.camel.hiqqah3') };
-    if (count <= 169) return { amount: 4, description: t('mawachi.camel.bintLaboun4') };
-    if (count <= 179) return { amount: 1, description: t('mawachi.camel.hiqqaBintLaboun3') };
-    if (count <= 189) return { amount: 1, description: t('mawachi.camel.hiqqah2BintLaboun2') };
-    if (count <= 199) return { amount: 1, description: t('mawachi.camel.hiqqah3BintLaboun') };
-    if (count <= 209) return { amount: 1, description: t('mawachi.camel.hiqqah4OrBintLaboun5') };
-    if (count <= 219) return { amount: 1, description: t('mawachi.camel.hiqqaBintLaboun4') };
-    if (count <= 229) return { amount: 1, description: t('mawachi.camel.hiqqah2BintLaboun3') };
-    if (count <= 239) return { amount: 1, description: t('mawachi.camel.hiqqah3BintLaboun2') };
-    if (count <= 249) return { amount: 1, description: t('mawachi.camel.hiqqah4BintLaboun') };
-    
-    // Pour plus de 249
+    if (count < 5)    return { amount: 0, descKey: 'mawachi.noZakat', descParams: {} };
+    if (count <= 9)   return { amount: 1, descKey: 'mawachi.camel.sheep1', descParams: {} };
+    if (count <= 14)  return { amount: 2, descKey: 'mawachi.camel.sheep2', descParams: {} };
+    if (count <= 19)  return { amount: 3, descKey: 'mawachi.camel.sheep3', descParams: {} };
+    if (count <= 24)  return { amount: 4, descKey: 'mawachi.camel.sheep4', descParams: {} };
+    if (count <= 35)  return { amount: 1, descKey: 'mawachi.camel.bintMakhad', descParams: {} };
+    if (count <= 45)  return { amount: 1, descKey: 'mawachi.camel.bintLaboun', descParams: {} };
+    if (count <= 60)  return { amount: 1, descKey: 'mawachi.camel.hiqqah', descParams: {} };
+    if (count <= 75)  return { amount: 1, descKey: 'mawachi.camel.jadhaah', descParams: {} };
+    if (count <= 90)  return { amount: 2, descKey: 'mawachi.camel.bintLaboun2', descParams: {} };
+    if (count <= 120) return { amount: 2, descKey: 'mawachi.camel.hiqqah2', descParams: {} };
+    if (count <= 129) return { amount: 3, descKey: 'mawachi.camel.bintLaboun3', descParams: {} };
+    if (count <= 139) return { amount: 1, descKey: 'mawachi.camel.hiqqaBintLaboun2', descParams: {} };
+    if (count <= 149) return { amount: 1, descKey: 'mawachi.camel.hiqqah2BintLaboun', descParams: {} };
+    if (count <= 159) return { amount: 3, descKey: 'mawachi.camel.hiqqah3', descParams: {} };
+    if (count <= 169) return { amount: 4, descKey: 'mawachi.camel.bintLaboun4', descParams: {} };
+    if (count <= 179) return { amount: 1, descKey: 'mawachi.camel.hiqqaBintLaboun3', descParams: {} };
+    if (count <= 189) return { amount: 1, descKey: 'mawachi.camel.hiqqah2BintLaboun2', descParams: {} };
+    if (count <= 199) return { amount: 1, descKey: 'mawachi.camel.hiqqah3BintLaboun', descParams: {} };
+    if (count <= 209) return { amount: 1, descKey: 'mawachi.camel.hiqqah4OrBintLaboun5', descParams: {} };
+    if (count <= 219) return { amount: 1, descKey: 'mawachi.camel.hiqqaBintLaboun4', descParams: {} };
+    if (count <= 229) return { amount: 1, descKey: 'mawachi.camel.hiqqah2BintLaboun3', descParams: {} };
+    if (count <= 239) return { amount: 1, descKey: 'mawachi.camel.hiqqah3BintLaboun2', descParams: {} };
+    if (count <= 249) return { amount: 1, descKey: 'mawachi.camel.hiqqah4BintLaboun', descParams: {} };
+
     const hiqqah = Math.floor(count / 50);
     const bintLaboun = Math.floor((count % 50) / 40);
-    return { 
-      amount: hiqqah + bintLaboun, 
-      description: t('mawachi.camel.above249')
-        .replace('{hiqqah}', hiqqah)
-        .replace('{bintLaboun}', bintLaboun)
+    return {
+      amount: hiqqah + bintLaboun,
+      descKey: 'mawachi.camel.above249',
+      descParams: { hiqqah, bintLaboun }
     };
   };
 
   const calculateCowZakat = (count) => {
-    if (count < 30) return { amount: 0, description: t('mawachi.noZakat') };
-    if (count <= 39) return { amount: 1, description: t('mawachi.cow.tabee') };
-    if (count <= 59) return { amount: 1, description: t('mawachi.cow.musinnah') };
-    if (count <= 69) return { amount: 2, description: t('mawachi.cow.tabee2') };
-    if (count <= 79) return { amount: 1, description: t('mawachi.cow.musinnahTabee') };
-    if (count <= 89) return { amount: 2, description: t('mawachi.cow.musinnah2') };
-    if (count <= 99) return { amount: 3, description: t('mawachi.cow.tabee3') };
-    if (count <= 109) return { amount: 1, description: t('mawachi.cow.musinnahTabee2') };
-    if (count <= 119) return { amount: 1, description: t('mawachi.cow.musinnah2Tabee') };
-    if (count <= 129) return { amount: 1, description: t('mawachi.cow.musinnah3OrTabee4') };
-    
-    // Pour plus de 129
+    if (count < 30)   return { amount: 0, descKey: 'mawachi.noZakat', descParams: {} };
+    if (count <= 39)  return { amount: 1, descKey: 'mawachi.cow.tabee', descParams: {} };
+    if (count <= 59)  return { amount: 1, descKey: 'mawachi.cow.musinnah', descParams: {} };
+    if (count <= 69)  return { amount: 2, descKey: 'mawachi.cow.tabee2', descParams: {} };
+    if (count <= 79)  return { amount: 1, descKey: 'mawachi.cow.musinnahTabee', descParams: {} };
+    if (count <= 89)  return { amount: 2, descKey: 'mawachi.cow.musinnah2', descParams: {} };
+    if (count <= 99)  return { amount: 3, descKey: 'mawachi.cow.tabee3', descParams: {} };
+    if (count <= 109) return { amount: 1, descKey: 'mawachi.cow.musinnahTabee2', descParams: {} };
+    if (count <= 119) return { amount: 1, descKey: 'mawachi.cow.musinnah2Tabee', descParams: {} };
+    if (count <= 129) return { amount: 1, descKey: 'mawachi.cow.musinnah3OrTabee4', descParams: {} };
+
     const tabee = Math.floor(count / 30);
     const musinnah = Math.floor((count % 30) / 40);
-    return { 
-      amount: tabee + musinnah, 
-      description: t('mawachi.cow.above129')
-        .replace('{tabee}', tabee)
-        .replace('{musinnah}', musinnah)
+    return {
+      amount: tabee + musinnah,
+      descKey: 'mawachi.cow.above129',
+      descParams: { tabee, musinnah }
     };
   };
 
   const calculateSheepZakat = (count) => {
-    if (count < 40) return { amount: 0, description: t('mawachi.noZakat') };
-    if (count <= 120) return { amount: 1, description: t('mawachi.sheep.sheep1') };
-    if (count <= 200) return { amount: 2, description: t('mawachi.sheep.sheep2') };
-    if (count <= 399) return { amount: 3, description: t('mawachi.sheep.sheep3') };
-    if (count <= 499) return { amount: 4, description: t('mawachi.sheep.sheep4') };
-    
-    // Pour plus de 499
+    if (count < 40)   return { amount: 0, descKey: 'mawachi.noZakat', descParams: {} };
+    if (count <= 120) return { amount: 1, descKey: 'mawachi.sheep.sheep1', descParams: {} };
+    if (count <= 200) return { amount: 2, descKey: 'mawachi.sheep.sheep2', descParams: {} };
+    if (count <= 399) return { amount: 3, descKey: 'mawachi.sheep.sheep3', descParams: {} };
+    if (count <= 499) return { amount: 4, descKey: 'mawachi.sheep.sheep4', descParams: {} };
+
     const sheep = Math.floor(count / 100);
-    return { 
-      amount: sheep, 
-      description: t('mawachi.sheep.above499').replace('{count}', sheep)
+    return {
+      amount: sheep,
+      descKey: 'mawachi.sheep.above499',
+      descParams: { count: sheep }
     };
+  };
+
+  // ✅ Traduit dynamiquement au moment du rendu (réactif au changement de langue)
+  const getDescription = (zakatDue) => {
+    if (!zakatDue?.descKey) return '';
+    return Object.entries(zakatDue.descParams || {}).reduce(
+      (str, [key, val]) => str.replace(`{${key}}`, val),
+      t(zakatDue.descKey)
+    );
   };
 
   const saveZakatHistory = async () => {
@@ -111,7 +116,7 @@ export const Mawachi = () => {
         zakat_amount: animal.zakatDue.amount,
         total_amount: parseFloat(animal.quantity) || 0,
         animal_type: animal.animalType || "غير محدد",
-        zakat_description: animal.zakatDue.description
+        zakat_description: getDescription(animal.zakatDue) // ✅ traduit au moment de la sauvegarde
       };
 
       const [data, status, error] = await api.post("/create-mawachi/", zakatData);
@@ -151,7 +156,7 @@ export const Mawachi = () => {
       {
         animalType: 'camel',
         quantity: '',
-        zakatDue: { amount: 0, description: '' },
+        zakatDue: { amount: 0, descKey: '', descParams: {} },
       },
     ]);
   };
@@ -173,7 +178,7 @@ export const Mawachi = () => {
   const calculateZakat = () => {
     const updated = animals.map(animal => {
       const qty = parseFloat(animal.quantity) || 0;
-      let zakatDue = { amount: 0, description: '' };
+      let zakatDue = { amount: 0, descKey: '', descParams: {} };
 
       if (animal.animalType === 'camel') {
         zakatDue = calculateCamelZakat(qty);
@@ -215,7 +220,7 @@ export const Mawachi = () => {
         <div className="px-3 sm:px-4 md:px-6 mx-auto pb-8 md:pb-12">
           <div className="max-w-4xl mx-auto">
             <div className="bg-white rounded-lg md:rounded-2xl shadow-lg md:shadow-xl border border-gray-200 overflow-hidden">
-              
+
               {/* Form Header */}
               <div className="form-header bg-gradient-to-r from-gray-50 to-emerald-50 border-b border-gray-200 p-4 md:p-6">
                 <div className="flex items-start gap-3 md:gap-4">
@@ -237,7 +242,7 @@ export const Mawachi = () => {
                   {animals.map((animal, index) => (
                     <div key={index} className="bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 rounded-lg overflow-hidden">
                       {/* Animal Header */}
-                      <div 
+                      <div
                         className="flex items-center justify-between p-3 md:p-4 cursor-pointer hover:bg-emerald-100/50 transition-colors duration-200 gap-2"
                         onClick={() => toggleAnimal(index)}
                       >
@@ -272,10 +277,10 @@ export const Mawachi = () => {
                       </div>
 
                       {/* Animal Content */}
-                      <div 
+                      <div
                         className={`p-0 m-0 transition-all duration-300 ease-in-out overflow-hidden ${
-                          collapsedAnimals[index] 
-                            ? "max-h-0 opacity-0" 
+                          collapsedAnimals[index]
+                            ? "max-h-0 opacity-0"
                             : "max-h-[3000px] opacity-100"
                         }`}
                       >
@@ -339,9 +344,10 @@ export const Mawachi = () => {
                                   {animal.zakatDue.amount} {t('mawachi.head')}
                                 </span>
                               </div>
-                              {animal.zakatDue.description && (
+                              {/* ✅ getDescription() traduit dynamiquement selon la langue active */}
+                              {getDescription(animal.zakatDue) && (
                                 <div className="text-xs md:text-sm text-green-600 mt-2 break-words">
-                                  {animal.zakatDue.description}
+                                  {getDescription(animal.zakatDue)}
                                 </div>
                               )}
                             </div>
@@ -364,15 +370,15 @@ export const Mawachi = () => {
                   {/* Calculate and Save Buttons */}
                   {animals.length > 0 && (
                     <div className="text-center mt-6 md:mt-10 pt-4 md:pt-6 border-t border-gray-200 space-y-3">
-                      <button 
+                      <button
                         className="custom-button py-3 md:py-4 rounded-sm w-full sm:w-1/2 font-bold text-sm md:text-base"
                         onClick={calculateZakat}
                       >
                         {t('mawachi.calculate')}
                       </button>
-                      
+
                       {animals.some(a => a.zakatDue.amount > 0) && (
-                        <button 
+                        <button
                           className="custom-button py-3 md:py-4 rounded-sm w-full sm:w-1/2 font-bold text-sm md:text-base disabled:opacity-50 disabled:cursor-not-allowed"
                           onClick={saveZakatHistory}
                           disabled={isLoading}
