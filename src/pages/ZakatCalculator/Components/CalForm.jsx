@@ -1,4 +1,3 @@
-
 import React, { useContext, useEffect, useState } from "react";
 import { ZakatPrice } from "./ZakatPrice";
 import { MessagePopup } from "../../../Components/MessagePopup";
@@ -8,7 +7,7 @@ import {
   TooltipTrigger,
 } from "@/Components/ui/tooltip"
 import { ZakatContext } from "../../../Components/ZakatProvider";
-import { ChevronDown, ChevronUp, Plus, Minus } from "lucide-react";
+import { ChevronDown, ChevronUp, Plus, Minus, HelpCircle } from "lucide-react";
 import { WarninIcon } from "@/assets/Svg/WarninIcon";
 import { Link } from "react-router-dom";
 import { GoldPrice } from "./GoldPrice";
@@ -232,21 +231,16 @@ export const CalForm = () => {
                     <Plus className="w-4 h-4 group-hover:scale-110 transition-transform max-[515px]:w-3 max-[515px]:h-3" />
                   </button>
                   
+                  {/* ✅ HelpCircle remplace l'image SVG externe qui ne s'affichait pas sur mobile */}
                   <Tooltip className="max-w-xs whitespace-normal text-sm leading-relaxed">
                     <TooltipTrigger asChild>
                       <button className="p-1 hover:bg-gray-100 rounded-full transition-colors">
-                        <img
-                          src="./211757_help_icon.svg"
-                          alt="help"
-                          className="w-4 h-4 opacity-60 hover:opacity-100 transition-opacity"
-                        />
+                        <HelpCircle className="w-5 h-5 text-emerald-500 hover:text-emerald-700 transition-colors" />
                       </button>
                     </TooltipTrigger>
                     <TooltipContent className="bg-emerald-600 text-white border-emerald-700 max-w-sm">
                       <p className="text-sm leading-relaxed">
-<p className="text-sm leading-relaxed">
-  {field.description}
-</p>
+                        {field.description}
                       </p>
                     </TooltipContent>
                   </Tooltip>
@@ -322,8 +316,6 @@ export const CalForm = () => {
       </div>
       
       <LanguageSwitcher></LanguageSwitcher>
-
-    
 
       <GoldPrice></GoldPrice>
       
