@@ -356,10 +356,11 @@ export const CalForm = () => {
                     onChange={(e) => setMethodCalcul(e.target.value)}
                     value={methodCalcul}
                   >
-                    <option value="Maliki">{t('معادلة حساب زكاة الشركات المالكي')}</option>
-                    <option value="AAOIFI">{t(' AAOIFI معادلة حساب الشركات')}</option>
-                    <option value="Alioua">{t('معادلة باسم عليوة')}</option>
-                    <option value="Net">{t('معادلة صافي الغنى')}</option>
+                    / ✅ APRÈS — par ces 4 lignes
+<option value="Maliki">{t('methods.maliki')}</option>
+<option value="AAOIFI">{t('methods.companies')}</option>
+<option value="Alioua">{t('methods.alioua')}</option>
+<option value="Net">{t('methods.netWealth')}</option>
                   </select>
                   <div className={`absolute ${language === 'ar' ? 'left-4' : 'right-4'} top-1/2 transform -translate-y-1/2 pointer-events-none`}>
                     <ChevronDown className="w-5 h-5 text-blue-600" />
