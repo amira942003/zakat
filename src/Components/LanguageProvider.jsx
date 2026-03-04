@@ -649,7 +649,7 @@ export const translations = {
         shared: "Propriété partagée"
       },
       
-      zakatDue: "Zakat due:",
+      zakatDue: ":Zakat due",
       rateApplied: "Taux appliqué:",
       yourShare: "Votre part:",
       kg: "kg",
@@ -695,7 +695,7 @@ export const translations = {
         sheep: "Ovins"
       },
       
-      zakatDue: "Zakat due:",
+      zakatDue: ":Zakat due",
       head: "tête",
       noZakat: "Aucune",
       
