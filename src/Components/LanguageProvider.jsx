@@ -98,7 +98,7 @@ export const translations = {
         label: "الأسهم",
         fields: {
           s1: "أسهم للاحتكار",
-          s2: "أسهم بنية",
+          s2:  " التجارة أسهم بنية (القيمة السوقية )",
         },
         descriptions: {
           s1: "الأسهم المتداولة في الأسواق المحلية",
@@ -459,11 +459,11 @@ export const translations = {
           a2: "Marchandise en cours",
           a3: "Matières premières",
           a4: "Marchandise en transit",
-          a5: "Marchandise en fiducie",
-          a6: "Pièces détachées",
-          a7: "Offres commerciales",
-          a8: "Immobilier commercial",
-          a9: "Marchandise périmée"
+          a5: "Marchandises en dépôt chez des tiers",
+          a6: "Pièces de rechange destinées au commerce",
+          a7: "Marchandises commerciales par donation/héritage",
+          a8: "Biens immobiliers détenus pour le commerce",
+          a9: "Marchandises obsolètes/non destinées à la vente"
         },
         descriptions: {
           a1: "Ce sont les biens que votre entreprise détient pour les vendre directement, prêts à être commercialisés. La zakat se calcule sur la valeur marchande actuelle",
@@ -480,7 +480,7 @@ export const translations = {
       "5": {
         label: "Actions",
         fields: {
-          s1: "Actions locales",
+          s1: "Actions de détention",
           s2: "Actions internationales",
         },
         descriptions: {
