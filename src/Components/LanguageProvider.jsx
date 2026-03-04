@@ -397,8 +397,8 @@ export const translations = {
           x5: "Actifs numériques/cryptomonnaies disponibles",
           x6: "Dépôts de garantie/comptes fixes accessibles",
           x7: "Prêt sans intérêt accordé (jusqu'à encaissement)",
-          x8: "Revenus à recevoir",
-          x9: "Argent provenant de la vente d'actifs"
+          x8: "Revenus dus non encaissés",
+          x9: "Liquidités de vente d'actifs non zakatable"
         },
         descriptions: {
           x1: "Ce sont les billets et pièces que vous avez directement dans vos mains ou dans votre coffre. Ces montants sont immédiatement disponibles et sont soumis à la zakat s'ils atteignent le nisab et qu'une année lunaire s'est écoulée",
@@ -413,11 +413,11 @@ export const translations = {
         }
       },
       "2": {
-        label: "Créances recouvrable",
+        label: "Créances recouvrables",
         fields: {
           y1: "Créances clients courantes recouvrables",
           y2: "Créances différées recouvrables",
-          y3: "Créances recouvrables (prêt sans intérêt/vente monopolistique)",
+          y3: "Effets à recevoir",
           y4: "Créances sur vente d'actifs non zakatable/non commerciaux",
           y5: "Revenus de location/loyer échus",
           y6: "Créances douteuses/irrécouvrables",
@@ -700,14 +700,14 @@ export const translations = {
       noZakat: "Aucune",
       
       camel: {
-        sheep1: "Un mouton",
-        sheep2: "Deux moutons",
-        sheep3: "Trois moutons",
-        sheep4: "Quatre moutons",
-        bintMakhad: "Bint Makhad (2ème année)",
-        bintLaboun: "Bint Laboun (3ème année)",
-        hiqqah: "Hiqqah (4ème année)",
-        jadhaah: "Jadhaah (5ème année)",
+        sheep1: "une brebis",
+        sheep2: "Deux brebis",
+        sheep3: "Trois brebis",
+        sheep4: "Quatre brebis",
+        bintMakhad: "Bint Makhad (une femelle chamelle de deux ans)",
+        bintLaboun: "Bint Laboun (une femelle chamelle de trois ans)",
+        hiqqah: "Hiqqah (une femelle chamelle de quatre ans)",
+        jadhaah: "Jadhaah (une femelle chamelle de cinq ans)",
         bintLaboun2: "Deux Bint Laboun",
         hiqqah2: "Deux Hiqqah",
         bintLaboun3: "Trois Bint Laboun",
@@ -727,12 +727,12 @@ export const translations = {
       },
       
       cow: {
-        tabee: "Tabee ou Tabeea (2ème année)",
-        musinnah: "Musinnah (3ème année)",
-        tabee2: "Deux Tabee ou Tabeea",
+        tabee: "Tabee ou Tabeea (veau ou génisse de deux ans)",
+        musinnah: "Musinnah (vache de trois ans)",
+        tabee2: "Deux Tabee ou deux Tabeea",
         musinnahTabee: "Musinnah + Tabee ou Tabeea",
         musinnah2: "Deux Musinnah",
-        tabee3: "Trois Tabee ou Tabeea",
+        tabee3: "Trois Tabee ou trois Tabeea",
         musinnahTabee2: "Musinnah + deux Tabee ou Tabeea",
         musinnah2Tabee: "Deux Musinnah + Tabee ou Tabeea",
         musinnah3OrTabee4: "Trois Musinnah ou quatre Tabee",
@@ -740,11 +740,11 @@ export const translations = {
       },
       
       sheep: {
-        sheep1: "Un mouton",
-        sheep2: "Deux moutons",
-        sheep3: "Trois moutons",
-        sheep4: "Quatre moutons",
-        above499: "{count} moutons (un mouton pour chaque 100 têtes)"
+        sheep1: "Une berbis",
+        sheep2: "Deux berbis",
+        sheep3: "Trois berbis",
+        sheep4: "Quatre berbis",
+        above499: "{count} berbis (une berbis pour chaque 100 têtes)"
       },
       
       info: {
