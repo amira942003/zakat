@@ -1,8 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 export const HomePage = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (!e.target.closest('#download-wrapper')) setDropdownOpen(false);
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const downloadFile = (filename) => {
+    const a = document.createElement('a');
+    a.href = `/documents/${filename}`;
+    a.download = filename;
+    a.click();
+    setDropdownOpen(false);
+  };
 
   const features = [
     {
@@ -78,7 +95,7 @@ export const HomePage = () => {
       excerpt: "أضافت المنصة معايير جديدة لحساب الزكاة وفقاً لآخر الفتاوى الشرعية المعتمدة..."
     },
     {
-      date: "2025-01-10", 
+      date: "2025-01-10",
       title: "ورشة تعليمية مجانية حول أحكام زكاة الأموال",
       excerpt: "تنظم المنصة ورشة تعليمية مجانية للتعريف بأحكام الزكاة وطرق حسابها الصحيحة..."
     },
@@ -104,7 +121,7 @@ export const HomePage = () => {
                 <p className="text-xs text-gray-500">منصة موثوقة لحساب الزكاة</p>
               </div>
             </div>
-            
+
             <nav className="hidden lg:flex items-center space-x-8 space-x-reverse">
               <Link to="/" className="text-emerald-600 font-semibold hover:text-emerald-700 transition-colors">الرئيسية</Link>
               <Link to="/calculator" className="text-gray-600 hover:text-emerald-600 transition-colors">احسب الزكاة</Link>
@@ -114,8 +131,8 @@ export const HomePage = () => {
             </nav>
 
             <div className="flex items-center space-x-4 space-x-reverse">
-              <Link 
-                to="/calculator" 
+              <Link
+                to="/calculator"
                 className="bg-emerald-600 text-white px-6 py-2 rounded-lg hover:bg-emerald-700 transition-all duration-300 font-semibold"
               >
                 احسب الآن
@@ -143,7 +160,7 @@ export const HomePage = () => {
             <rect width="100" height="100" fill="url(#grid)" />
           </svg>
         </div>
-        
+
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="text-center lg:text-right">
@@ -152,23 +169,82 @@ export const HomePage = () => {
                 <span className="block text-yellow-400">بدقة وسهولة</span>
               </h1>
               <p className="text-lg lg:text-xl mb-8 text-emerald-100 leading-relaxed">
-                منصة شاملة وموثوقة لحساب الزكاة وفقاً للأحكام الشرعية المعتمدة، 
+                منصة شاملة وموثوقة لحساب الزكاة وفقاً للأحكام الشرعية المعتمدة،
                 مع إرشادات مفصلة وحسابات دقيقة لجميع أنواع الأموال
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Link 
-                  to="/calculator" 
-                  className="bg-yellow-500 text-emerald-900 px-8 py-4 rounded-xl font-bold hover:bg-yellow-400 transition-all duration-300 transform hover:scale-105 shadow-xl"
+
+              {/* ===== BOUTONS HERO ===== */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start flex-wrap">
+                <Link
+                  to="/calculator"
+                  className="bg-yellow-500 text-emerald-900 px-8 py-4 rounded-xl font-bold hover:bg-yellow-400 transition-all duration-300 transform hover:scale-105 shadow-xl text-center"
                 >
                   ابدأ الحساب الآن
                 </Link>
-                <Link 
-                  to="/about" 
-                  className="border-2 border-white text-white px-8 py-4 rounded-xl font-bold hover:bg-white hover:text-emerald-900 transition-all duration-300"
+                <Link
+                  to="/about"
+                  className="border-2 border-white text-white px-8 py-4 rounded-xl font-bold hover:bg-white hover:text-emerald-900 transition-all duration-300 text-center"
                 >
                   تعلم عن الزكاة
                 </Link>
+
+                {/* ===== BOUTON TÉLÉCHARGEMENT ===== */}
+                <div className="relative" id="download-wrapper">
+                  <button
+                    onClick={() => setDropdownOpen(!dropdownOpen)}
+                    className="flex items-center justify-center gap-2 border-2 border-yellow-400 text-yellow-400 px-8 py-4 rounded-xl font-bold hover:bg-yellow-400 hover:text-emerald-900 transition-all duration-300 w-full sm:w-auto"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"/>
+                    </svg>
+                    تحميل الوثائق
+                  </button>
+
+                  {dropdownOpen && (
+                    <div className="absolute top-full mt-2 right-0 bg-white rounded-xl shadow-2xl border border-gray-100 min-w-[280px] z-50 overflow-hidden">
+
+                      {/* XLSX */}
+                      <button
+                        onClick={() => downloadFile('calculateur_zakat_entreprise.xlsx')}
+                        className="flex items-center gap-3 w-full px-4 py-4 hover:bg-emerald-50 transition-colors border-b border-gray-100"
+                      >
+                        <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <span className="text-emerald-700 font-bold text-xs">XLS</span>
+                        </div>
+                        <div className="flex flex-col text-right flex-1">
+                          <span className="font-bold text-gray-800 text-sm">حاسبة زكاة الشركات</span>
+                          <span className="text-gray-500 text-xs">جدول Excel لحساب الزكاة</span>
+                        </div>
+                        <svg className="w-4 h-4 text-emerald-600 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"/>
+                        </svg>
+                      </button>
+
+                      {/* DOCX */}
+                      <button
+                        onClick={() => downloadFile('livre_blanc_zakat_entreprises.docx')}
+                        className="flex items-center gap-3 w-full px-4 py-4 hover:bg-blue-50 transition-colors"
+                      >
+                        <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <span className="text-blue-700 font-bold text-xs">DOC</span>
+                        </div>
+                        <div className="flex flex-col text-right flex-1">
+                          <span className="font-bold text-gray-800 text-sm">الكتاب الأبيض للزكاة</span>
+                          <span className="text-gray-500 text-xs">دليل شامل لزكاة الشركات</span>
+                        </div>
+                        <svg className="w-4 h-4 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"/>
+                        </svg>
+                      </button>
+
+                    </div>
+                  )}
+                </div>
+                {/* ===== FIN BOUTON TÉLÉCHARGEMENT ===== */}
+
               </div>
+              {/* ===== FIN BOUTONS HERO ===== */}
+
               <div className="flex items-center justify-center lg:justify-start mt-8 space-x-6 space-x-reverse text-sm text-emerald-200">
                 <div className="flex items-center">
                   <span className="w-2 h-2 bg-yellow-400 rounded-full ml-2"></span>
@@ -184,15 +260,15 @@ export const HomePage = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="relative">
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
                 <h3 className="text-2xl font-bold mb-6 text-center">حساب سريع للزكاة</h3>
                 <form className="space-y-4">
                   <div>
                     <label className="block text-sm font-medium mb-2">المبلغ الإجمالي (د.ج)</label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-yellow-400"
                       placeholder="أدخل المبلغ"
                     />
@@ -206,8 +282,8 @@ export const HomePage = () => {
                       <option value="trade">تجارة</option>
                     </select>
                   </div>
-                  <button 
-                    type="submit" 
+                  <button
+                    type="submit"
                     className="w-full bg-yellow-500 text-emerald-900 py-3 rounded-lg font-bold hover:bg-yellow-400 transition-colors"
                   >
                     احسب الزكاة
@@ -230,7 +306,7 @@ export const HomePage = () => {
               نقدم لك أفضل الخدمات لحساب الزكاة بدقة وموثوقية عالية
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
               <div key={index} className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
@@ -254,11 +330,11 @@ export const HomePage = () => {
               احسب زكاة جميع أنواع الأموال والممتلكات
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service, index) => (
-              <Link 
-                key={index} 
+              <Link
+                key={index}
                 to="/calculator"
                 className="group"
               >
@@ -313,7 +389,7 @@ export const HomePage = () => {
               آراء وتجارب حقيقية من مستخدمي المنصة
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <div key={index} className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
@@ -347,8 +423,8 @@ export const HomePage = () => {
                 ابق على اطلاع بآخر التحديثات والمقالات المفيدة
               </p>
             </div>
-            <Link 
-              to="/news" 
+            <Link
+              to="/news"
               className="self-start md:self-center mt-4 md:mt-0 text-emerald-600 hover:text-emerald-700 font-semibold flex items-center"
             >
               <span className="ml-2">عرض الكل</span>
@@ -357,7 +433,7 @@ export const HomePage = () => {
               </svg>
             </Link>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
             {newsItems.map((item, index) => (
               <article key={index} className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow duration-300">
@@ -365,8 +441,8 @@ export const HomePage = () => {
                   <div className="text-sm text-emerald-600 mb-2">{new Date(item.date).toLocaleDateString('ar-SA')}</div>
                   <h3 className="text-xl font-bold text-gray-800 mb-3 leading-tight">{item.title}</h3>
                   <p className="text-gray-600 leading-relaxed">{item.excerpt}</p>
-                  <Link 
-                    to="/news" 
+                  <Link
+                    to="/news"
                     className="inline-flex items-center mt-4 text-emerald-600 hover:text-emerald-700 font-semibold transition-colors"
                   >
                     <span className="ml-2">اقرأ المزيد</span>
@@ -391,14 +467,14 @@ export const HomePage = () => {
             انضم إلى آلاف المستخدمين الذين يثقون في منصتنا لحساب زكاة أموالهم بدقة وموثوقية
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              to="/calculator" 
+            <Link
+              to="/calculator"
               className="bg-yellow-500 text-emerald-900 px-8 py-4 rounded-xl font-bold hover:bg-yellow-400 transition-all duration-300 transform hover:scale-105"
             >
               احسب زكاتك الآن
             </Link>
-            <Link 
-              to="/contact" 
+            <Link
+              to="/contact"
               className="border-2 border-white text-white px-8 py-4 rounded-xl font-bold hover:bg-white hover:text-emerald-900 transition-all duration-300"
             >
               تحدث معنا
@@ -425,7 +501,7 @@ export const HomePage = () => {
                 نساعدك على حساب زكاتك بدقة وسهولة وفقاً للأحكام الشرعية المعتمدة
               </p>
             </div>
-            
+
             <div>
               <h4 className="font-bold text-lg mb-4">الخدمات</h4>
               <ul className="space-y-2 text-gray-300">
@@ -435,7 +511,7 @@ export const HomePage = () => {
                 <li><Link to="/trade" className="hover:text-emerald-400 transition-colors">زكاة التجارة</Link></li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="font-bold text-lg mb-4">المعلومات</h4>
               <ul className="space-y-2 text-gray-300">
@@ -445,7 +521,7 @@ export const HomePage = () => {
                 <li><Link to="/terms" className="hover:text-emerald-400 transition-colors">الشروط والأحكام</Link></li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="font-bold text-lg mb-4">تواصل معنا</h4>
               <ul className="space-y-2 text-gray-300">
@@ -464,7 +540,7 @@ export const HomePage = () => {
               </ul>
             </div>
           </div>
-          
+
           <div className="border-t border-gray-700 mt-12 pt-8">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between">
               <div className="text-center md:text-right">
@@ -510,233 +586,64 @@ export const HomePage = () => {
             padding-left: 1rem;
             padding-right: 1rem;
           }
-          
-          .text-4xl {
-            font-size: 2rem;
-          }
-          
-          .text-6xl {
-            font-size: 2.5rem;
-          }
-          
-          .py-16 {
-            padding-top: 3rem;
-            padding-bottom: 3rem;
-          }
-          
-          .py-24 {
-            padding-top: 4rem;
-            padding-bottom: 4rem;
-          }
-          
-          .px-8 {
-            padding-left: 1.5rem;
-            padding-right: 1.5rem;
-          }
-          
-          .py-4 {
-            padding-top: 0.75rem;
-            padding-bottom: 0.75rem;
-          }
-          
-          .grid {
-            gap: 1.5rem;
-          }
-          
-          .space-x-8 > :not([hidden]) ~ :not([hidden]) {
-            margin-right: 1rem;
-            margin-left: 0;
-          }
-          
-          .rounded-2xl {
-            border-radius: 1rem;
-          }
-          
-          .shadow-2xl {
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-          }
+          .text-4xl { font-size: 2rem; }
+          .text-6xl { font-size: 2.5rem; }
+          .py-16 { padding-top: 3rem; padding-bottom: 3rem; }
+          .py-24 { padding-top: 4rem; padding-bottom: 4rem; }
+          .px-8 { padding-left: 1.5rem; padding-right: 1.5rem; }
+          .py-4 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+          .grid { gap: 1.5rem; }
+          .space-x-8 > :not([hidden]) ~ :not([hidden]) { margin-right: 1rem; margin-left: 0; }
+          .rounded-2xl { border-radius: 1rem; }
+          .shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
         }
-        
+
         @media (max-width: 460px) {
-          .text-3xl {
-            font-size: 1.5rem !important;
-          }
-          
-          .text-4xl {
-            font-size: 1.75rem !important;
-          }
-          
-          .text-5xl {
-            font-size: 2rem !important;
-          }
-          
-          .text-6xl {
-            font-size: 2.25rem !important;
-          }
-          
-          .text-lg {
-            font-size: 1rem !important;
-          }
-          
-          .text-xl {
-            font-size: 1.125rem !important;
-          }
-          
-          .py-16 {
-            padding-top: 2rem !important;
-            padding-bottom: 2rem !important;
-          }
-          
-          .py-20 {
-            padding-top: 2.5rem !important;
-            padding-bottom: 2.5rem !important;
-          }
-          
-          .py-24 {
-            padding-top: 3rem !important;
-            padding-bottom: 3rem !important;
-          }
-          
-          .px-4 {
-            padding-left: 0.75rem !important;
-            padding-right: 0.75rem !important;
-          }
-          
-          .px-6 {
-            padding-left: 1rem !important;
-            padding-right: 1rem !important;
-          }
-          
-          .px-8 {
-            padding-left: 1.25rem !important;
-            padding-right: 1.25rem !important;
-          }
-          
-          .py-3 {
-            padding-top: 0.625rem !important;
-            padding-bottom: 0.625rem !important;
-          }
-          
-          .py-4 {
-            padding-top: 0.75rem !important;
-            padding-bottom: 0.75rem !important;
-          }
-          
-          .mb-6 {
-            margin-bottom: 1rem !important;
-          }
-          
-          .mb-8 {
-            margin-bottom: 1.5rem !important;
-          }
-          
-          .mb-12 {
-            margin-bottom: 2rem !important;
-          }
-          
-          .p-6 {
-            padding: 1rem !important;
-          }
-          
-          .p-8 {
-            padding: 1.25rem !important;
-          }
-          
-          .gap-4 {
-            gap: 0.75rem !important;
-          }
-          
-          .gap-6 {
-            gap: 1rem !important;
-          }
-          
-          .gap-8 {
-            gap: 1.5rem !important;
-          }
-          
-          .space-y-4 > :not([hidden]) ~ :not([hidden]) {
-            margin-top: 0.75rem !important;
-          }
-          
-          .space-y-6 > :not([hidden]) ~ :not([hidden]) {
-            margin-top: 1rem !important;
-          }
-          
-          .rounded-xl {
-            border-radius: 0.75rem !important;
-          }
-          
-          .rounded-2xl {
-            border-radius: 1rem !important;
-          }
-          
-          .w-16 {
-            width: 3rem !important;
-          }
-          
-          .h-16 {
-            height: 3rem !important;
-          }
-          
-          .w-10 {
-            width: 2rem !important;
-          }
-          
-          .h-10 {
-            height: 2rem !important;
-          }
-          
-          .text-2xl {
-            font-size: 1.25rem !important;
-          }
-          
-          .leading-tight {
-            line-height: 1.25 !important;
-          }
-          
-          .leading-relaxed {
-            line-height: 1.5 !important;
-          }
+          .text-3xl { font-size: 1.5rem !important; }
+          .text-4xl { font-size: 1.75rem !important; }
+          .text-5xl { font-size: 2rem !important; }
+          .text-6xl { font-size: 2.25rem !important; }
+          .text-lg { font-size: 1rem !important; }
+          .text-xl { font-size: 1.125rem !important; }
+          .py-16 { padding-top: 2rem !important; padding-bottom: 2rem !important; }
+          .py-20 { padding-top: 2.5rem !important; padding-bottom: 2.5rem !important; }
+          .py-24 { padding-top: 3rem !important; padding-bottom: 3rem !important; }
+          .px-4 { padding-left: 0.75rem !important; padding-right: 0.75rem !important; }
+          .px-6 { padding-left: 1rem !important; padding-right: 1rem !important; }
+          .px-8 { padding-left: 1.25rem !important; padding-right: 1.25rem !important; }
+          .py-3 { padding-top: 0.625rem !important; padding-bottom: 0.625rem !important; }
+          .py-4 { padding-top: 0.75rem !important; padding-bottom: 0.75rem !important; }
+          .mb-6 { margin-bottom: 1rem !important; }
+          .mb-8 { margin-bottom: 1.5rem !important; }
+          .mb-12 { margin-bottom: 2rem !important; }
+          .p-6 { padding: 1rem !important; }
+          .p-8 { padding: 1.25rem !important; }
+          .gap-4 { gap: 0.75rem !important; }
+          .gap-6 { gap: 1rem !important; }
+          .gap-8 { gap: 1.5rem !important; }
+          .space-y-4 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.75rem !important; }
+          .space-y-6 > :not([hidden]) ~ :not([hidden]) { margin-top: 1rem !important; }
+          .rounded-xl { border-radius: 0.75rem !important; }
+          .rounded-2xl { border-radius: 1rem !important; }
+          .w-16 { width: 3rem !important; }
+          .h-16 { height: 3rem !important; }
+          .w-10 { width: 2rem !important; }
+          .h-10 { height: 2rem !important; }
+          .text-2xl { font-size: 1.25rem !important; }
+          .leading-tight { line-height: 1.25 !important; }
+          .leading-relaxed { line-height: 1.5 !important; }
         }
-        
-        /* Custom animations */
+
         @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
         }
-        
-        .animate-fadeInUp {
-          animation: fadeInUp 0.6s ease-out forwards;
-        }
-        
-        /* Smooth scrolling */
-        html {
-          scroll-behavior: smooth;
-        }
-        
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-          width: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-          background: #f1f1f1;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-          background: #10b981;
-          border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-          background: #059669;
-        }
+        .animate-fadeInUp { animation: fadeInUp 0.6s ease-out forwards; }
+        html { scroll-behavior: smooth; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #10b981; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #059669; }
       `}</style>
     </div>
   );

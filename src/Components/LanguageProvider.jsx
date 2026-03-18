@@ -141,9 +141,10 @@ export const translations = {
       }
     },
     methods: {
+            companies: "AAOIFI معادلة حساب الشركات",
+
       maliki: "معادلة حساب زكاة الشركات المالكي",
-      companies: "AAOIFI معادلة حساب الشركات",
-      alioua: "معادلة باسم عليوة",
+            alioua: "معادلة باسم عليوة",
       netWealth: "معادلة صافي الغنى"
     },
     ui: {
@@ -524,8 +525,9 @@ export const translations = {
       }
     },
     methods: {
+            companies: "Formule AAOIFI de calcul des entreprises",
+
       maliki: "Formule de calcul Zakat des entreprises (Maliki)",
-      companies: "Formule AAOIFI de calcul des entreprises",
       alioua: "Formule Alioua",
       netWealth: "Formule de richesse nette"
     },
@@ -907,8 +909,9 @@ export const translations = {
       }
     },
     methods: {
+            companies: "AAOIFI Corporate Calculation Formula",
+
       maliki: "Maliki Corporate Zakat Calculation Formula",
-      companies: "AAOIFI Corporate Calculation Formula",
       alioua: "Alioua Formula",
       netWealth: "Net Wealth Formula"
     },
