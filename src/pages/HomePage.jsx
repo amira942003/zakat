@@ -205,7 +205,7 @@ export const HomePage = () => {
 
                       {/* XLSX */}
                       <button
-                        onClick={() => downloadFile('calculateur_zakat_entreprise.xlsx')}
+                        onClick={() => downloadFile('xlsx')}
                         className="flex items-center gap-3 w-full px-4 py-4 hover:bg-emerald-50 transition-colors border-b border-gray-100"
                       >
                         <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -222,7 +222,7 @@ export const HomePage = () => {
 
                       {/* DOCX */}
                       <button
-                        onClick={() => downloadFile('livre_blanc_zakat_entreprises.docx')}
+                        onClick={() => downloadFile('docx')}
                         className="flex items-center gap-3 w-full px-4 py-4 hover:bg-blue-50 transition-colors"
                       >
                         <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
