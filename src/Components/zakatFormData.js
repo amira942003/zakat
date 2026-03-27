@@ -53,7 +53,6 @@ export const getZakatForm = (t) => [
       { name: 'a9', label: t('forms.4.fields.a9'), children: [] },
     ]
   },
-  // ⭐⭐⭐ NOUVELLE FORME "الأسهم" AJOUTÉE ICI ⭐⭐⭐
   {
     name: '5',
     label: t('forms.5.label'),
@@ -63,7 +62,6 @@ export const getZakatForm = (t) => [
     
     ]
   },
-  // ⭐⭐⭐ FIN DE LA NOUVELLE FORME ⭐⭐⭐
   {
     name: '6',
     label: t('forms.6.label'),
