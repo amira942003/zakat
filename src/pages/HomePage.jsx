@@ -203,12 +203,10 @@ export const HomePage = () => {
                       <option value="trade">تجارة</option>
                     </select>
                   </div>
-                  <button type="submit" className="w-full bg-yellow-500 text-emerald-900 py-3 rounded-lg font-bold hover:bg-yellow-400 transition-colors">
-                    احسب الزكاة
-                  </button>
-                   <button type="submit" className="w-full bg-yellow-500 text-emerald-900 py-3 rounded-lg font-bold hover:bg-yellow-400 transition-colors">
-                         تحميل الوثاءق 
-                  </button>
+<div className="flex gap-3">
+  ← bouton احسب الزكاة (flex-1)
+  ← bouton تحميل avec dropdown (à droite)
+</div>                   
                 </form>
               </div>
             </div>
